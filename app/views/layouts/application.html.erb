@@ -9,6 +9,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Telefonía On Rails Z</span>
+        </div>
+        <!-- Tabs -->
+        <%= yield :tabs %>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">TOR-Z</span>
+      </div>
+      <main class="mdl-layout__content">
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
