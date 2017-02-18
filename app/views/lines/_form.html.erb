@@ -1,0 +1,26 @@
+<%= simple_form_for @line do |l| %>
+
+  <div class="row">
+    <%= l.input :number, label:'N° Línea', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :state, label:'Estado', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :type_sim, label:'Tipo SIM', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :bill_account, label:'Cuenta', wrapper_html: { class: 'col-xs- col-sm- col-md-4 col-lg-2' } %>
+  </div>
+  <div class="row">
+    <%= l.association :person, label:'Usuario', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-4' } %>
+    <%= l.input :vpn_link, label:'Link de la VPN', wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-6 col-lg-6' } %>
+  </div>
+  <div class="row">
+    <%= l.input :check_date, as: :date, label: 'Check', input_html: { type:'datetime-local'}, wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-3' } %>
+    <%= l.input :has_inet, label:'Pack Inet', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :limit_offnet, label:'Minutos', wrapper_html: { class: 'col-xs-6 col-sm-4 col-md-3 col-lg-1' }, input_html: { min: '0', step: '50' } %>
+    <%= l.input :has_sms_pack,  inline_label: 'Pack SMS', input_html: {value: true}, wrapper_html: { class: 'options' } %>
+  </div>
+<div class="row">
+  <%= l.input :notes, placeholder:'Notas', label: false, :input_html => { :rows => 10 }, wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' } %>
+</div>
+
+
+
+  <%= l.button :submit, 'OK', class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" %>
+<% end %>

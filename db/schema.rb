@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213020536) do
+ActiveRecord::Schema.define(version: 20170215222931) do
 
   create_table "lines", force: :cascade do |t|
     t.integer  "person_id"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20170213020536) do
     t.string   "dni"
     t.boolean  "alert"
     t.text     "footnote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "selector_settings", force: :cascade do |t|
+    t.string   "name"
+    t.string   "id_name"
+    t.string   "selector"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

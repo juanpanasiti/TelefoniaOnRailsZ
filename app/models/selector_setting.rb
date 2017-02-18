@@ -1,0 +1,2 @@
+class SelectorSetting < ApplicationRecord
+end
