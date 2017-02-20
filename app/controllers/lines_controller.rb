@@ -6,7 +6,15 @@ class LinesController < ApplicationController
     @line = Line.new
   end
   def create
-    #code
+    @line = Line.new(line_params)
+
+    respond_to do |format|
+      if @line.save
+        format.html { redirect_to root_path, notice: 'Line was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def edit
@@ -26,7 +34,7 @@ class LinesController < ApplicationController
   end
 
   def line_params
-    Line.permit(:number, :person_id, :has_inet, :state, :type_sim, :has_sms_pack, :check_date, :notes, :bill_account, :vpn_link, :limit_offnet)
+    params.require(:line).permit(:number, :person_id, :has_inet, :state, :type_sim, :has_sms_pack, :check_date, :notes, :bill_account, :vpn_link, :limit_offnet)
   end
 
   def options_for_select

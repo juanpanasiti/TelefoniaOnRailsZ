@@ -1,0 +1,17 @@
+<%= simple_form_for @user do |l| %>
+
+  <div class="row">
+    <%= l.input :name, label:'Nombre', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :lastname, label:'Apellido', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :dni, label:'N° DNI', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    <%= l.input :alert, label:'Resaltar', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+  </div>
+
+<div class="row">
+  <%= l.input :footnote, placeholder:'Notas', label: false, :input_html => { :rows => 10 }, wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12' } %>
+</div>
+
+
+
+  <%= l.button :submit, 'OK', class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" %>
+<% end %>
