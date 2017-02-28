@@ -21,11 +21,20 @@ class LinesController < ApplicationController
     #code
   end
   def update
-    #code
+    respond_to do |format|
+      if @line.update(line_params)
+        format.html { redirect_to root_path, notice: 'Line was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def delete
-    #code
+    @line.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Line was successfully destroyed.' }
+    end
   end
 
   protected

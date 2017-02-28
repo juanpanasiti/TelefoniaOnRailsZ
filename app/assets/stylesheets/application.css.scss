@@ -14,9 +14,9 @@
  *= require_self
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import "bootstrap";
+ @import 'flexboxgrid.min.css';
  @import 'material.min.css';
-@import 'material';
+ @import 'material';
 // Variables and mixins
 @import "material/variables";
 @import "material/mixins";
@@ -89,4 +89,7 @@
   margin-right: 40px;
   margin-bottom: 40px;
   z-index: 900;
+}
+.fullwide {
+  width: 100% !important;
 }
