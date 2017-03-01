@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170215222931) do
     t.string   "lastname"
     t.string   "dni"
     t.boolean  "alert"
+    t.text     "accounts"
     t.text     "footnote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

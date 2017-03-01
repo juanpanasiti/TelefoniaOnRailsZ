@@ -6,21 +6,24 @@
       <th class="mdl-data-table__cell--non-numeric"> DNI </th>
       <th class="mdl-data-table__cell--non-numeric"> Oficina </th>
       <th class="mdl-data-table__cell--non-numeric"> Líneas/Equipos </th>
-      <th class="mdl-data-table__cell--non-numeric"> Servicios </th>
-      <th class="mdl-data-table__cell--non-numeric"> Emails </th>
       <th class="mdl-data-table__cell--non-numeric"> Opciones </th>
     </tr>
   </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= user.get_full_name %> </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= user.get_dni_formated %> </td>
+        <td class="mdl-data-table__cell--non-numeric"> S/D </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="<%= raw user.lines.count %>">sim_card</div>
+          <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="0">phone_android</div>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= link_to edit_person_path(user), class: "mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+          <i class="material-icons">mode_edit</i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -5,6 +5,7 @@ class CreatePeople < ActiveRecord::Migration[5.0]
       t.string :lastname
       t.string :dni
       t.boolean :alert
+      t.text :accounts
       t.text :footnote
 
       t.timestamps

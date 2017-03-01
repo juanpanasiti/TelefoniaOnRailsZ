@@ -18,13 +18,20 @@
       <tr>
         <td class="mdl-data-table__cell--non-numeric"> <%= line.number %> </td>
         <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= line.state %> </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= line.type_sim %> </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <i class="material-icons">textsms</i>
+          <i class="material-icons">wifi</i>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= line.check_date %> </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= line.bill_account %> </td>
+        <td class="mdl-data-table__cell--non-numeric"> <%= line.limit_offnet %> </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <%= link_to edit_line_path(line), class:"mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+          <i class="material-icons">mode_edit</i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

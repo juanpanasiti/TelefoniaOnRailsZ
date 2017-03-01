@@ -1,0 +1,31 @@
+<%= simple_form_for @selector_setting do |l| %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
+      <%= l.input :selector, label:'Selector', collection: @selector_options,
+                          wrapper_html: { class: 'mdl-textfield mdl-js-textfield fullwide'},
+                          input_html: {class: "mdl-textfield__input"},
+                          label_html: { class: "mdl-textfield__label"} %>
+    </div>
+
+    <div class="col-xs-12 col-sm-7 col-md-4 col-lg-4">
+      <%= l.input :name, label:'Nombre',
+                          wrapper_html: { class: 'mdl-textfield mdl-js-textfield fullwide'},
+                          input_html: {class: "mdl-textfield__input"},
+                          label_html: { class: "mdl-textfield__label"} %>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+      <%= l.input :id_name, label:'ID',
+                          wrapper_html: { class: 'mdl-textfield mdl-js-textfield fullwide'},
+                          input_html: {class: "mdl-textfield__input"},
+                          label_html: { class: "mdl-textfield__label"} %>
+    </div>
+  </div>
+
+
+
+
+
+  <%= l.button :submit, 'OK', class: "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" %>
+<% end %>
