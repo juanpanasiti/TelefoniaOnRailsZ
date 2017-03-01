@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215222931) do
+ActiveRecord::Schema.define(version: 20170301021424) do
+
+  create_table "delegations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.text     "footnote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lines", force: :cascade do |t|
     t.integer  "person_id"
@@ -38,6 +46,17 @@ ActiveRecord::Schema.define(version: 20170215222931) do
     t.index ["person_id"], name: "index_mail_accounts_on_person_id"
   end
 
+  create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.text     "footnote"
+    t.integer  "delegation_id"
+    t.integer  "parent_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["delegation_id"], name: "index_offices_on_delegation_id"
+    t.index ["parent_id"], name: "index_offices_on_parent_id"
+  end
+
   create_table "people", force: :cascade do |t|
     t.string   "name"
     t.string   "lastname"
@@ -47,6 +66,8 @@ ActiveRecord::Schema.define(version: 20170215222931) do
     t.text     "footnote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "office_id"
+    t.index ["office_id"], name: "index_people_on_office_id"
   end
 
   create_table "selector_settings", force: :cascade do |t|

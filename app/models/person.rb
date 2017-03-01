@@ -1,6 +1,9 @@
 class Person < ApplicationRecord
   has_many :lines
+  belongs_to :office, optional: true
 
+  ########## VALIDATIONS
+  validates_presence_of :name, :lastname
   ########## METHODS
   def get_full_name
     # Devuelve el nombre completo en formato 'APELLIDO, Nombre1 Nombre2'
