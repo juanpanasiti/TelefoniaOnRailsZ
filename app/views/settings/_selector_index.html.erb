@@ -16,12 +16,12 @@
         <td class="mdl-data-table__cell--non-numeric"> <%= ss.id_name %> </td>
 
         <td class="mdl-data-table__cell--non-numeric">
-          <%= link_to fa_icon("pencil"), edit_selector_path(ss) %>
+          <%= link_to fa_icon("pencil"), '#' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to new_selector_path, class: "fixed-botton-right-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+<%= link_to new_selector_settings_path, class: "fixed-botton-right-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
   <%= fa_icon('plus', class: "material-icons") %>
 <% end %>
