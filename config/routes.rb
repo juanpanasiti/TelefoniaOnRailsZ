@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     collection do
       get :new_selector
       post :create_selector
+      get :new_office
+      post :create_office
     end
   end
 

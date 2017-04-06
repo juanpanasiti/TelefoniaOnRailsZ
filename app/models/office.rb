@@ -7,5 +7,20 @@ class Office < ApplicationRecord
   validates_presence_of :name
 
   ############### METHODS
+  ############### CLASS METHODS
+  def self.get_parent_options
+    options = [['N/A',nil]]
+    Office.all.each do |o|
+      options << [o.name, o.id]
+    end
+    return options
+  end
+  def self.get_delegation_options
+    options = [['N/A',nil]]
+    Delegation.all.each do |o|
+      options << [o.name, o.id]
+    end
+    return options
+  end
 
 end

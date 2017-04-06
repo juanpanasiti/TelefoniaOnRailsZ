@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
+    <h3>Oficinas</h3>
+    <table class="mdl-data-table mdl-js-data-table ">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric"> Nombre </th>
+          <th class="mdl-data-table__cell--non-numeric"> Dependencia </th>
+          <th class="mdl-data-table__cell--non-numeric"> Delegación </th>
+          <th class="mdl-data-table__cell--non-numeric"> Opciones </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offices.each do |o| %>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"> <%= o.name %> </td>
+            <td class="mdl-data-table__cell--non-numeric"> <%= o.parent_id %> </td>
+            <td class="mdl-data-table__cell--non-numeric"> <%= o.delegation %> </td>
+
+            <td class="mdl-data-table__cell--non-numeric">
+              <%= link_to fa_icon("pencil"), '#' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to new_office_settings_path, class: "fixed-botton-right-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+      <%= fa_icon('plus', class: "material-icons") %>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+    <h3>Delegaciones</h3>
+    <ul>
+      <li>Casa Municipal</li>
+      <li>Servicios Públicos</li>
+      <li>Hiperlibertad</li>
+      <li>CAU I</li>
+      <li>CAU II</li>
+      <li>CAU III</li>
+      <li>Nuevo</li>
+    </ul>
+
+  </div>
+</div>
