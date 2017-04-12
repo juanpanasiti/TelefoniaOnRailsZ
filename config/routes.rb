@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       post :create_selector
       get :new_office
       post :create_office
+      get :new_delegation
+      post :create_delegation
+
     end
   end
 

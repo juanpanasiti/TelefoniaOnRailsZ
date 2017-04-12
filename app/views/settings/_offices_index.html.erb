@@ -31,15 +31,15 @@
 
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
     <h3>Delegaciones</h3>
-    <ul>
-      <li>Casa Municipal</li>
-      <li>Servicios Públicos</li>
-      <li>Hiperlibertad</li>
-      <li>CAU I</li>
-      <li>CAU II</li>
-      <li>CAU III</li>
-      <li>Nuevo</li>
+    <ul id='list_delegations'>
+      <% @delegations.each do |delegation| %>
+        <li id="delegation_<%= delegation.id %>">
+          <%= delegation.name %>
+        </li>
+      <% end %>
+
     </ul>
+    <%= render "delegation_form", button: 'Crear', url_action: create_delegation_settings_path %>
 
   </div>
 </div>

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170301021424) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "delegations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170301021424) do
     t.integer  "limit_offnet"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["person_id"], name: "index_lines_on_person_id"
+    t.index ["person_id"], name: "index_lines_on_person_id", using: :btree
   end
 
   create_table "mail_accounts", force: :cascade do |t|
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170301021424) do
     t.integer  "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_mail_accounts_on_person_id"
+    t.index ["person_id"], name: "index_mail_accounts_on_person_id", using: :btree
   end
 
   create_table "offices", force: :cascade do |t|
@@ -53,8 +56,8 @@ ActiveRecord::Schema.define(version: 20170301021424) do
     t.integer  "parent_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["delegation_id"], name: "index_offices_on_delegation_id"
-    t.index ["parent_id"], name: "index_offices_on_parent_id"
+    t.index ["delegation_id"], name: "index_offices_on_delegation_id", using: :btree
+    t.index ["parent_id"], name: "index_offices_on_parent_id", using: :btree
   end
 
   create_table "people", force: :cascade do |t|
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170301021424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "office_id"
-    t.index ["office_id"], name: "index_people_on_office_id"
+    t.index ["office_id"], name: "index_people_on_office_id", using: :btree
   end
 
   create_table "selector_settings", force: :cascade do |t|
@@ -78,4 +81,8 @@ ActiveRecord::Schema.define(version: 20170301021424) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "lines", "people"
+  add_foreign_key "mail_accounts", "people"
+  add_foreign_key "offices", "delegations"
+  add_foreign_key "people", "offices"
 end
