@@ -53,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Gems added by me
-gem 'material_design_lite-sass', '~> 1.3'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'simple_form', '~> 3.4'
 gem 'wysiwyg-rails', '~> 2.4', '>= 2.4.2'

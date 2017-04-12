@@ -9,58 +9,8 @@
   </head>
 
   <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">Telefonía On Rails Z</span>
-        </div>
-        <!-- Tabs -->
-        <%= yield :tabs %>
-      </header>
-
-      <p id="notice"><%= notice %></p>
-
-      <div class="mdl-layout__drawer">
-        <header class="demo-drawer-header">
-          <img src="images/user.jpg" class="demo-avatar">
-          <div class="demo-avatar-dropdown">
-            <span>hello@example.com</span>
-            <div class="mdl-layout-spacer"></div>
-            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">Accounts</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">hello@example.com</li>
-              <li class="mdl-menu__item">info@example.com</li>
-              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
-            </ul>
-          </div>
-        </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <%= link_to root_path, class: "mdl-navigation__link" do %>
-            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">dashboard</i>Dashboard
-          <% end %>
-
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Facturación</a>
-
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">phone_android</i>Equipos</a>
-
-          <%= link_to settings_path, class: "mdl-navigation__link" do %>
-          <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Config.
-          <% end %>
-
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">import_contacts</i>Notas y procedimientos</a>
-
-          <%= link_to about_path, class: "mdl-navigation__link" do %>
-            <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span>
-          <% end %>
-        </nav>
-      </div>
-      <main class="mdl-layout__content">
-        <%= yield %>
-      </main>
-    </div>
+    <p id="notice"><%= notice %></p>
+    <p id="alert"><%= alert %></p>
+    <%= yield %>
   </body>
 </html>
