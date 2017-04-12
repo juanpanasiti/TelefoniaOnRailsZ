@@ -1,7 +1,10 @@
 class SettingsController < ApplicationController
-  #before_action :set_selector_setting, only: [:edit, :update, :delete]
+  before_action :set_selector_setting, only: [:delete_selector]
+  before_action :set_office, only: [:delete_office]
+  before_action :set_delegation, only: [:delete_delegation]
   before_action :options_for_selects, only: [:new_selector, :create_selector,:new_office, :create_office]
   before_action :set_new_delegation, only: [:index, :new]
+### SELECTOR BEGINS
   def index
     @selector_settings = SelectorSetting.all
     @offices = Office.all
@@ -22,7 +25,15 @@ class SettingsController < ApplicationController
       end
     end
   end
+  def delete_selector
+    @selector_setting.destroy
+    respond_to do |format|
+      format.html { redirect_to settings_path, notice: 'Selector eliminado.' }
+    end
+  end
+### SELECTOR ENDS
 
+### OFFICE BEGINS
   def new_office
     @office = Office.new
   end
@@ -37,7 +48,14 @@ class SettingsController < ApplicationController
       end
     end
   end
-
+  def delete_office
+    @office.destroy
+    respond_to do |format|
+      format.html { redirect_to settings_path, notice: 'Oficina eliminada.' }
+    end
+  end
+### OFFICE ENDS
+### DELEGATION BEGINS
   def new_delegation
   end
   def create_delegation
@@ -52,6 +70,13 @@ class SettingsController < ApplicationController
       end
     end
   end
+  def delete_delegation
+    @delegation.destroy
+    respond_to do |format|
+      format.html { redirect_to settings_path, notice: 'Delegación eliminada.' }
+    end
+  end
+### DELEGATION ENDS
   protected
   def selector_setting_params
     params.require(:selector_setting).permit(:name, :id_name, :selector)
@@ -71,9 +96,15 @@ class SettingsController < ApplicationController
 
   def set_new_delegation
       @delegation = Delegation.new
-    end
+  end
 
-  #def set_selector_setting
-  #  @selector_setting = SelectorSetting.find(params[:id])
-  #end
+  def set_selector_setting
+    @selector_setting = SelectorSetting.find(params[:id])
+  end
+  def set_office
+    @office = Office.find(params[:id])
+  end
+  def set_delegation
+    @delegation = Delegation.find(params[:id])
+  end
 end

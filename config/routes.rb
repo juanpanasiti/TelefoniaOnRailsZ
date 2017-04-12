@@ -14,7 +14,9 @@ Rails.application.routes.draw do
       post :create_office
       get :new_delegation
       post :create_delegation
-
+      delete '/delete_delegation/:id', to: 'settings#delete_delegation', as: :delete_delegation
+      delete '/delete_selector/:id', to: 'settings#delete_selector', as: :delete_selector
+      delete '/delete_office/:id', to: 'settings#delete_office', as: :delete_office
     end
   end
 

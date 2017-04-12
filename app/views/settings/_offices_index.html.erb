@@ -15,7 +15,7 @@
           <tr>
             <td class="mdl-data-table__cell--non-numeric"> <%= o.name %> </td>
             <td class="mdl-data-table__cell--non-numeric"> <%= o.parent_id %> </td>
-            <td class="mdl-data-table__cell--non-numeric"> <%= o.delegation %> </td>
+            <td class="mdl-data-table__cell--non-numeric"> <%= o.delegation.name %> </td>
 
             <td class="mdl-data-table__cell--non-numeric">
               <%= link_to fa_icon("pencil"), '#' %>
@@ -34,7 +34,7 @@
     <ul id='list_delegations'>
       <% @delegations.each do |delegation| %>
         <li id="delegation_<%= delegation.id %>">
-          <%= delegation.name %>
+          <%= delegation.name %> <%= link_to "X", delete_delegation_settings_path(delegation.id), method: :delete %>
         </li>
       <% end %>
 
