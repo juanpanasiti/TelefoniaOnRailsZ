@@ -11,6 +11,9 @@
 // about supported directives.
 //
 
+//= require classie.js
+//= require gnmenu.js
+//= require modernizr.custom.js
 //= require froala_editor.min.js
 //= require jquery
 //= require bootstrap-sprockets

@@ -1,34 +1,31 @@
 <h3>Líneas Celulares</h3>
-<table class="mdl-data-table mdl-js-data-table ">
+<table class="table">
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric"> Número </th>
-      <th class="mdl-data-table__cell--non-numeric"> Usuario </th>
-      <th class="mdl-data-table__cell--non-numeric"> Estado </th>
-      <th class="mdl-data-table__cell--non-numeric"> Tipo SIM </th>
-      <th class="mdl-data-table__cell--non-numeric"> Servicios </th>
-      <th class="mdl-data-table__cell--non-numeric"> Últ. Check </th>
-      <th class="mdl-data-table__cell--non-numeric"> Cuenta </th>
-      <th class="mdl-data-table__cell--non-numeric"> Lím. Offnet </th>
-      <th class="mdl-data-table__cell--non-numeric"> Opciones </th>
+      <th class=""> Número </th>
+      <th class=""> Usuario </th>
+      <th class=""> Estado </th>
+      <th class=""> Tipo SIM </th>
+      <th class=""> Servicios </th>
+      <th class=""> Últ. Check </th>
+      <th class=""> Cuenta </th>
+      <th class=""> Lím. Offnet </th>
+      <th class=""> Opciones </th>
     </tr>
   </thead>
   <tbody>
     <% lines.each do |line| %>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric"> <%= line.number %> </td>
-        <td class="mdl-data-table__cell--non-numeric">  </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= line.state %> </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= line.type_sim %> </td>
-        <td class="mdl-data-table__cell--non-numeric">
-          <i class="material-icons">textsms</i>
-          <i class="material-icons">wifi</i>
-        </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= line.check_date %> </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= line.bill_account %> </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= line.limit_offnet %> </td>
-        <td class="mdl-data-table__cell--non-numeric">
-          <%= link_to edit_line_path(line), class:"mdl-button mdl-js-button mdl-button--icon mdl-button--colored" do %>
+        <td class=""> <%= line.number %> </td>
+        <td class="">  </td>
+        <td class=""> <%= line.state %> </td>
+        <td class=""> <%= line.type_sim %> </td>
+        <td class=""> </td>
+        <td class=""> <%= line.check_date %> </td>
+        <td class=""> <%= line.bill_account %> </td>
+        <td class=""> <%= line.limit_offnet %> </td>
+        <td class="">
+          <%= link_to edit_line_path(line), class:"" do %>
           <i class="material-icons">mode_edit</i>
           <% end %>
         </td>

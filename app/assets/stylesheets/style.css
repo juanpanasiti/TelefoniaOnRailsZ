@@ -1,0 +1,14 @@
+#page-sections {
+  padding-top: 60px;
+}
+.bg-muni-gc {
+  background-color: #5B2C6F !important;
+}
+.profile-nav {
+  background-color: #fff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+.center-text-h{
+  text-align: center;
+}
