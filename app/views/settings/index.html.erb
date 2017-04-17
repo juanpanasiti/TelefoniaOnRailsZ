@@ -1,30 +1,46 @@
 <%= content_for :tabs do %>
   <!-- tabs -->
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-      <a href="#scroll-tab-0" class="mdl-layout__tab is-active">Selectores</a>
-      <a href="#scroll-tab-1" class="mdl-layout__tab">Oficinas</a>
-      <a href="#scroll-tab-2" class="mdl-layout__tab"> Equipos (Modelos)</a>
-      <a href="#scroll-tab-3" class="mdl-layout__tab">Facturación</a>
-    </div>
-
+  <% position = 0 %>
+  <ul class="nav nav-tabs no-list row center-xs" id="section-tabs" role="tablist">
+    <li class="nav-item col-md center-text-h">
+      <a class="nav-link" data-toggle="tab" href="#selectors" role="tab" aria-controls="selectors">Selectores</a>
+    </li>
+    <li class="nav-item col-md center-text-h">
+      <a class="nav-link" data-toggle="tab" href="#offices" role="tab" aria-controls="offices">Oficinas</a>
+    </li>
+    <li class="nav-item col-md center-text-h">
+      <a class="nav-link" data-toggle="tab" href="#device_models" role="tab" aria-controls="device_models">Equipos (Modelos)</a>
+    </li>
+    <li class="nav-item col-md center-text-h">
+      <a class="nav-link" data-toggle="tab" href="#billing" role="tab" aria-controls="billing">Facturación</a>
+    </li>
+  </ul>
+  <script>
+    $(function () {
+      $('#section-tabs li:eq(<%= raw @position.to_i %>) a').tab('show')
+      $('#<%= @section %>').tab('show')
+    })
+  </script>
+  <!-- /tabs -->
 <% end %>
 
 <!-- Main content -->
-<section class="mdl-layout__tab-panel is-active" id="scroll-tab-0">
-  <div class="page-content">
+<div class="tab-content">
+  <div class="tab-pane" id="selectors" role="tabpanel">
     <%= render "selector_index", selector_settings: @selector_settings %>
   </div>
-</section>
-<section class="mdl-layout__tab-panel" id="scroll-tab-1">
-  <div class="page-content">
+  <div class="tab-pane" id="offices" role="tabpanel">
     <%= render "offices_index", offices: @offices %>
   </div>
-</section>
-<section class="mdl-layout__tab-panel" id="scroll-tab-2">
-  <div class="page-content">Internos</div>
-</section>
-<section class="mdl-layout__tab-panel" id="scroll-tab-3">
-  <div class="page-content">
-    facturación
+  <div class="tab-pane" id="device_models" role="tabpanel">
+    <h1>
+      Modelos de equipos
+    </h1>
   </div>
-</section>
+  <div class="tab-pane" id="billing" role="tabpanel">
+    <h1>
+      Facturacion
+    </h1>
+  </div>
+</div>
+<!-- /Main content -->

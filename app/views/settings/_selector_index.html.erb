@@ -1,27 +1,31 @@
 <h3>Opciones para Selectores</h3>
-<table class="mdl-data-table mdl-js-data-table ">
-  <thead>
+<table class="table table-striped table-hover">
+  <thead class="thead-inverse">
     <tr>
-      <th class="mdl-data-table__cell--non-numeric"> Selector </th>
-      <th class="mdl-data-table__cell--non-numeric"> Nombre </th>
-      <th class="mdl-data-table__cell--non-numeric"> ID </th>
-      <th class="mdl-data-table__cell--non-numeric"> Opciones </th>
+      <th class=""> Selector </th>
+      <th class=""> Nombre </th>
+      <th class=""> ID </th>
+      <th class=""> Opciones </th>
     </tr>
   </thead>
   <tbody>
     <% @selector_settings.each do |ss| %>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric"> <%= ss.selector %> </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= ss.name %> </td>
-        <td class="mdl-data-table__cell--non-numeric"> <%= ss.id_name %> </td>
+        <td class=""> <%= ss.selector %> </td>
+        <td class=""> <%= ss.name %> </td>
+        <td class=""> <%= ss.id_name %> </td>
 
-        <td class="mdl-data-table__cell--non-numeric">
-          <%= link_to fa_icon("pencil"), '#' %>
+        <td class="">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <%= link_to fa_icon("eye"), '#', class: "btn btn-secondary" %>
+            <%= link_to fa_icon("pencil"), '#', class: "btn btn-secondary" %>
+            <%= link_to fa_icon("trash"), '#', class: "btn btn-secondary" %>
+          </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to new_selector_settings_path, class: "fixed-botton-right-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" do %>
+<%= link_to new_selector_settings_path, class: "" do %>
   <%= fa_icon('plus', class: "material-icons") %>
 <% end %>

@@ -9,6 +9,19 @@ class SettingsController < ApplicationController
     @selector_settings = SelectorSetting.all
     @offices = Office.all
     @delegations = Delegation.all
+    @section = params[:section]
+    @position = case @section
+    when 'selectors'
+        0
+      when 'offices'
+        1
+      when 'device_models'
+        2
+      when 'billing'
+        3
+      else
+        0
+    end
   end
 
   def new_selector
