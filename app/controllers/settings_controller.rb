@@ -55,7 +55,7 @@ class SettingsController < ApplicationController
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to settings_path, notice: 'Nueva Oficina agregada.' }
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Nueva Oficina agregada.' }
       else
         format.html { render :new_office }
       end
@@ -64,7 +64,7 @@ class SettingsController < ApplicationController
   def delete_office
     @office.destroy
     respond_to do |format|
-      format.html { redirect_to settings_path, notice: 'Oficina eliminada.' }
+      format.html { redirect_to settings_path(section:'offices'), notice: 'Oficina eliminada.' }
     end
   end
 ### OFFICE ENDS
@@ -76,7 +76,7 @@ class SettingsController < ApplicationController
 
     respond_to do |format|
       if @delegation.save
-        format.html { redirect_to settings_path, notice: 'Nueva Oficina agregada.' }
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Nueva Oficina agregada.' }
         format.js
       else
         format.html { render :new_delegation }
@@ -86,7 +86,7 @@ class SettingsController < ApplicationController
   def delete_delegation
     @delegation.destroy
     respond_to do |format|
-      format.html { redirect_to settings_path, notice: 'Delegación eliminada.' }
+      format.html { redirect_to settings_path(section:'offices'), notice: 'Delegación eliminada.' }
     end
   end
 ### DELEGATION ENDS

@@ -9,10 +9,26 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to home_index_path, notice: 'Usuario agregado correctamente.' }
+        format.html { redirect_to home_index_path(section: 'users'), notice: 'Usuario agregado correctamente.' }
       else
         format.html { render :new }
       end
+    end
+  end
+  def update
+    respond_to do |format|
+      if @user.update(person_params)
+        format.html { redirect_to home_index_path(section: 'users'), notice: 'Datos de usuario actualizados correctamente.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to home_index_path(section: 'users'), alert: 'Usuario eliminado.' }
+      format.json { head :no_content }
     end
   end
 
@@ -24,7 +40,7 @@ class PeopleController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_person
-    @person = Person.find(params[:id])
+    @user = Person.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

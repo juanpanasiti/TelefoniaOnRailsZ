@@ -7,6 +7,14 @@ class Office < ApplicationRecord
   validates_presence_of :name
 
   ############### METHODS
+  def get_parent_name
+    if self.parent.present?
+      name = self.parent.name
+    else
+      name = 'N/A'
+    end
+    return name
+  end
   ############### CLASS METHODS
   def self.get_parent_options
     options = [['N/A',nil]]

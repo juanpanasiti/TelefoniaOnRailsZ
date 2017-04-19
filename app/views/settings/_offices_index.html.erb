@@ -14,8 +14,8 @@
         <% @offices.each do |o| %>
           <tr>
             <td class="center-text-v"> <%= o.name %> </td>
-            <td class="center-text-v"> <%= o.parent_id %> </td>
-            <td class="center-text-v"> <%= o.delegation.name %> </td>
+            <td class="center-text-v"> <%= o.get_parent_name %> </td>
+            <td class="center-text-v"> <%= o.delegation.nil? ? '' : o.delegation.name %> </td>
 
             <td class="center-text-v">
               <div class="btn-group" role="group" aria-label="Basic example">
@@ -52,6 +52,7 @@
       <% end %>
 
     </ul>
+
     <%= render "delegation_form", button: 'Crear', url_action: create_delegation_settings_path %>
 
   </div>
