@@ -15,6 +15,8 @@
  */
  @import "bootstrap";
  @import "font-awesome";
+ @import "dataTables/jquery.dataTables";
+ @import "dataTables/extras/dataTables.responsive";
  @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('/assets/glyphicons-halflings-regular.eot');

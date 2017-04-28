@@ -1,8 +1,56 @@
 class Line < ApplicationRecord
   belongs_to :person, optional: true
 
-  validates_presence_of :number
+  validates_presence_of :number, :bill_account, :state, :type_sim
+  validates_uniqueness_of :number
 
+  ########## METHODS
+  def get_user_full_name
+    if self.person.present?
+      name = self.person.get_full_name
+    else
+      name = 'Sin asignar'
+    end
+    return name
+  end
+  def get_row_table_class
+    row_class = case self.state
+      when 'Activa' then 'bg-success'
+      when 'Guardada' then 'bg-info'
+      when 'Preparación/revisión' then 'bg-warning'
+      when 'Esperando SIM' then 'bg-warning'
+      when 'Prestada' then 'bg-default'
+      when 'Baja (Titularidad)' then 'bg-default'
+      when 'Baja (Cambio núm.)' then 'bg-default'
+      when 'Revisar estado!' then 'bg-danger'
+      else 'default'
+    end
+    return row_class
+
+  end
+  def get_badge_class_to_state
+    badge_class = case self.state
+    when 'Activa'
+      'success'
+    when 'Guardada'
+      'info'
+    when 'Preparación/revisión'
+      'warning'
+    when 'Esperando SIM'
+      'warning'
+    when 'Prestada'
+      'default'
+    when 'Baja (Titularidad)'
+      'default'
+    when 'Baja (Cambio núm.)'
+      'default'
+    when 'Revisar estado!'
+      'danger'
+    else
+      'default'
+    end
+    return badge_class
+  end
   ########## CLASS METHODS
   def self.get_no_data_option
     #Opcion común a casi todos los selectores
@@ -10,39 +58,26 @@ class Line < ApplicationRecord
   end
 
   def self.get_has_inet_options
-    options = []
-    options << self.get_no_data_option
-    SelectorSetting.where(selector: 'line_has_inet').each do |o|
-      options << [o.name, o.id_name]
-    end
+    # Devuelve las opciones para los tipos de paquetes de datos
+    options = ['S/D','Sin Pack de Datos','Pack Smartphone','Pack BlackBerry']
     return options
   end
 
   def self.get_state_options
-
-    options = []
-    options << self.get_no_data_option
-    SelectorSetting.where(selector: 'line_state').each do |o|
-      options << [o.name, o.id_name]
-    end
+    # Devuelve la lista de opciones para los estados que puede tomar una línea
+    options = ['S/D','Activa','Guardada','Preparación/revisión','Esperando SIM','Prestada','Baja (Titularidad)','Baja (Cambio núm.)','Revisar estado!']
     return options
   end
 
   def self.get_type_sim_options
-    options = []
-    options << self.get_no_data_option
-    SelectorSetting.where(selector: 'line_type_sim').each do |o|
-      options << [o.name, o.id_name]
-    end
+    # Devuelve la lista de opciones para los tipos de tarjeta SIM
+    options = ['S/D','Trio','Duo','Nano','Micro SIN nano','Micro CON nano','Duo/Micro 3G','SIM Vieja 2G/3G']
     return options
   end
 
   def self.get_bill_account_options
-    options = []
-    options << self.get_no_data_option
-    SelectorSetting.where(selector: 'line_bill_account').each do |o|
-      options << [o.name, o.id_name]
-    end
+    # Devuelve la lista de opciones con los número de cuenta
+    options = ['S/D','379408685','379741424']
     return options
   end
 end

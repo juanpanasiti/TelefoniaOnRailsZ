@@ -36,6 +36,7 @@ class PeopleController < ApplicationController
 
   def set_form_options
     #@office_options = Person.get_office_options
+    @office_options = Office.get_detailed_list
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -45,6 +46,6 @@ class PeopleController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def person_params
-    params.require(:person).permit(:name, :lastname, :dni, :footnote, :alert)
+    params.require(:person).permit(:name, :lastname, :dni, :footnote, :alert, :office_id)
   end
 end

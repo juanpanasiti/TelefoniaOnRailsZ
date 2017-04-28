@@ -2,62 +2,62 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
-      <%= l.input :number, label:'N° Línea', wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-                          input_html: {class: "mdl-textfield__input", pattern: '-?[0-9]*(\.[0-9]+)?'},
-                          label_html: { class: "mdl-textfield__label"} %>
+      <%= l.input :number, label:'N° Línea', wrapper_html: { class: ''},
+                          input_html: {class: "", pattern: '-?[0-9]*(\.[0-9]+)?'},
+                          label_html: { class: ""} %>
 
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
       <%= l.input :state, label:'Estado', collection: @state_options, include_blank: false,
-      wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
       <%= l.input :type_sim, label:'Tipo SIM', collection: @type_sim_options, include_blank: false,
-      wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
       <%= l.input :bill_account, label:'Cuenta', collection: @bill_account_options, include_blank: false,
-      wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-4 col-lg-3">
-      <%= l.association :person, label:'Usuario', wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      <%= l.input :person_id, label:'Usuario', collection: @users_options, wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
-      <%= l.input :vpn_link, label:'Link de la VPN', wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label fullwide'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      <%= l.input :vpn_link, label:'Link de la VPN', wrapper_html: { class: ' fullwide'},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
-      <%= l.input :check_date, as: :date, label: 'Check', wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      <%= l.input :check_date, as: :date, label: 'Check', wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
 
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
       <%= l.input :has_inet, label:'Pack Inet', collection: @has_inet_options, include_blank: false,
-      wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input"},
-      label_html: { class: "mdl-textfield__label"} %>
+      wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-1">
-      <%= l.input :limit_offnet, label:'Minutos', wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label'},
-      input_html: {class: "mdl-textfield__input", min:'-1', value:"#{@line.limit_offnet}"},
-      label_html: { class: "mdl-textfield__label"} %>
+      <%= l.input :limit_offnet, label:'Minutos', wrapper_html: { class: ''},
+      input_html: {class: "", min:'-1', value:"#{@line.limit_offnet}"},
+      label_html: { class: ""} %>
     </div>
 
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
@@ -66,9 +66,9 @@
   </div>
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <%= l.input :notes, label:'Notas', wrapper_html: { class: 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label fullwide'},
-                                                            input_html: {class: "mdl-textfield__input", rows:'6'},
-                                                            label_html: { class: "mdl-textfield__label"} %>
+      <%= l.input :notes, label:'Notas', wrapper_html: { class: ' fullwide'},
+                                                            input_html: {class: "", rows:'6'},
+                                                            label_html: { class: ""} %>
   </div>
 </div>
 

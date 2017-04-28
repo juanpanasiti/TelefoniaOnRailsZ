@@ -4,6 +4,7 @@ class Person < ApplicationRecord
 
   ########## VALIDATIONS
   validates_presence_of :name, :lastname
+  validates_uniqueness_of :name, :lastname
   ########## METHODS
   def get_full_name
     # Devuelve el nombre completo en formato 'APELLIDO, Nombre1 Nombre2'
@@ -14,5 +15,13 @@ class Person < ApplicationRecord
     # Devuelve el DNI en formato ##.###.###
     dni = self.dni.reverse.insert(3,'.').insert(7,'.').reverse
     return dni
+  end
+  ########## CLASS METHODS
+  def self.get_users_options
+    users = []
+    self.all.each do |user|
+      users << ["#{user.get_full_name} (#{user.lines.count})",user.id]
+    end
+    return users
   end
 end

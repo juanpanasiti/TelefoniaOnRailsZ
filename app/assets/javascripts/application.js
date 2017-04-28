@@ -15,6 +15,8 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/dataTables.responsive
 //= require turbolinks
 //= require_tree .
 document.addEventListener('turbolinks:load', function() {

@@ -10,7 +10,7 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
-        format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Line was successfully created.' }
+        format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully created.' }
       else
         format.html { render :new }
       end
@@ -23,7 +23,7 @@ class LinesController < ApplicationController
   def update
     respond_to do |format|
       if @line.update(line_params)
-        format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Line was successfully updated.' }
+        format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -33,7 +33,7 @@ class LinesController < ApplicationController
   def delete
     @line.destroy
     respond_to do |format|
-      format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Line was successfully destroyed.' }
+      format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully destroyed.' }
     end
   end
 
@@ -51,6 +51,8 @@ class LinesController < ApplicationController
     @state_options = Line.get_state_options
     @type_sim_options = Line.get_type_sim_options
     @bill_account_options = Line.get_bill_account_options
+    @users_options = Person.get_users_options
+
 
   end
 end

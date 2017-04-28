@@ -1,0 +1,20 @@
+<ul>
+  <li><strong>Estado:</strong>
+    <span class="badge badge-pill badge-<%= raw line.get_badge_class_to_state%>"> <%= line.state %> </span>
+  </li>
+  <li><strong>Tipo de SIM:</strong>
+    <span> <%= line.type_sim %> </span>
+  </li>
+  <li><strong>Servicios:</strong>
+    <span> <%=  %> </span>
+  </li>
+  <li> <strong>Lím. Offnet:</strong>
+    <span class="badge badge-pill badge-default"><%= line.limit_offnet %></span> minutos
+  </li>
+  <li><strong>Check:</strong>
+    <span> <%= line.check_date %> </span>
+  </li>
+  <li><strong>Cuenta:</strong>
+    <span> <%= line.bill_account %> </span>
+  </li>
+</ul>

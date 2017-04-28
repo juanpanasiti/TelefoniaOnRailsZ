@@ -7,6 +7,11 @@ class Office < ApplicationRecord
   validates_presence_of :name
 
   ############### METHODS
+  def get_full_name
+    name = self.parent.present? ? "#{self.get_parent_name} >> " : ""
+    name = name + "#{self.name} (#{self.delegation.name})"
+    return name
+  end
   def get_parent_name
     if self.parent.present?
       name = self.parent.name
@@ -29,6 +34,13 @@ class Office < ApplicationRecord
       options << [o.name, o.id]
     end
     return options
+  end
+  def self.get_detailed_list
+    offices = []
+    self.all.each do |office|
+      offices << [office.get_full_name,office.id]
+    end
+    return offices
   end
 
 end
