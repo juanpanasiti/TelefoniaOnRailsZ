@@ -20,6 +20,14 @@ class Office < ApplicationRecord
     end
     return name
   end
+  def count_lines
+    counter = 0
+    users = Person.where(office_id: self.id)
+    users.each do |user|
+      counter = counter + user.lines.count
+    end
+    return counter
+  end
   ############### CLASS METHODS
   def self.get_parent_options
     options = [['N/A',nil]]

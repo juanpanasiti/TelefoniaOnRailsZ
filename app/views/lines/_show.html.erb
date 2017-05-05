@@ -1,4 +1,4 @@
-<div class="modal fade" id="<%= raw "info-#{line.id}" %>" tabindex="-1" role="dialog" aria-labelledby="line-modal-label" aria-hidden="true">
+<div class="modal fade" id="<%= raw "line-info-#{line.id}" %>" tabindex="-1" role="dialog" aria-labelledby="line-modal-label" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -30,9 +30,20 @@
             <%= render "lines/show_data_line", line: line %>
           </div>
           <div class="tab-pane fade" id="<%= raw "user-data-#{line.id}" %>" role="tabpanel">
-            <%= "Datos de #{line.get_user_full_name}" %>
+            <% if line.person.present? %>
+              <%= render "people/show_data_user", user: line.person %>
+            <% else %>
+              <h6>
+                Sin usuario asignado, el estado de la línea es:
+                <span class="badge badge-pill badge-<%= raw line.get_badge_class_to_state%>"> <%= line.state %> </span>
+              </h6>
+            <% end %>
           </div>
-          <div class="tab-pane fade" id="<%= raw "device-data-#{line.id}" %>" role="tabpanel">m</div>
+          <div class="tab-pane fade" id="<%= raw "device-data-#{line.id}" %>" role="tabpanel">
+            <div class="alert">
+              Módulo fuera de servicio
+            </div>
+          </div>
           <div class="tab-pane fade" id="<%= raw "settings-#{line.id}" %>" role="tabpanel">s</div>
         </div>
         <script>

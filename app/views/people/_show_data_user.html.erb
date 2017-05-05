@@ -1,0 +1,41 @@
+<ul>
+  <li>
+    <strong>Apellido:</strong>
+    <%= user.lastname %>
+  </li>
+  <li>
+    <strong>Nombre:</strong>
+    <%= user.name %>
+  </li>
+  <li>
+    <strong>DNI:</strong>
+    <%= user.get_dni_formated %>
+  </li>
+  <li>
+    <strong>Oficina:</strong>
+    <% if user.office.present? %>
+      <%= user.office.get_full_name %>
+    <% else %>
+      No hay datos de la oficina.
+    <% end %>
+  </li>
+</ul>
+<!-- Nav tabs -->
+<ul class="nav nav-pills" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#<%= raw "user-notes-#{user.id}" %>" role="tab">Notas</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#<%= raw "user-accounts-#{user.id}" %>" role="tab">Profile</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="<%= raw "user-notes-#{user.id}" %>" role="tabpanel">
+    <%= user.footnote %>
+  </div>
+  <div class="tab-pane" id="<%= raw "user-accounts-#{user.id}" %>" role="tabpanel">
+    <%= user.accounts %>
+  </div>
+</div>

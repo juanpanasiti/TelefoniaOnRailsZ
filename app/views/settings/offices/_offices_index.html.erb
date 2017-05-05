@@ -28,12 +28,13 @@
                     <a class="dropdown-item" href="#">Dropdown link</a>
                   </div>
                 </div>
-                <%= link_to fa_icon("eye"), '#', class: "btn btn-success" %>
+                <%= link_to fa_icon("eye"), "#office-info-#{o.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
                 <%= link_to fa_icon("pencil"), '#', class: "btn btn-warning" %>
                 <%= link_to fa_icon("trash"), '#', class: "btn btn-danger" %>
               </div>
             </td>
           </tr>
+          <%= render "settings/offices/show_office", office: o %>
         <% end %>
       </tbody>
     </table>
@@ -53,7 +54,7 @@
 
     </ul>
 
-    <%= render "delegation_form", button: 'Crear', url_action: create_delegation_settings_path %>
+    <%= render "settings/offices/delegation_form", button: 'Crear', url_action: create_delegation_settings_path %>
 
   </div>
 </div>

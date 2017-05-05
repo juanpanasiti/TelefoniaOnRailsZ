@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
   before_action :set_selector_setting, only: [:delete_selector]
-  before_action :set_office, only: [:delete_office]
+  before_action :set_office, only: [:delete_office, :update_office]
   before_action :set_delegation, only: [:delete_delegation]
   before_action :options_for_selects, only: [:new_selector, :create_selector,:new_office, :create_office]
   before_action :set_new_delegation, only: [:index, :new]
@@ -51,6 +51,17 @@ class SettingsController < ApplicationController
     @office = Office.new
   end
   def create_office
+    @office = Office.new(office_params)
+
+    respond_to do |format|
+      if @office.save
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Nueva Oficina agregada.' }
+      else
+        format.html { render :new_office }
+      end
+    end
+  end
+  def update_office
     @office = Office.new(office_params)
 
     respond_to do |format|

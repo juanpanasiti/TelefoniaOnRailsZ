@@ -27,12 +27,13 @@
                 <a class="dropdown-item" href="#">Dropdown link</a>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), '#', class: "btn btn-success" %>
+            <%= link_to fa_icon("eye"), "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
             <%= link_to fa_icon("pencil"), edit_person_path(user), class: "btn btn-warning" %>
             <%= link_to fa_icon("trash"), '#', class: "btn btn-danger" %>
           </div>
         </td>
       </tr>
+      <%= render "people/show", user: user %>
     <% end %>
   </tbody>
 </table>
