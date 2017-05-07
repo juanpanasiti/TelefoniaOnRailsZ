@@ -1,0 +1,15 @@
+<%= simple_form_for @delegation do |l| %>
+  <%= l.input :name, label:'Nombre',
+    wrapper_html: { class: 'fullwide'},
+    input_html: {class: "", id:'delegation_name'},
+    label_html: { class: ""} %>
+  <%= l.input :address, label:'Dirección',
+    wrapper_html: { class: 'fullwide'},
+    input_html: {class: "", id:'delegation_address'},
+    label_html: { class: ""} %>
+  <%= l.input :footnote, label:'Notas',
+    wrapper_html: { class: 'fullwide'},
+    input_html: {class: "", id:'delegation_footnote', rows: 5},
+    label_html: { class: ""} %>
+    <%= l.submit button, class: "btn btn-success btn-lg" %>
+<% end %>

@@ -29,18 +29,16 @@
                   </div>
                 </div>
                 <%= link_to fa_icon("eye"), "#office-info-#{o.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
-                <%= link_to fa_icon("pencil"), '#', class: "btn btn-warning" %>
-                <%= link_to fa_icon("trash"), '#', class: "btn btn-danger" %>
+                <%= link_to fa_icon("pencil"), edit_office_path(o), class: "btn btn-warning" %>
+                <%= link_to fa_icon("trash"), office_path(o), method: :delete, class: "btn btn-danger" %>
               </div>
             </td>
           </tr>
-          <%= render "settings/offices/show_office", office: o %>
+          <%= render "offices/show_office", office: o %>
         <% end %>
       </tbody>
     </table>
-    <%= link_to new_office_settings_path, class: "" do %>
-      <%= fa_icon('plus', class: "material-icons") %>
-    <% end %>
+    <%= link_to fa_icon("plus"), new_office_path, class: "btn btn-info" %>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
@@ -48,13 +46,16 @@
     <ul id='list_delegations'>
       <% @delegations.each do |delegation| %>
         <li id="delegation_<%= delegation.id %>">
-          <%= delegation.name %> <%= link_to "X", delete_delegation_settings_path(delegation.id), method: :delete %>
+          <%= delegation.name %>
+          <%= link_to "X", delegation_path(delegation), method: :delete %>
+          <%= link_to fa_icon("pencil"), edit_delegation_path(delegation) %>
         </li>
       <% end %>
 
+      <li><%= link_to fa_icon("plus", text: "Nueva"), new_delegation_path %></li>
     </ul>
 
-    <%= render "settings/offices/delegation_form", button: 'Crear', url_action: create_delegation_settings_path %>
+
 
   </div>
 </div>

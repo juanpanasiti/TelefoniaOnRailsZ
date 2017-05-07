@@ -1,0 +1,23 @@
+<%= simple_form_for @office do |l| %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-7 col-md-4 col-lg-4">
+      <%= l.input :name, label:'Nombre' %>
+    </div>
+
+    <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
+      <%= l.input :parent_id, label:'Dependencia', collection: @office_parent_options %>
+    </div>
+
+    <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
+      <%= l.input :delegation_id, label:'Delegación', collection: @office_delegation_options %>
+    </div>
+
+  </div>
+
+
+
+
+
+  <%= l.button :submit, 'OK', class: "btn btn-success" %>
+<% end %>

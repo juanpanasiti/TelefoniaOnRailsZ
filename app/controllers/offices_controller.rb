@@ -10,7 +10,7 @@ class OfficesController < ApplicationController
 
     respond_to do |format|
       if @office.save
-        format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Office was successfully created.' }
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Nueva Oficina agregada.' }
       else
         format.html { render :new }
       end
@@ -23,7 +23,7 @@ class OfficesController < ApplicationController
   def update
     respond_to do |format|
       if @office.update(office_params)
-        format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Office was successfully updated.' }
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Datos de la oficina actualizados.' }
       else
         format.html { render :edit }
       end
@@ -33,7 +33,7 @@ class OfficesController < ApplicationController
   def delete
     @office.destroy
     respond_to do |format|
-      format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Office was successfully destroyed.' }
+      format.html { redirect_to settings_path(section:'offices'), notice: 'Oficina eliminada.' }
     end
   end
 
@@ -47,6 +47,7 @@ class OfficesController < ApplicationController
   end
 
   def options_for_select
-    
+    @office_parent_options = Office.get_parent_options
+    @office_delegation_options = Office.get_delegation_options
   end
 end

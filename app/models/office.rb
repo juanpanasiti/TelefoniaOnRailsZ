@@ -5,6 +5,7 @@ class Office < ApplicationRecord
 
   ############### VALIDATIONS
   validates_presence_of :name
+  validates_uniqueness_of :name
 
   ############### METHODS
   def get_full_name

@@ -10,7 +10,7 @@ class DelegationsController < ApplicationController
 
     respond_to do |format|
       if @delegation.save
-        format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Delegation was successfully created.' }
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Delegación creada.' }
       else
         format.html { render :new }
       end
@@ -23,7 +23,7 @@ class DelegationsController < ApplicationController
   def update
     respond_to do |format|
       if @delegation.update(delegation_params)
-        format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Delegation was successfully updated.' }
+        format.html { redirect_to settings_path(section:'offices'), notice: 'Delegación editada.' }
       else
         format.html { render :edit }
       end
@@ -33,7 +33,7 @@ class DelegationsController < ApplicationController
   def delete
     @delegation.destroy
     respond_to do |format|
-      format.html { redirect_to root_path(:anchor => "scroll-tab-1"), notice: 'Delegation was successfully destroyed.' }
+      format.html { redirect_to settings_path(section:'offices'), notice: 'Delegación eliminada.' }
     end
   end
 
@@ -43,10 +43,10 @@ class DelegationsController < ApplicationController
   end
 
   def delegation_params
-    params.require(:delegation).permit(:name, :addres, :footnote)
+    params.require(:delegation).permit(:name, :address, :footnote)
   end
 
   def options_for_select
-    
+
   end
 end
