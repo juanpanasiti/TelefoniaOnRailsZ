@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :devices
   resources :device_models
   get 'home/index'
   get 'home/about', as: :about #, path: 'about'

@@ -3,11 +3,14 @@ class SettingsController < ApplicationController
     @selector_settings = SelectorSetting.all
     @offices = Office.all
     @delegations = Delegation.all
+    @device_models = DeviceModel.all
+    @devices = Device.all
+
     @section = params[:section]
     @position = case @section
       when 'offices'
         0
-      when 'device_models'
+      when 'devices'
         1
       when 'billing'
         2

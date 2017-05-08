@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Device model:</strong>
+  <%= @device.device_model %>
+</p>
+
+<p>
+  <strong>Imei:</strong>
+  <%= @device.imei %>
+</p>
+
+<p>
+  <strong>Line:</strong>
+  <%= @device.line %>
+</p>
+
+<p>
+  <strong>Is personal:</strong>
+  <%= @device.is_personal %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @device.state %>
+</p>
+
+<p>
+  <strong>Failure:</strong>
+  <%= @device.failure %>
+</p>
+
+<p>
+  <strong>Check date:</strong>
+  <%= @device.check_date %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @device.details %>
+</p>
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>

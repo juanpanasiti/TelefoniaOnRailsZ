@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_model: one
+  imei: MyString
+  line: one
+  is_personal: false
+  state: MyString
+  failure: MyString
+  check_date: 2017-05-08 10:27:15
+  details: MyText
+
+two:
+  device_model: two
+  imei: MyString
+  line: two
+  is_personal: false
+  state: MyString
+  failure: MyString
+  check_date: 2017-05-08 10:27:15
+  details: MyText

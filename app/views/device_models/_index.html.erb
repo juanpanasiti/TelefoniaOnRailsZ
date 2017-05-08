@@ -1,0 +1,37 @@
+<table class="table table-striped table-hover display responsive no-wrap" id="table-models" >
+  <thead>
+    <tr>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>ID modelo</th>
+      <th>SIM</th>
+      <th>Slot SD</th>
+      <th>Category</th>
+      <th>Band</th>
+      <th>Os</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% device_models.each do |device_model| %>
+      <tr>
+        <td><%= device_model.mark %></td>
+        <td><%= device_model.device_name %></td>
+        <td><%= device_model.device_code %></td>
+        <td><%= device_model.type_sim %></td>
+        <td><%= device_model.slot_sd %></td>
+        <td><%= device_model.category %></td>
+        <td><%= device_model.band %></td>
+        <td><%= device_model.os %></td>
+        <td><%= link_to 'Ver', device_model %>
+        <%= link_to 'Editar', edit_device_model_path(device_model) %>
+        <%= link_to 'Borrar', device_model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Device Model', new_device_model_path %>

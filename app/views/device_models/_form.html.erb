@@ -2,20 +2,24 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :mark %>
-    <%= f.input :device_name %>
-    <%= f.input :device_code %>
+    <div class="row">
+      <%= f.input :mark, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :device_name, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :device_code, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :category, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+    </div>
+    <div class="row">
+      <%= f.input :type_sim, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-3'} %>
+      <%= f.input :band, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-2'} %>
+      <%= f.input :os, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-2'} %>
+      <%= f.input :slot_sd %>
+      <%= f.input :specs_link, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-6'} %>
+    </div>
     <%= f.input :accessories %>
     <%= f.input :details %>
-    <%= f.input :type_sim %>
-    <%= f.input :specs_link %>
-    <%= f.input :slot_sd %>
-    <%= f.input :category %>
-    <%= f.input :band %>
-    <%= f.input :os %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class:'btn btn-success' %>
   </div>
 <% end %>
