@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301021424) do
+ActiveRecord::Schema.define(version: 20170508124237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 20170301021424) do
     t.text     "footnote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "device_models", force: :cascade do |t|
+    t.string   "mark"
+    t.string   "device_name"
+    t.string   "device_code"
+    t.string   "accessories"
+    t.text     "details"
+    t.string   "type_sim"
+    t.string   "specs_link"
+    t.boolean  "slot_sd"
+    t.string   "category"
+    t.string   "band"
+    t.string   "os"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "lines", force: :cascade do |t|

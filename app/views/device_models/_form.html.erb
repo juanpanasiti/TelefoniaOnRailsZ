@@ -1,0 +1,21 @@
+<%= simple_form_for(@device_model) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :mark %>
+    <%= f.input :device_name %>
+    <%= f.input :device_code %>
+    <%= f.input :accessories %>
+    <%= f.input :details %>
+    <%= f.input :type_sim %>
+    <%= f.input :specs_link %>
+    <%= f.input :slot_sd %>
+    <%= f.input :category %>
+    <%= f.input :band %>
+    <%= f.input :os %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

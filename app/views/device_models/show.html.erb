@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mark:</strong>
+  <%= @device_model.mark %>
+</p>
+
+<p>
+  <strong>Device name:</strong>
+  <%= @device_model.device_name %>
+</p>
+
+<p>
+  <strong>Device code:</strong>
+  <%= @device_model.device_code %>
+</p>
+
+<p>
+  <strong>Accessories:</strong>
+  <%= @device_model.accessories %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @device_model.details %>
+</p>
+
+<p>
+  <strong>Type sim:</strong>
+  <%= @device_model.type_sim %>
+</p>
+
+<p>
+  <strong>Specs link:</strong>
+  <%= @device_model.specs_link %>
+</p>
+
+<p>
+  <strong>Slot sd:</strong>
+  <%= @device_model.slot_sd %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @device_model.category %>
+</p>
+
+<p>
+  <strong>Band:</strong>
+  <%= @device_model.band %>
+</p>
+
+<p>
+  <strong>Os:</strong>
+  <%= @device_model.os %>
+</p>
+
+<%= link_to 'Edit', edit_device_model_path(@device_model) %> |
+<%= link_to 'Back', device_models_path %>

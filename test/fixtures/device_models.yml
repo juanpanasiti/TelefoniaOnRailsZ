@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mark: MyString
+  device_name: MyString
+  device_code: MyString
+  accessories: MyString
+  details: MyText
+  type_sim: MyString
+  specs_link: MyString
+  slot_sd: false
+  category: MyString
+  band: MyString
+  os: MyString
+
+two:
+  mark: MyString
+  device_name: MyString
+  device_code: MyString
+  accessories: MyString
+  details: MyText
+  type_sim: MyString
+  specs_link: MyString
+  slot_sd: false
+  category: MyString
+  band: MyString
+  os: MyString
