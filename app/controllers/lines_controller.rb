@@ -1,5 +1,5 @@
 class LinesController < ApplicationController
-  before_action :set_line, only: [:edit, :update, :delete]
+  before_action :set_line, only: [:edit, :update, :destroy]
   before_action :options_for_select, only: [:new, :create, :edit, :update]
 
   def new
@@ -30,7 +30,7 @@ class LinesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @line.destroy
     respond_to do |format|
       format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully destroyed.' }

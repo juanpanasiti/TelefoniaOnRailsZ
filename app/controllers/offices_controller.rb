@@ -1,5 +1,5 @@
 class OfficesController < ApplicationController
-  before_action :set_office, only: [:edit, :update, :delete]
+  before_action :set_office, only: [:edit, :update, :destroy]
   before_action :options_for_select, only: [:new, :create, :edit, :update]
 
   def new
@@ -30,7 +30,7 @@ class OfficesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @office.destroy
     respond_to do |format|
       format.html { redirect_to settings_path(section:'offices'), notice: 'Oficina eliminada.' }
