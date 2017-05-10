@@ -1,5 +1,7 @@
+<%= link_to fa_icon("plus"), new_device_path, class:'btn btn-info' %>
+
 <table class="table table-striped table-hover display responsive no-wrap" id="table-devices">
-  <thead>
+  <thead class="thead-inverse">
     <tr>
       <th>Modelo</th>
       <th>IMEI</th>
@@ -15,17 +17,35 @@
       <tr>
         <td><%= "#{device.device_model.mark.upcase}#{device.device_model.device_name}" %></td>
         <td><%= device.imei %></td>
-        <td><%= device.line %></td>
+        <td><%= device.get_line %></td>
         <td><%= device.state %></td>
-        <td><%= device.check_date %></td>
-        <td><%= link_to 'Show', device %>
-        <%= link_to 'Edit', edit_device_path(device) %>
-        <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= calculate_time_ago device.check_date %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+            <%= link_to fa_icon("eye"), "#device-info-#{device.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to fa_icon("pencil"), edit_device_path(device), class: "btn btn-warning" %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#table-devices').DataTable( {
+      responsive: true
+    } );
+  });
+  </script>
 </table>
 
 <br>
-
-<%= link_to 'New Device', new_device_path %>
+<%= link_to fa_icon("plus"), new_device_path, class:'btn btn-info' %>

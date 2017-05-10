@@ -1,5 +1,6 @@
 class DeviceModelsController < ApplicationController
   before_action :set_device_model, only: [:show, :edit, :update, :destroy]
+  before_action :options_for_select, only: [:new, :create, :edit, :update]
 
   def show
   end
@@ -41,6 +42,15 @@ class DeviceModelsController < ApplicationController
   end
 
   private
+
+    def options_for_select
+      #Opciones que aparecen en las listas desplegables del formulario (new y edit)
+      @mark_options = DeviceModel.get_mark_options
+      @category_options = DeviceModel.get_category_options
+      @os_options = DeviceModel.get_os_options
+      @band_options = DeviceModel.get_band_options
+      @type_sim_options = DeviceModel.get_type_sim_options
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_device_model
       @device_model = DeviceModel.find(params[:id])

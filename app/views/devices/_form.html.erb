@@ -2,17 +2,27 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :device_model %>
-    <%= f.input :imei %>
-    <%= f.association :line %>
-    <%= f.input :is_personal %>
-    <%= f.input :state %>
-    <%= f.input :failure %>
-    <%= f.input :check_date %>
-    <%= f.input :details %>
+    <div class="row">
+      <%= f.input :device_model_id, label:'Modelo', collection: @model_options, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-4'} %>
+      <%= f.input :imei, label:'IMEI', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+    </div>
+    <div class="row">
+      <%= f.input :line_id, label:'Línea', collection: @line_options, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-4'} %>
+      <%= f.input :is_personal, label:'Equipo personal' %>
+    </div>
+    <div class="row">
+      <%= f.input :check_date, label:'Check', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-5'} %>
+      <%= f.input :state, label:'Estado', collection: @state_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>
+      <%= f.input :failure, label:'Falla', wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-6'} %>
+    </div>
+    <div class="row">
+      <%= f.input :details, label: 'Otros detalles', input_html: {rows: 4}, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-12 col-lg-12'} %>
+    </div>
+
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, button, class:'btn btn-success btn-lg' %>
+    <%= link_to fa_icon("thumbs-down", text: "Cancelar"), settings_path(section:'devices'), class: "btn btn-danger btn-lg" %>
   </div>
 <% end %>

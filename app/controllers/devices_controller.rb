@@ -1,5 +1,6 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :options_for_select, only: [:new, :create, :edit, :update]
 
   def show
   end
@@ -41,6 +42,11 @@ class DevicesController < ApplicationController
   end
 
   private
+  def options_for_select
+    @line_options = Device.get_line_options
+    @model_options = Device.get_model_options
+    @state_options = Device.get_state_options
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_device
       @device = Device.find(params[:id])

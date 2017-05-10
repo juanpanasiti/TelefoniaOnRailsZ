@@ -1,6 +1,3 @@
-<h1>Editing Device</h1>
+<h2>Editar <%= @device.get_device_name %></h2>
 
-<%= render 'form', device: @device %>
-
-<%= link_to 'Show', @device %> |
-<%= link_to 'Back', devices_path %>
+<%= render 'form', device: @device, button: 'Guardar' %>

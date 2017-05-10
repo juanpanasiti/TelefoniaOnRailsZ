@@ -3,23 +3,25 @@
 
   <div class="form-inputs">
     <div class="row">
-      <%= f.input :mark, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
-      <%= f.input :device_name, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
-      <%= f.input :device_code, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
-      <%= f.input :category, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :category, label:'Categoría', collection: @category_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :mark, label:'Marca', collection: @mark_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :device_name, label:'Modelo', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :device_code, label:'Código Mod.', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
     </div>
     <div class="row">
-      <%= f.input :type_sim, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-3'} %>
-      <%= f.input :band, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-2'} %>
-      <%= f.input :os, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-2'} %>
-      <%= f.input :slot_sd %>
-      <%= f.input :specs_link, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-6'} %>
+      <%= f.input :type_sim, label:'Formato SIM', collection: @type_sim_options, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-3'} %>
+      <%= f.input :band, label:'Banda cel.', collection: @band_options, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-2'} %>
+      <%= f.input :os, label:'OS', collection: @os_options, wrapper_html: {class:'col-xs-12 col-sm-8 col-md-4 col-lg-2'} %>
+      <%= f.input :slot_sd, label:'Slot SD?' %>
+      <%= f.input :specs_link, label:'Link especif.', wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-6'} %>
     </div>
-    <%= f.input :accessories %>
-    <%= f.input :details %>
+    <%= f.input :accessories, label:'Accessorios' %>
+    <%= f.input :details, label:'Otros detalles', input_html: {rows: 4} %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, class:'btn btn-success' %>
+    <%= f.button :submit, button, class:'btn btn-success btn-lg' %>
+
+    <%= link_to fa_icon("thumbs-down", text: "Cancelar"), settings_path(section:'devices'), class: "btn btn-danger btn-lg" %>
   </div>
 <% end %>
