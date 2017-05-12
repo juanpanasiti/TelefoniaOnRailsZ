@@ -41,7 +41,14 @@
           </div>
           <div class="tab-pane fade" id="<%= raw "device-data-#{line.id}" %>" role="tabpanel">
             <div class="alert">
-              Módulo fuera de servicio
+              <% if line.device.present? %>
+                <%= render "devices/show", device: line.device %>
+              <% else %>
+                <h6>
+                  Sin equipo asignado o cargado
+                  <span class="badge badge-pill badge-<%= raw line.get_badge_class_to_state%>"> <%= line.state %> </span>
+                </h6>
+              <% end %>
             </div>
           </div>
           <div class="tab-pane fade" id="<%= raw "settings-#{line.id}" %>" role="tabpanel">s</div>

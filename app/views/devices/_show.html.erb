@@ -1,6 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Modelo:</strong>
-  <%= "#{device.device_model.mark.upcase} #{device.device_model.device_name}" %>
-</p>
+<ul>
+  <li>
+    <strong>Modelo:</strong>
+    <%= "#{device.device_model.mark.upcase} #{device.device_model.device_name}" %>
+  </li>
+  <li>
+    <strong>IMEI:</strong>
+    <%= device.imei %>
+  </li>
+  <li>
+    <strong>Equipo Personal?</strong>
+    <%= true_or_false_to_icon device.is_personal %>
+  </li>
+  <li>
+    <strong>Estado:</strong>
+    <%= device.state %>
+  </li>
+  <li>
+    <strong>Ultimo check:</strong>
+    <%= formated_date device.check_date %>
+  </li>
+  <li>
+    <strong>Falla:</strong>
+    <%= show_failures device.failure %>
+  </li>
+</ul>

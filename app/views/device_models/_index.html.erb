@@ -18,15 +18,15 @@
   <tbody>
     <% device_models.each do |device_model| %>
       <tr>
-        <td><%= device_model.mark %></td>
-        <td><%= device_model.device_name %></td>
-        <td><%= device_model.device_code %></td>
-        <td><%= device_model.type_sim %></td>
-        <td><%= device_model.slot_sd %></td>
-        <td><%= device_model.category %></td>
-        <td><%= device_model.band %></td>
-        <td><%= device_model.os %></td>
-        <td>
+        <td class="center-text-v"><%= device_model.mark %></td>
+        <td class="center-text-v"><%= device_model.device_name %></td>
+        <td class="center-text-v"><%= device_model.device_code %></td>
+        <td class="center-text-v"><%= device_model.type_sim %></td>
+        <td class="center-text-v text-center"><%= true_or_false_to_icon device_model.slot_sd %></td>
+        <td class="center-text-v"><%= device_model.category %></td>
+        <td class="center-text-v"><%= device_model.band %></td>
+        <td class="center-text-v"><%= device_model.os %></td>
+        <td class="center-text-v">
           <div class="btn-group" role="group" aria-label="Basic example">
             <div class="btn-group" role="group">
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -15,12 +15,12 @@
   <tbody>
     <% devices.each do |device| %>
       <tr>
-        <td><%= "#{device.device_model.mark.upcase} #{device.device_model.device_name}" %></td>
-        <td><%= device.imei %></td>
-        <td><%= device.get_line %></td>
-        <td><%= device.state %></td>
-        <td><%= calculate_time_ago device.check_date %></td>
-        <td>
+        <td class="center-text-v"><%= "#{device.device_model.mark.upcase} #{device.device_model.device_name}" %></td>
+        <td class="center-text-v"><%= device.imei %></td>
+        <td class="center-text-v"><%= device.get_line %></td>
+        <td class="center-text-v"><%= device.state %></td>
+        <td class="center-text-v"><%= calculate_time_ago device.check_date %></td>
+        <td class="center-text-v">
           <div class="btn-group" role="group" aria-label="Basic example">
             <div class="btn-group" role="group">
               <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,7 +31,7 @@
                 <a class="dropdown-item" href="#">Dropdown link</a>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), "#", data: {id: device.id}, class: "btn btn-info device-info" %>
+            <%= link_to fa_icon("eye"), "#", data: {id: device.id}, class: "btn btn-info device-info disabled" %>
             <%= link_to fa_icon("pencil"), edit_device_path(device), class: "btn btn-warning" %>
           </div>
         </td>

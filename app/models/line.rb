@@ -1,6 +1,6 @@
 class Line < ApplicationRecord
   belongs_to :person, optional: true
-
+  has_one :device
   validates_presence_of :number, :bill_account, :state, :type_sim
   validates_uniqueness_of :number
 

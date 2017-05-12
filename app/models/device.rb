@@ -2,8 +2,9 @@ class Device < ApplicationRecord
   belongs_to :device_model
   belongs_to :line, optional: true
   ########## VALIDATES
-  validates_presence_of :imei, :state
+  validates_presence_of :imei, :state, :device_model_id
   validates_uniqueness_of :imei
+  validates :imei, length: { is: 15, message: "Deben ser 15 números." }
   ############## CALLBACKS
   before_save :clean_lines_asociated, unless: 'line_id.nil?'
   ############## CALLBACKS METHODS
