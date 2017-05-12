@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508132715) do
+ActiveRecord::Schema.define(version: 20170512154045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_headers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.integer  "order"
+    t.string   "type_field"
+    t.string   "type_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bill_items", force: :cascade do |t|
+    t.integer  "bill_header_id"
+    t.string   "concept_id"
+    t.string   "concept_description"
+    t.integer  "quantity_column"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["bill_header_id"], name: "index_bill_items_on_bill_header_id", using: :btree
+  end
 
   create_table "delegations", force: :cascade do |t|
     t.string   "name"
@@ -112,6 +132,7 @@ ActiveRecord::Schema.define(version: 20170508132715) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bill_items", "bill_headers"
   add_foreign_key "devices", "device_models"
   add_foreign_key "devices", "lines"
   add_foreign_key "lines", "people"

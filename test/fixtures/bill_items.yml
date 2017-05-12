@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bill_header: one
+  concept_id: MyString
+  concept_description: MyString
+  quantity_column: 1
+
+two:
+  bill_header: two
+  concept_id: MyString
+  concept_description: MyString
+  quantity_column: 1

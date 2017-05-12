@@ -1,0 +1,2 @@
+class BillHeader < ApplicationRecord
+end

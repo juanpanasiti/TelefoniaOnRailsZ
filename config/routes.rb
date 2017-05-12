@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :devices
-  resources :device_models
   get 'home/index'
   get 'home/about', as: :about #, path: 'about'
+  get 'billing/index', as: 'billing'
 
   resources :people, except: :index
   resources :lines, except: :index
@@ -12,6 +11,10 @@ Rails.application.routes.draw do
   scope '/settings' do
     resources :offices
     resources :delegations
+    resources :devices
+    resources :device_models
+    resources :bill_headers
+    resources :bill_items
   end
 
   root 'home#index'
