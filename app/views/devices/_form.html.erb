@@ -11,7 +11,11 @@
       <%= f.input :is_personal, label:'Equipo personal' %>
     </div>
     <div class="row">
-      <%= f.input :check_date, label:'Check', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-5'} %>
+      <%= f.input :check_date, label:'Check', as: :date_time_picker, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'}, input_html: { data:
+            {
+              date_format: "DD/MMMM/YYYY",
+            }
+            } %>
       <%= f.input :state, label:'Estado', collection: @state_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>
       <%= f.input :failure, label:'Falla', wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-6'} %>
     </div>

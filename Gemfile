@@ -58,3 +58,4 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'simple_form', '~> 3.4'
 gem 'wysiwyg-rails', '~> 2.4', '>= 2.4.2'
 gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering
+gem 'datetime_picker_input', '~> 4.17', '>= 4.17.47' # Datetime in Form

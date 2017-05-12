@@ -11,13 +11,14 @@
 // about supported directives.
 //
 
-//= require froala_editor.min.js
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require froala_editor.min.js
+//= require bootstrap-sprockets
+//= require datetime_picker_input
 //= require dataTables/jquery.dataTables
 //= require dataTables/extras/dataTables.responsive
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 document.addEventListener('turbolinks:load', function() {
   componentHandler.upgradeDom();

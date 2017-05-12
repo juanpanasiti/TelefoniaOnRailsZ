@@ -1,0 +1,2 @@
+$(".modal-body").html("<%= escape_javascript(render partial: '/devices/show', :locals => {device: @device}) %>")
+$("#device-modal").show();

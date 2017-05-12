@@ -15,7 +15,7 @@
   <tbody>
     <% devices.each do |device| %>
       <tr>
-        <td><%= "#{device.device_model.mark.upcase}#{device.device_model.device_name}" %></td>
+        <td><%= "#{device.device_model.mark.upcase} #{device.device_model.device_name}" %></td>
         <td><%= device.imei %></td>
         <td><%= device.get_line %></td>
         <td><%= device.state %></td>
@@ -31,7 +31,7 @@
                 <a class="dropdown-item" href="#">Dropdown link</a>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), "#device-info-#{device.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to fa_icon("eye"), "#", data: {id: device.id}, class: "btn btn-info device-info" %>
             <%= link_to fa_icon("pencil"), edit_device_path(device), class: "btn btn-warning" %>
           </div>
         </td>
