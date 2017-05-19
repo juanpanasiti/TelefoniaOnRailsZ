@@ -1,0 +1,21 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#items_tab" role="tab">Items</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#headers_tab" role="tab">Encabezado de tabla</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="items_tab" role="tabpanel">
+    <h5>items</h5>
+    <%= render "bill_items/index", bill_items: bill_items %>
+  </div>
+  <div class="tab-pane" id="headers_tab" role="tabpanel">
+    <h5>Headers</h5>
+    <%= render "bill_headers/index", bill_headers: bill_headers %>
+  </div>
+</div>

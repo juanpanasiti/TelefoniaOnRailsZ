@@ -5,6 +5,8 @@ class SettingsController < ApplicationController
     @delegations = Delegation.all
     @device_models = DeviceModel.all
     @devices = Device.all
+    @bill_items = BillItem.all
+    @bill_headers = BillHeader.all
 
     @section = params[:section]
     @position = case @section

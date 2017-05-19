@@ -1,0 +1,42 @@
+<h4>Items de facturación</h4>
+<table class="table table-striped table-hover">
+  <thead class="thead-inverse">
+    <tr>
+      <th class=""> Orden col. </th>
+      <th class=""> ID </th>
+      <th class=""> Nombre </th>
+      <th class=""> Tipo campo </th>
+      <th class=""> Tipo dato </th>
+      <th class=""> Opciones </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bill_items.each do |item| %>
+      <tr>
+        <td class=""> <%= item.order %> </td>
+        <td class=""> <%= item.short_name %> </td>
+        <td class=""> <%= item.name %> </td>
+        <td class=""> <%= item.type_field %> </td>
+        <td class=""> <%= item.type_value %> </td>
+        <td class="center-text-v">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+            <%= link_to fa_icon("eye"), "#", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to fa_icon("pencil"), edit_bill_item_path(header), class: "btn btn-warning" %>
+            <%= link_to fa_icon("trash"), '#', class: "btn btn-danger" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to fa_icon("plus"), new_bill_item_path, class: "btn btn-info" %>

@@ -7,7 +7,6 @@ class OfficesController < ApplicationController
   end
   def create
     @office = Office.new(office_params)
-
     respond_to do |format|
       if @office.save
         format.html { redirect_to settings_path(section:'offices'), notice: 'Nueva Oficina agregada.' }
