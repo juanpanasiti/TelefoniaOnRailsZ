@@ -14,7 +14,7 @@ class SettingsController < ApplicationController
         0
       when 'devices'
         1
-      when 'billing'
+      when 'billings'
         2
       else
         0

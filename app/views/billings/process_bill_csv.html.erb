@@ -5,9 +5,6 @@
     <a class="nav-link active" data-toggle="tab" href="#reduced_csv_tab" role="tab">CSV Reducido</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#no_charged_items_tab" role="tab">Items sin cargar</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#final_table_tab" role="tab">Tabla Final</a>
   </li>
   <li class="nav-item">
@@ -53,46 +50,13 @@
       $('#reduced_table').DataTable({
         responsive: true
       });
-      $('#final_table').DataTable({
-        responsive: true
-      });
     });
     </script>
   </div>
-  <div class="tab-pane" id="no_charged_items_tab" role="tabpanel">
-    Items de factura sin cargar
-    <% if @uncharged_items.count > 0 %>
-    <!-- true -->
-    <%= "Items sin cargar: #{@uncharged_items.count}" %>
-    <%= link_to fa_icon("search", text: "Agregar items"), 'charge_items_bill_configurations_path(uncharged_items: @uncharged_items)', method: :post %>
-    <table class="table table-condensed table-striped tabla">
-      <thead>
-        <tr>
-          <th>Código Item</th>
-          <th>Detalle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @uncharged_items.each do |row| %>
-        <tr>
-          <td><%= row[0] %></td>
-          <td><%= row[1] %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <% else %>
-    <!-- false -->
-    <p>
-      No hay nada para cargar, todo está on rails! ;)
-    </p>
-    <% end %>
-  </div>
   <div class="tab-pane" id="final_table_tab" role="tabpanel">
     <% if @uncharged_items.count == 0 %>
-    <!-- true -->
-    Tabla final
-    <table class="table tabla" id="final_table_">
+    <!-- TABLA FINAL (FACTURACIÓN) -->
+    <table class="table final-table" id="final_table">
       <thead>
         <tr>
           <% @headers.each do |header| %>
@@ -105,10 +69,10 @@
         <tr>
           <% row.each do |cell| %>
           <td>
-            <% if row.first == cell %>
-            <%= cell %>
+            <% if cell == row.first %>
+              <%= cell %>
             <% else %>
-            <%= show_number cell %>
+              <%= correct_table_number cell %>
             <% end %>
           </td>
           <% end %>

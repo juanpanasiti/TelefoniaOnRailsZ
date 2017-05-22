@@ -38,4 +38,12 @@ module ApplicationHelper
     end
 
   end
+
+  def correct_table_number cell
+    if cell.to_s == '0.0' || cell.nil?
+      return ''
+    else
+      return cell.to_f.round(2).to_s.gsub('.',',')
+    end
+  end
 end# END_MODULE

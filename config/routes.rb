@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :billings, only: :index do
     get 'process_bill_csv', on: :collection
     post 'process_bill_csv', on: :collection
+    post 'charge_items', on: :collection
   end
 
   resources :people, except: :index
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
     resources :devices
     resources :device_models
     resources :bill_headers
-    resources :bill_items
+    resources :bill_items do
+      post 'charge_new_items_csv', on: :collection
+    end
   end
 
   root 'home#index'
