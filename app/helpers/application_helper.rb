@@ -1,6 +1,9 @@
 module ApplicationHelper
   def formated_date date
-    formated = "#{date.mday}-#{date.month}-#{date.year}"
+    formated = 'S/D'
+    unless date.nil?
+      formated = "#{date.mday}-#{date.month}-#{date.year}"
+    end
     return formated
   end
   def calculate_time_ago(past)

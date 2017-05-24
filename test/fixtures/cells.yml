@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  internal: one
+  row: one
+  primary_color: MyString
+  secondary_color: MyString
+  state: MyString
+  position: 1
+
+two:
+  internal: two
+  row: two
+  primary_color: MyString
+  secondary_color: MyString
+  state: MyString
+  position: 1

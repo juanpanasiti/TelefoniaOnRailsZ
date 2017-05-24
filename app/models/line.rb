@@ -3,6 +3,7 @@ class Line < ApplicationRecord
   has_one :device
   validates_presence_of :number, :bill_account, :state, :type_sim
   validates_uniqueness_of :number
+  validates :number, length: { is: 10 }
 
   ########## METHODS
   def get_user_full_name
