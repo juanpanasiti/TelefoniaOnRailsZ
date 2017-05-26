@@ -13,7 +13,11 @@ class Person < ApplicationRecord
   end
   def get_dni_formated
     # Devuelve el DNI en formato ##.###.###
-    dni = self.dni.reverse.insert(3,'.').insert(7,'.').reverse
+    if self.dni.present?
+      dni = self.dni.reverse.insert(3,'.').insert(7,'.').reverse
+    else
+        dni = ''
+    end
     return dni
   end
   ########## CLASS METHODS
