@@ -9,8 +9,14 @@ class Office < ApplicationRecord
 
   ############### METHODS
   def get_full_name
-    name = self.parent.present? ? "#{self.get_parent_name} >> " : ""
-    name = name + "#{self.name} (#{self.delegation.name})"
+    name = self.name.titleize
+    if self.parent.present?
+      name = name + " (#{self.get_parent_name} - #{self.delegation.name})"
+    end
+    return name
+  end
+  def get_delegation_name
+    name = self.delegation.present? ? self.delegation.get_name : 'S/D'
     return name
   end
   def get_parent_name
@@ -35,21 +41,21 @@ class Office < ApplicationRecord
     Office.all.each do |o|
       options << [o.name, o.id]
     end
-    return options
+    return options.sort
   end
   def self.get_delegation_options
     options = [['N/A',nil]]
     Delegation.all.each do |o|
       options << [o.name, o.id]
     end
-    return options
+    return options.sort
   end
   def self.get_detailed_list
     offices = []
     self.all.each do |office|
       offices << [office.get_full_name,office.id]
     end
-    return offices
+    return offices.sort
   end
 
 end

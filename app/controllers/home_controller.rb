@@ -17,7 +17,8 @@ class HomeController < ApplicationController
         0
       end
     end
-
+    titles = ['Inicio','Líneas','Internos','Usuarios']
+    @le_titule = titles[@position.to_i]
   def about
   end
 end

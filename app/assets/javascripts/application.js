@@ -18,8 +18,7 @@
 //= require datetime_picker_input
 //= require dataTables/jquery.dataTables
 //= require dataTables/extras/dataTables.responsive
+//= require chosen-jquery
+//= require settings
 // require turbolinks
 //= require_tree .
-document.addEventListener('turbolinks:load', function() {
-  componentHandler.upgradeDom();
-});

@@ -1,31 +1,31 @@
 <%= simple_form_for @user do |l| %>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-5 col-md-3 col-lg-2">
       <%= l.input :lastname, label:'Apellido', wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
-    <div class="col-xs-12 col-sm-7 col-md-5 col-lg-5">
+    <div class="col-xs-12 col-sm-7 col-md-4 col-lg-3">
       <%= l.input :name, label:'Nombre', wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
       <%= l.input :dni, label:'N° DNI', wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
+    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
+      <%= l.input :alert, label:'Resaltar', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <%= l.input :office_id, label:'Oficina', collection: @office_options, wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-      <%= l.input :alert, label:'Resaltar', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
     </div>
   </div>
 
@@ -45,4 +45,5 @@
   </div>
 
   <%= l.button :submit, 'OK', class: "btn btn-success" %>
+  <%= link_to fa_icon("back", text: "Cancelar"), root_path(section:'users'), class: "btn btn-warning" %>
 <% end %>

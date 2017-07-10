@@ -4,7 +4,6 @@ class Person < ApplicationRecord
 
   ########## VALIDATIONS
   validates_presence_of :name, :lastname
-  validates_uniqueness_of :name, :lastname
   ########## METHODS
   def get_full_name
     # Devuelve el nombre completo en formato 'APELLIDO, Nombre1 Nombre2'
@@ -20,12 +19,19 @@ class Person < ApplicationRecord
     end
     return dni
   end
+  def get_office_full_name
+    if self.office.present?
+      return self.office.get_full_name
+    else
+      return 'S/D'
+    end
+  end
   ########## CLASS METHODS
   def self.get_users_options
     users = []
     self.all.each do |user|
       users << ["#{user.get_full_name} (#{user.lines.count})",user.id]
     end
-    return users
+    return users.sort
   end
 end

@@ -78,7 +78,7 @@ class Line < ApplicationRecord
 
   def self.get_bill_account_options
     # Devuelve la lista de opciones con los número de cuenta
-    options = ['S/D','379408685','379741424']
+    options = ['S/D','379408685','379741424','Línea Externa']
     return options
   end
 end
