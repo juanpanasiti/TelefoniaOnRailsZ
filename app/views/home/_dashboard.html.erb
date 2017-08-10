@@ -17,7 +17,26 @@ document.write("Hoy es: " + dia[d.getDay()]);
   <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
     <div class="card" style="width: 100%;">
       <div class="card-block">
-        <h4 class="card-title">Card title</h4>
+        <h4 class="card-title">Celulares</h4>
+        <p class="card-text">Línas celulares municipales.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Activas:</li>
+        <li class="list-group-item">En preparación o revisión:</li>
+        <li class="list-group-item">Revisar estado:</li>
+      </ul>
+      <div class="card-block">
+        <h6>Facturación:</h6>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-bill-modal">
+          <span class="glyphicon glyphicon-download" aria-hidden="true"></span> Cargar CSV
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+    <div class="card" style="width: 100%;">
+      <div class="card-block">
+        <h4 class="card-title">Tel. Fija</h4>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
       <ul class="list-group list-group-flush">
@@ -34,24 +53,7 @@ document.write("Hoy es: " + dia[d.getDay()]);
   <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
     <div class="card" style="width: 100%;">
       <div class="card-block">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-      <div class="card-block">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
-    <div class="card" style="width: 100%;">
-      <div class="card-block">
-        <h4 class="card-title">Card title</h4>
+        <h4 class="card-title">Tareas</h4>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
       <ul class="list-group list-group-flush">
@@ -69,12 +71,6 @@ document.write("Hoy es: " + dia[d.getDay()]);
 
 <div class="row">
   <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="billing-section">
-    <div class="row">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-bill-modal">
-        <span class="glyphicon glyphicon-download" aria-hidden="true"></span> Cargar CSV
-      </button>
-    </div>
-
     <!-- Modal to extract items from csv file -->
     <div class="modal fade" id="upload-bill-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -96,8 +92,5 @@ document.write("Hoy es: " + dia[d.getDay()]);
       </div>
     </div>
 
-  </section>
-  <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-  </section>
-  <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
 </div>
