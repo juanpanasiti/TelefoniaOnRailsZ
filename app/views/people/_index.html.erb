@@ -6,7 +6,6 @@
       <th class=""> Nombre </th>
       <th class=""> DNI </th>
       <th class=""> Oficina </th>
-      <th class=""> Líneas/Equipos </th>
       <th class=""> Opciones </th>
     </tr>
   </thead>
@@ -15,8 +14,7 @@
       <tr>
         <td class=""> <%= user.get_full_name %> </td>
         <td class=""> <%= user.get_dni_formated %> </td>
-        <td class=""> <%= user.get_office_full_name %> </td>
-        <td class="">  </td>
+        <td class=""> <%= abreviate_names user.get_office_full_name %> </td>
         <td class="center-text-v">
           <div class="btn-group" role="group" aria-label="Basic example">
             <div class="btn-group" role="group">

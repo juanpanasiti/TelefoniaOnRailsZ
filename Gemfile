@@ -53,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Gems added by me
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
 gem 'simple_form', '~> 3.4'
 gem 'wysiwyg-rails', '~> 2.4', '>= 2.4.2'
@@ -61,3 +61,4 @@ gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering
 gem 'datetime_picker_input', '~> 4.17', '>= 4.17.47' # Datetime in Form
 gem 'compass-rails', '~> 3.0', '>= 3.0.2' # For chosen-rails
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2' # For filter in selects
+gem 'bootstrap-chosen-rails'

@@ -49,4 +49,29 @@ module ApplicationHelper
       return cell.to_f.round(2).to_s.gsub('.',',')
     end
   end
+
+  def abreviate_names str
+    abreviations = [
+      ['Subdirección', 'Subdir.'],
+      ['General', 'Gral.'],
+      ['Administración', 'Admin.'],
+      ['Departamento', 'Dpto.'],
+      ['División', 'Div.'],
+      ['Secretaría', 'Secr.'],
+      ['Inspección', 'Insp.'],
+      ['Fiscalización', 'Fisc.'],
+      ['Casa Municipal', 'Casa Muni.'],
+      ['Honorable Concejo Deliberante', 'H.C.D.'],
+      ['Bloque', 'Bl.'],
+      ['Servicios Públicos', 'Serv. Púb.'],
+      ['Transporte, Monitoreo Y Control', 'Transp. Mon. y Ctrl.'],
+      ['Dirección', 'Dir.']
+    ]
+    abreviations.each do |ab|
+      if str.include? ab[0]
+        str[ab[0]] = ab[1]
+      end
+    end
+    return str
+  end
 end# END_MODULE

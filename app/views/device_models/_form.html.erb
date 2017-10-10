@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <div class="row">
       <%= f.input :category, label:'Categoría', collection: @category_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
-      <%= f.input :mark, label:'Marca', collection: @mark_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
+      <%= f.input :mark, label:'Marca', collection: @mark_options, input_html: {class: "chosen-select"}, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
       <%= f.input :device_name, label:'Modelo', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
       <%= f.input :device_code, label:'Código Mod.', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
     </div>

@@ -3,11 +3,11 @@
 
   <div class="form-inputs">
     <div class="row">
-      <%= f.input :device_model_id, label:'Modelo', collection: @model_options, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-4'} %>
+      <%= f.input :device_model_id, label:'Modelo', collection: @model_options, input_html: {class: "chosen-select"}, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-4'} %>
       <%= f.input :imei, label:'IMEI', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3'} %>
     </div>
     <div class="row">
-      <%= f.input :line_id, label:'Línea', collection: @line_options, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-4'} %>
+      <%= f.input :line_id, label:'Línea', collection: @line_options, input_html: {class: "chosen-select"}, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-4'} %>
       <%= f.input :is_personal, label:'Equipo personal' %>
     </div>
     <div class="row">
