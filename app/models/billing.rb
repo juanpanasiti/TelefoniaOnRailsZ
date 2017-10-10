@@ -7,7 +7,7 @@ class Billing
     total = 0
     csv_text.each do |row|
       row = row.split(';')
-      row.shift(5)
+      row.shift(6)
       row.delete_at(4) # Borra monto neto
       row.delete_at(4) # Borra monto impuestos
       total = total + row.last.gsub(',','.').to_f.round(2)
