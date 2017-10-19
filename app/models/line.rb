@@ -53,6 +53,23 @@ class Line < ApplicationRecord
     return badge_class
   end
   ########## CLASS METHODS
+  def self.get_full_table(url_csv)
+    csv_text = File.read(url_csv, :encoding => 'ISO8859-1').gsub(/\r/, '').gsub('"','') #quitar caracteres
+    csv_text = csv_text.split("\n")
+    csv_table = []
+    total = 0
+    csv_text.each do |row|
+      row = row.split('|')
+      row.delete_at(2)
+      csv_table << row
+    end
+    header_table = csv_table.shift #Original_Header
+    body_table = csv_table #Body
+		return [header_table,body_table,total.round(2)]
+    #return csv_text
+  end
+
+
   def self.get_no_data_option
     #Opcion común a casi todos los selectores
     return ['S/D', 'no_data']

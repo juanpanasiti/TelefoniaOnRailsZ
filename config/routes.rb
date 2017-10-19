@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/about', as: :about #, path: 'about'
   resources :billings, only: :index do
-    get 'process_bill_csv', on: :collection
+    get 'process_bill_csv',  on: :collection
     post 'process_bill_csv', on: :collection
-    post 'charge_items', on: :collection
+    post 'charge_items',     on: :collection
   end
 
   resources :people, except: :index
-  resources :lines, except: :index
+  resources :lines, except: :index do
+    get  :control_csv, on: :collection
+    post :control_csv, on: :collection
+  end
   get 'settings', as: :settings, to: 'settings#index'
   scope '/settings' do
     resources :offices

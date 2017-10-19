@@ -37,6 +37,12 @@ class LinesController < ApplicationController
     end
   end
 
+  def control_csv
+    full_csv = Line.get_full_table(params[:archivo_csv].path)
+    
+    @table = full_csv
+  end
+
   protected
   def set_line
     @line = Line.find(params[:id])
