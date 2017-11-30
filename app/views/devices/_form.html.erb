@@ -14,6 +14,8 @@
       <%= f.input :check_date, label:'Check', as: :date_time_picker, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'}, input_html: { data:
             {
               date_format: "DD/MMMM/YYYY",
+              date_view_mode: 'days',
+              date_show_today_button: true
             }
             } %>
       <%= f.input :state, label:'Estado', collection: @state_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>

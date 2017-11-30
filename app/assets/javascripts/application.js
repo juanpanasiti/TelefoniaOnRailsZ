@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require froala_editor.min.js
+//= require popper
 //= require bootstrap-sprockets
 //= require datetime_picker_input
 //= require dataTables/jquery.dataTables

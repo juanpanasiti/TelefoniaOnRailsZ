@@ -1,37 +1,62 @@
 <h2>Control de líneas</h2>
 <div class="tab-content">
   <div class="tab-pane active" id="reduced_csv_tab" role="tabpanel">
-    <table class="table table-striped table-hover display responsive no-wrap" id="control_table">
+    <table class="table table-striped table-hover display responsive no-wrap table-sm" id="control_table">
       <thead>
         <tr>
           <th>
             N°
           </th>
           <th> <%= @table[0][0] %> </th>
-          <th> <%= @table[0][1] %> </th>
-          <th> <%= @table[0][2] %> </th>
           <th> <%= @table[0][3] %> </th>
           <th> <%= @table[0][4] %> </th>
           <th> <%= @table[0][6] %> </th>
           <th> <%= @table[0][5] %> </th>
           <th> <%= @table[0][7] %> </th>
+          <th>Opc.</th>
         </tr>
       </thead>
       <tbody>
         <% n = 1 %>
         <% @table[1].each do |q| %>
         <tr>
-          <td>
+          <td class="center-text-v">
             <%= n %>
           </td>
-          <td> <%= q[0] %> </td>
-          <td> <%= q[1] %> </td>
-          <td> <%= q[2] %> </td>
-          <td> <%= q[3] %> </td>
-          <td> <%= q[4] %> </td>
-          <td> <%= q[6] %> </td>
-          <td> <%= q[5] %> </td>
-          <td> <%= q[7] %> </td>
+          <td class="center-text-v"> <%= q[0] %> </td>
+          <td class="center-text-v"> <%= '~'+q[3].last(10) %> </td>
+          <td class=" center-text-v <%= raw get_class_to_registered_imei(q[4],q[5]) %>"
+                data-toggle="tooltip" data-placement="top" title="<%= q[6] %>"> <%= q[4] %> </td>
+          <td class="center-text-v"> <%= q[6] %> </td>
+          <td class=" center-text-v <%= raw ''%>"
+                data-toggle="tooltip" data-placement="top" title="<%= q[7] %>"> <%= q[5] %> </td>
+          <td class="center-text-v"> <%= q[7] %> </td>
+          <td class="center-text-v">
+            <!-- Button trigger modal -->
+            <%= link_to fa_icon("eye"), "#info-#{n.to_s}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+          </td>
+          <!-- Modal -->
+          <div class="modal fade" id="<%= "info-" + n.to_s %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><%= q[0] %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <ul>
+                    <li>Nombre: <%= q[1] %> </li>
+                    <li>Estado: <%= q[2] %> </li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </tr>
         <% n = n + 1 %>
         <% end %>
