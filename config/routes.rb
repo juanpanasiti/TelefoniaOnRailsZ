@@ -26,7 +26,8 @@ Rails.application.routes.draw do
       post 'charge_new_items_csv', on: :collection
     end
   end
-
+  ## Errors pages
+  get "errors/access_denied"
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
