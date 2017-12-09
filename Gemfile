@@ -62,3 +62,4 @@ gem 'datetime_picker_input', '~> 4.17', '>= 4.17.47' # Datetime in Form
 gem 'compass-rails', '~> 3.0', '>= 3.0.2' # For chosen-rails
 gem 'chosen-rails', '~> 1.5', '>= 1.5.2' # For filter in selects
 gem 'bootstrap-chosen-rails'
+gem 'devise', '~> 4.3'

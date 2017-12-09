@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :admins
   get 'home/index'
   get 'home/about', as: :about #, path: 'about'
   resources :billings, only: :index do
