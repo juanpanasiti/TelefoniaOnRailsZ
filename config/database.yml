@@ -69,6 +69,7 @@ test:
 #
 production:
   <<: *default
-  database: telefonia_on_rails_z_production
-  username: jpanasiti
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  database: ddgd9ru67laj95
+  username: omgbjyuronljuq
+  port: 5432
+  password: 29c7da998818d66e5ad5a8d51a90c58c111fc623c998f358d602e3d6a175fe64
