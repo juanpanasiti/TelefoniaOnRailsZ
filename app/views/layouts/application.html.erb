@@ -25,9 +25,11 @@
           <li class="nav-item">
             <%= link_to fa_icon("gears", text: "Configuración"), settings_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to fa_icon("user-times", text: "Cerrar Sesión"), destroy_admin_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" disabled="disabled" placeholder="No funciona... aún">
