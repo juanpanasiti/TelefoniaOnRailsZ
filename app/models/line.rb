@@ -77,7 +77,7 @@ class Line < ApplicationRecord
 
   def self.get_has_inet_options
     # Devuelve las opciones para los tipos de paquetes de datos
-    options = ['S/D','Sin Pack de Datos','Pack Smartphone','Pack BlackBerry']
+    options = ['S/D','Sin Pack de Datos','Pack Smart. 1Gb','Pack Smart. 3Gb','Pack Smart. 5Gb','Pack Smart. 10Gb','Pack Smartphone','Pack BlackBerry']
     return options
   end
 
