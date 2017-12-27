@@ -26,6 +26,13 @@ class Person < ApplicationRecord
       return 'S/D'
     end
   end
+  def get_office_short_name
+    if self.office.present?
+      return self.office.get_short_name
+    else
+      return 'S/D'
+    end
+  end
   ########## CLASS METHODS
   def self.get_users_options
     users = []

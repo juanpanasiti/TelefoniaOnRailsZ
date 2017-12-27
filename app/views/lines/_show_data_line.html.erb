@@ -6,13 +6,13 @@
     <span> <%= line.type_sim %> </span>
   </li>
   <li><strong>Servicios:</strong>
-    <span> <%=  %> </span>
+    <span> <%= line.has_inet %> </span>
   </li>
   <li> <strong>Lím. Offnet:</strong>
     <span class="badge badge-pill badge-default"><%= line.limit_offnet %></span> minutos
   </li>
   <li><strong>Check:</strong>
-    <span> <%= formated_date line.check_date %> </span>
+    <span> <%= (formated_date line.check_date) + " (#{calculate_time_ago(line.check_date)})" %> </span>
   </li>
   <li><strong>Cuenta:</strong>
     <span> <%= line.bill_account %> </span>

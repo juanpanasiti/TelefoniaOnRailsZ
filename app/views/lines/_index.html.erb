@@ -6,8 +6,7 @@
       <th class=""> Número </th>
       <th class=""> Usuario </th>
       <th class=""> Estado </th>
-      <th class=""> Tipo SIM </th>
-      <th class=""> Servicios </th>
+      <th class=""> Oficina </th>
       <th class=""> Últ. Check </th>
       <th class=""> Cuenta </th>
       <th class=""> Opciones </th>
@@ -20,8 +19,7 @@
         <td class="center-text-v"> <%= line.number %> </td>
         <td class="center-text-v"> <%= line.get_user_full_name %> </td>
         <td class="center-text-v"> <%= line.state %> </td>
-        <td class="center-text-v"> <%= line.type_sim %> </td>
-        <td class="center-text-v"> </td>
+        <td class="center-text-v"> <%= line.person.present? ? line.person.get_office_short_name : "Sin asignar" %> </td>
         <td class="center-text-v"> <%= calculate_time_ago(line.check_date) %> </td>
         <td class="center-text-v"> <%= '~' + line.bill_account.last(3) %> </td>
         <td class="center-text-v">

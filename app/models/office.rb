@@ -15,6 +15,9 @@ class Office < ApplicationRecord
     end
     return name
   end
+  def get_short_name
+    return self.name.titleize
+  end
   def get_delegation_name
     name = self.delegation.present? ? self.delegation.get_name : 'S/D'
     return name
