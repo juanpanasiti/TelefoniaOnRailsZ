@@ -1,0 +1,58 @@
+<%= content_for :menu do %>
+  <%= render "menu" %>
+<% end %>
+<h3>Líneas Celulares</h3>
+<table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-lines">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th class=""> Número </th>
+      <th class=""> Usuario </th>
+      <th class=""> Estado </th>
+      <th class=""> Oficina </th>
+      <th class=""> Últ. Check </th>
+      <th class=""> Cuenta </th>
+      <th class=""> Opciones </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lines.each do |line| %>
+      <tr class='<%= raw line.get_row_table_class %>'>
+        <td class="center-text-v"> <%= line.id %> </td>
+        <td class="center-text-v"> <%= line.number %> </td>
+        <td class="center-text-v"> <%= line.get_user_full_name %> </td>
+        <td class="center-text-v"> <%= line.state %> </td>
+        <td class="center-text-v"> <%= line.person.present? ? line.person.get_office_short_name : "Sin asignar" %> </td>
+        <td class="center-text-v"> <%= calculate_time_ago(line.check_date) %> </td>
+        <td class="center-text-v"> <%= '~' + line.bill_account.last(3) %> </td>
+        <td class="center-text-v">
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <div class="btn-group btn-group-sm" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+            <%= link_to fa_icon("eye"), "#line-info-#{line.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to fa_icon("pencil"), edit_line_path(line), class: "btn btn-warning" %>
+          </div>
+        </td>
+      </tr>
+      <%= render 'lines/show', line: line %>
+    <% end %>
+  </tbody>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#table-lines').DataTable( {
+      responsive: true
+    } );
+  });
+  </script>
+</table>
+
+<%= link_to new_line_path, class: "btn btn-primary" do %>
+  <%= fa_icon('plus', class: "material-icons") %>
+<% end %>

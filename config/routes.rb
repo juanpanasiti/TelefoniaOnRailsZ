@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :people, except: :index
-  resources :lines, except: :index do
+  resources :lines do
     get  :control_csv, on: :collection
     post :control_csv, on: :collection
   end

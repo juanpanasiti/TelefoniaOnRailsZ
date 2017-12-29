@@ -1,19 +1,25 @@
+<%= content_for :menu do %>
+  <ul class="nav flex-column pl-1">
+    <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#dashboard" role="" aria-controls="dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#lines" role="" aria-controls="lines">Líneas Celulares</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#internals" role="" aria-controls="internals">Núm. Internos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#users" role="" aria-controls="users">Usuarios</a>
+    </li>
+  </ul>
+<% end %>
 <%= content_for :tabs do %>
   <!-- tabs -->
   <% position = 0 %>
   <ul class="nav nav-tabs no-list row center-xs" id="section-tabs" role="tablist">
-    <li class="nav-item col-md center-text-h">
-      <a class="nav-link" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard">Dashboard</a>
-    </li>
-    <li class="nav-item col-md center-text-h">
-      <a class="nav-link" data-toggle="tab" href="#lines" role="tab" aria-controls="lines">Líneas Celulares</a>
-    </li>
-    <li class="nav-item col-md center-text-h">
-      <a class="nav-link" data-toggle="tab" href="#internals" role="tab" aria-controls="internals">Núm. Internos</a>
-    </li>
-    <li class="nav-item col-md center-text-h">
-      <a class="nav-link" data-toggle="tab" href="#users" role="tab" aria-controls="users">Usuarios</a>
-    </li>
   </ul>
   <script>
     $(function () {

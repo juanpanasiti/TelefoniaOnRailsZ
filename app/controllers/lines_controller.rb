@@ -1,6 +1,10 @@
 class LinesController < ApplicationController
   before_action :set_line, only: [:edit, :update, :destroy]
   before_action :options_for_select, only: [:new, :create, :edit, :update]
+  before_action :set_has_menu
+  def index
+    @lines = Line.all
+  end
 
   def new
     @line = Line.new
@@ -39,7 +43,7 @@ class LinesController < ApplicationController
 
   def control_csv
     full_csv = Line.get_full_table(params[:archivo_csv].path)
-    
+
     @table = full_csv
   end
 
@@ -58,7 +62,9 @@ class LinesController < ApplicationController
     @type_sim_options = Line.get_type_sim_options
     @bill_account_options = Line.get_bill_account_options
     @users_options = Person.get_users_options
+  end
 
-
+  def set_has_menu
+    @has_menu = true
   end
 end

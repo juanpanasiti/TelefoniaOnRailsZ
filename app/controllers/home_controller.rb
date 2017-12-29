@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+  layout "new_layout", :only => [:about]
   def index
+    @has_menu = true
     #sections: dashboard, lines, internals, users
     @lines = Line.all
     @users = Person.all

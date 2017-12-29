@@ -23,3 +23,13 @@
 // require settings
 // require turbolinks
 //= require_tree .
+
+
+//scrips.js del Template
+$(document).ready(function() {
+
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+
+});
