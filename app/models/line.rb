@@ -5,6 +5,9 @@ class Line < ApplicationRecord
   validates_uniqueness_of :number
   validates :number, length: { is: 10 }
 
+
+  ########## SCOPES
+  scope :current_lines, -> { where.not(state: 'Baja (Titularidad)').where.not(state: 'Baja (Cambio núm.)')  }
   ########## METHODS
   def get_user_full_name
     if self.person.present?

@@ -18,11 +18,29 @@ module ApplicationHelper
       elsif days == 1
         time_ago << "Ayer"
       else
-        time_ago << "Hace #{days} días"
+        time_ago << "-#{days}d"
       end
       return time_ago
     end
   end # END_calculate_time_ago
+
+  def calculate_time_ago_large(past)
+    if past.nil?
+      return "Revisar!"
+    else
+      days = (Time.current.to_date - past.to_date).to_i
+
+      time_ago = ""
+      if days == 0
+        time_ago << "Hoy"
+      elsif days == 1
+        time_ago << "Ayer"
+      else
+        time_ago << "Hace #{days} días"
+      end
+      return time_ago
+    end
+  end # END_calculate_time_ago_large
 
   def true_or_false_to_icon bool
     if bool

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'cellphones/lines'
+
+  get 'cellphones/devices'
+
+  get 'cellphones/models'
+
   devise_for :admins
   get 'home/index'
   get 'home/about', as: :about #, path: 'about'
