@@ -1,0 +1,46 @@
+<h3>Usuarios</h3>
+<%= link_to fa_icon("plus"), new_person_path, class: "btn btn-info" %>
+<table class="table table-striped table-hover" id="table-people">
+  <thead class="thead-inverse">
+    <tr>
+      <th class=""> Nombre </th>
+      <th class=""> DNI </th>
+      <th class=""> Oficina </th>
+      <th class=""> Opciones </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td class=""> <%= user.get_full_name %> </td>
+        <td class=""> <%= user.get_dni_formated %> </td>
+        <td class=""> <%= abreviate_names user.get_office_full_name %> </td>
+        <td class="center-text-v">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#">Dropdown link</a>
+                <a class="dropdown-item" href="#">Dropdown link</a>
+              </div>
+            </div>
+            <%= link_to fa_icon("eye"), "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to fa_icon("pencil"), edit_person_path(user), class: "btn btn-warning" %>
+            <%= link_to fa_icon("trash"), '#', class: "btn btn-danger" %>
+          </div>
+        </td>
+      </tr>
+      <%= render "people/show", user: user %>
+    <% end %>
+  </tbody>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#table-people').DataTable( {
+      responsive: true
+    } );
+  });
+  </script>
+</table>
+<%= link_to fa_icon("plus"), new_person_path, class: "btn btn-info" %>

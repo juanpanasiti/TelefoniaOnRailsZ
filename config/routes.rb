@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
   get 'home/index'
+  get 'home/dashboard'
   get 'home/about', as: :about #, path: 'about'
   resources :billings, only: :index do
     get 'process_bill_csv',  on: :collection
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
     post 'charge_items',     on: :collection
   end
 
-  resources :people, except: :index
+  resources :people
   resources :lines do
     get  :control_csv, on: :collection
     post :control_csv, on: :collection
