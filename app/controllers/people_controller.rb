@@ -1,6 +1,10 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:edit, :update, :destroy]
   before_action :set_form_options, only: [:new, :create, :edit, :update]
+
+  def index
+    @users = Person.all
+  end
   def new
     @user = Person.new
   end

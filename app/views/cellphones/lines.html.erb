@@ -7,7 +7,7 @@
   <%= fa_icon('plus', class: "material-icons") %>
 <% end %>
 <table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-lines">
-  <thead class="thead-inverse">
+  <thead class="thead-dark">
     <tr>
       <th>#</th>
       <th class=""> Número </th>
@@ -38,7 +38,7 @@
                 <a class="dropdown-item" href="#">Dropdown link</a>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), "#line-info-#{line.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to fa_icon("eye"), cellphones_show_line_path(:id => line.id), remote: true, class: "btn btn-info" %>
             <%= link_to fa_icon("pencil"), edit_line_path(line), class: "btn btn-warning" %>
           </div>
         </td>

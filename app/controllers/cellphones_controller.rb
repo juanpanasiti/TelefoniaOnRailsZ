@@ -7,10 +7,19 @@ class CellphonesController < ApplicationController
 
   def devices
     @le_titule = "Equipos"
+    @devices = Device.all
   end
 
   def models
     @le_titule = "Modelos de equipos"
+  end
+
+  def show_device
+    @device = Device.find(params[:id])
+  end
+
+  def show_line
+    @line = Line.find(params[:id])
   end
 protected
   def set_has_menu

@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
 
   get 'cellphones/lines'
-
   get 'cellphones/devices'
-
+  get 'cellphones/show_device'
+  get 'cellphones/show_line'
   get 'cellphones/models'
 
   devise_for :admins
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :people
+  resources :internals
   resources :lines do
     get  :control_csv, on: :collection
     post :control_csv, on: :collection
