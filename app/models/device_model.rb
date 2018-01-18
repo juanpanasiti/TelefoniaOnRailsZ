@@ -10,7 +10,7 @@ class DeviceModel < ApplicationRecord
   end
   ########## CLASS METHODS
   def self.get_mark_options
-    marks = ['Motorola','Samsung','Nokia','LG','BlackBerry','iPhone','Huawei','Alcatel','Sony','Microsoft','DESCONOCIDA','Otra Marca']
+    marks = ['Motorola','Samsung','Nokia','LG','Positivo BGH','iPhone','Huawei','Alcatel','Sony','Microsoft','BlackBerry','DESCONOCIDA','Otra Marca']
     return marks
   end
   def self.get_band_options
@@ -22,7 +22,7 @@ class DeviceModel < ApplicationRecord
     return oss
   end
   def self.get_category_options
-    categories = ['Smartphone','Celular Común','Modem/Router','Telular','Otro tipo']
+    categories = ['Smartphone','Modem/Router','Tablet','Celular Común','Telular','Otro tipo']
     return categories
   end
   def self.get_type_sim_options
