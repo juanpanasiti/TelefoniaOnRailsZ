@@ -20,8 +20,11 @@
             <div class="btn-group btn-group-sm" role="group">
               <%= link_to fa_icon("bars"),'#', {id: "otherOptions", class: "btn btn-secondary dropdown-toggle", 'data-toggle' => 'dropdown'} %>
               <div class="dropdown-menu" aria-labelledby="otherOptions">
-                <a class="dropdown-item" href="#">opc1</a>
-                <a class="dropdown-item" href="#">opc2</a>
+                <% if user.lines.count > 0 %>
+                  <% user.lines.each do |line| %>
+                  <%= link_to fa_icon("phone", text: "#{line.number} #{line.clarification}"), edit_line_path(line), class: "dropdown-item" %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
             <%= link_to fa_icon("eye"), "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>

@@ -34,8 +34,9 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
               </button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Dropdown link</a>
-                <a class="dropdown-item" href="#">Dropdown link</a>
+                <% if line.person.present? %>
+                  <%= link_to fa_icon("user", text: "Editar Usuario"), edit_person_path(line.person), class: "dropdown-item" %>
+                <% end %>
               </div>
             </div>
             <%= link_to fa_icon("eye"), cellphones_show_line_path(:id => line.id), remote: true, class: "btn btn-info" %>
