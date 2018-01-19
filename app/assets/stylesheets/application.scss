@@ -48,6 +48,9 @@ body, html {
   height:100%;
 }
 
+body.blank-body {
+  padding-top: 10px !important;
+}
 body {
     padding-top: 70px;
 }

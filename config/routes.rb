@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'cellphones/show_device'
   get 'cellphones/show_line'
   get 'cellphones/models'
+  get 'cellphones/show_report'
 
   devise_for :admins
   get 'home/index'

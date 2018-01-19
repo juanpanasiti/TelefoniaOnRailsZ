@@ -26,6 +26,7 @@ document.write("Hoy es: " + dia[d.getDay()]);
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Activas:</li>
+        <li class="list-group-item">Generar reporte: <%= link_to "Reporte cuenta 85", cellphones_show_report_path(account: '379408685'), class: "btn btn-link" %></li>
         <li class="list-group-item">En preparación o revisión:</li>
         <li class="list-group-item">Revisar estado:</li>
       </ul>

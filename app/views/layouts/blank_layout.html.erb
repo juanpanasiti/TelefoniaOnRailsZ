@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag 'Telephone.png' %>
+    <% if @le_titule.blank? %>
+      <% @le_titule = 'Telefonía On Rails' %>
+    <% else %>
+      <% @le_titule = @le_titule + ' - Telefonía On Rails' %>
+    <% end %>
+    <title> <%= @le_titule %> </title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="blank-body">
+    <!-- Begin page content -->
+    <div class="container-fluid" >
+      <% if notice || alert %>
+      <p id="notice"><%= notice %></p>
+      <p id="alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+
+  </body>
+</html>

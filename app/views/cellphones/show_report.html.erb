@@ -1,0 +1,21 @@
+<h1>Líneas sobre la cuenta <%= params[:account] %></h1>
+<table class="table table-sm table-striped table-bordered table-responsive table-hover display responsive no-wrap">
+  <thead class="">
+    <th class="center-text-v">Línea</th>
+    <th class="center-text-v">Responsable</th>
+    <th class="center-text-v">DNI</th>
+    <th class="center-text-v">Oficina</th>
+    <th class="center-text-v">Datos</th>
+    <th class="center-text-v">Últ. Visto</th>
+  </thead>
+  <% @lines.each do |line| %>
+  <tbody>
+    <td class="center-text-v"> <%= line.number %> </td>
+    <td class="center-text-v"> <%= line.get_user_full_name %> </td>
+    <td class="center-text-v"> <%= line.person.present? ? line.person.get_dni_formated : "---" %> </td>
+    <td class="center-text-v"> <%= line.person.present? ? line.person.get_office_short_name : "---" %> </td>
+    <td class="center-text-v"> <%= line.has_inet %> </td>
+    <td class="center-text-v"> <%= line.check_date_formatted %> </td>
+  </tbody>
+  <% end %>
+</table>

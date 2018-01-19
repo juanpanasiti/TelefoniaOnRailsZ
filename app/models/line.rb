@@ -55,6 +55,15 @@ class Line < ApplicationRecord
     end
     return badge_class
   end
+
+  def check_date_formatted
+    #Devuelve la fecha del último check con formato dd-mm-yyyy
+    date = '!!!'
+    unless self.check_date.blank?
+      date = self.check_date.strftime("%d-%m-%Y")
+    end
+    return date
+  end
   ########## CLASS METHODS
   def self.get_full_table(url_csv)
     csv_text = File.read(url_csv, :encoding => 'ISO8859-1').gsub(/\r/, '').gsub('"','') #quitar caracteres
