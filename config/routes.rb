@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :people
+  resources :offices
   resources :internals
   resources :lines do
     get  :control_csv, on: :collection
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
   end
   get 'settings', as: :settings, to: 'settings#index'
   scope '/settings' do
-    resources :offices
     resources :delegations
     resources :devices
     resources :device_models
@@ -37,6 +37,6 @@ Rails.application.routes.draw do
   end
   ## Errors pages
   get "errors/access_denied"
-  root 'home#index'
+  root 'home#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

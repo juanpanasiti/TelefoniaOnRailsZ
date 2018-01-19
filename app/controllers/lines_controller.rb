@@ -14,7 +14,7 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.save
-        format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully created.' }
+        format.html { redirect_to cellphones_lines_path, notice: 'Línea agregada a la flota.' }
       else
         format.html { render :new }
       end
@@ -27,7 +27,7 @@ class LinesController < ApplicationController
   def update
     respond_to do |format|
       if @line.update(line_params)
-        format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully updated.' }
+        format.html { redirect_to cellphones_lines_path, notice: 'Datos de la línea actualizados.' }
       else
         format.html { render :edit }
       end
@@ -37,7 +37,7 @@ class LinesController < ApplicationController
   def destroy
     @line.destroy
     respond_to do |format|
-      format.html { redirect_to root_path(section: 'lines'), notice: 'Line was successfully destroyed.' }
+      format.html { redirect_to cellphones_lines_path, alert: 'Línea eliminada.' }
     end
   end
 
@@ -53,7 +53,7 @@ class LinesController < ApplicationController
   end
 
   def line_params
-    params.require(:line).permit(:number, :person_id, :has_inet, :state, :type_sim, :has_sms_pack, :check_date, :notes, :bill_account, :vpn_link, :limit_offnet)
+    params.require(:line).permit(:number, :person_id, :has_inet, :state, :type_sim, :has_sms_pack, :check_date, :notes, :bill_account, :vpn_link, :limit_offnet, :clarification)
   end
 
   def options_for_select

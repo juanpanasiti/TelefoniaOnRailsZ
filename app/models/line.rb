@@ -15,6 +15,9 @@ class Line < ApplicationRecord
     else
       name = 'Sin asignar'
     end
+    unless self.clarification.blank?
+      name = name + " (#{self.clarification})"
+    end
     return name
   end
   def get_row_table_class
@@ -60,7 +63,7 @@ class Line < ApplicationRecord
     #Devuelve la fecha del último check con formato dd-mm-yyyy
     date = '!!!'
     unless self.check_date.blank?
-      date = self.check_date.strftime("%d-%m-%Y")
+      date = self.check_date.strftime("%d-%m-%y")
     end
     return date
   end

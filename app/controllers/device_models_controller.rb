@@ -17,7 +17,7 @@ class DeviceModelsController < ApplicationController
 
     respond_to do |format|
       if @device_model.save
-        format.html { redirect_to settings_path(section:'devices'), notice: 'Device model was successfully created.' }
+        format.html { redirect_to cellphones_models_path, notice: 'Nuevo modelo agregado.' }
       else
         format.html { render :new }
       end
@@ -27,7 +27,7 @@ class DeviceModelsController < ApplicationController
   def update
     respond_to do |format|
       if @device_model.update(device_model_params)
-        format.html { redirect_to settings_path(section:'devices'), notice: 'Device model was successfully updated.' }
+        format.html { redirect_to cellphones_models_path, notice: 'Datos del modelo actualizados.' }
       else
         format.html { render :edit }
       end
@@ -37,7 +37,7 @@ class DeviceModelsController < ApplicationController
   def destroy
     @device_model.destroy
     respond_to do |format|
-      format.html { redirect_to settings_path(section:'devices'), notice: 'Device model was successfully destroyed.' }
+      format.html { redirect_to cellphones_models_path, notice: 'Modelo de equipo borrado.' }
     end
   end
 
