@@ -1,6 +1,10 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:edit, :update, :destroy]
   before_action :set_form_options, only: [:new, :create, :edit, :update]
+
+  def index
+    @users = Person.all
+  end
   def new
     @user = Person.new
   end
@@ -9,7 +13,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to home_index_path(section: 'users'), notice: 'Usuario agregado correctamente.' }
+        format.html { redirect_to people_path, notice: 'Usuario agregado correctamente.' }
       else
         format.html { render :new }
       end
@@ -18,7 +22,7 @@ class PeopleController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(person_params)
-        format.html { redirect_to home_index_path(section: 'users'), notice: 'Datos de usuario actualizados correctamente.' }
+        format.html { redirect_to people_path, notice: 'Datos de usuario actualizados correctamente.' }
       else
         format.html { render :edit }
       end
@@ -27,7 +31,7 @@ class PeopleController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to home_index_path(section: 'users'), alert: 'Usuario eliminado.' }
+      format.html { redirect_to people_path, alert: 'Usuario eliminado.' }
       format.json { head :no_content }
     end
   end

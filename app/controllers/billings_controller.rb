@@ -1,6 +1,7 @@
 class BillingsController < ApplicationController
   def index
-    #code
+    @bill_items = BillItem.all
+    @bill_headers = BillHeader.all
   end
   def process_bill_csv
     full_csv = Billing.get_full_table(params[:archivo].path)

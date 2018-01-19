@@ -5,12 +5,18 @@ class Line < ApplicationRecord
   validates_uniqueness_of :number
   validates :number, length: { is: 10 }
 
+
+  ########## SCOPES
+  scope :current_lines, -> { where.not(state: 'Baja (Titularidad)').where.not(state: 'Baja (Cambio núm.)')  }
   ########## METHODS
   def get_user_full_name
     if self.person.present?
       name = self.person.get_full_name
     else
       name = 'Sin asignar'
+    end
+    unless self.clarification.blank?
+      name = name + " (#{self.clarification})"
     end
     return name
   end
@@ -51,6 +57,15 @@ class Line < ApplicationRecord
       'default'
     end
     return badge_class
+  end
+
+  def check_date_formatted
+    #Devuelve la fecha del último check con formato dd-mm-yyyy
+    date = '!!!'
+    unless self.check_date.blank?
+      date = self.check_date.strftime("%d-%m-%y")
+    end
+    return date
   end
   ########## CLASS METHODS
   def self.get_full_table(url_csv)

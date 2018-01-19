@@ -2,7 +2,11 @@
 <html>
   <head>
     <%= favicon_link_tag 'Telephone.png' %>
-    <% @le_titule ||= 'Telefonía On Rails 2.0b' %>
+    <% if @le_titule.blank? %>
+      <% @le_titule = 'Telefonía On Rails' %>
+    <% else %>
+      <% @le_titule = @le_titule + ' - Telefonía On Rails' %>
+    <% end %>
     <title> <%= @le_titule %> </title>
     <%= csrf_meta_tags %>
 
@@ -10,47 +14,101 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <!-- Fixed navbar -->
-    <div class="bg-muni-gc">
-    <nav class="navbar navbar-expand-lg navbar-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-muni-gc mb-3">
+      <div class="flex-row d-flex">
+        <%= link_to fa_icon("rebel", text: "TelefoníaOnRails 2.0"), root_path, class: "navbar-brand" %>
+        <button type="button" class="navbar-toggler" data-toggle="offcanvas" title="Toggle responsive left sidebar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <%= link_to fa_icon("rebel", text: "TelefoníaOnRails 2.0"), root_path, class: "navbar-brand" %>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to fa_icon("home", text: "Inicio"), root_path, class: "nav-link" %>
+      <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <%= link_to fa_icon("home", text: "Home"), root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to fa_icon("gears", text: "Configuración"), settings_path, class: "nav-link" %>
+          <li class="nav-item active">
+            <%= link_to fa_icon("mobile", text: "Celulares"), cellphones_lines_path, class: "nav-link" %>
           </li>
-          <% if admin_signed_in? %>
-            <li class="nav-item">
-              <%= link_to fa_icon("user-times", text: "Cerrar Sesión"), destroy_admin_session_path, method: :delete, class: "nav-link" %>
-            </li>
-          <% end %>
+          <li class="nav-item active">
+            <%= link_to fa_icon("phone", text: "Telef. Fija"), internals_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to fa_icon("usd", text: "Facturación"), billings_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to fa_icon("users", text: "Usuarios"), people_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to fa_icon("building", text: "Oficinas"), offices_path, class: "nav-link" %>
+          </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" disabled="disabled" placeholder="No funciona... aún">
-          <button class="btn btn-outline-success my-2 my-sm-0 disabled" type="submit">Buscar</button>
-        </form>
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to fa_icon("user-times", text: "Cerrar Sesión"), destroy_admin_session_path, method: :delete, class: "nav-link" %>
+          </li>
+          <% end %>
+          <li class="nav-item">
+            <%= link_to fa_icon("question", text: "About"), about_path, class: "nav-link" %>
+          </li>
+        </ul>
       </div>
     </nav>
-    <div id="page-sections">
-      <nav class="white">
-        <%= yield :tabs %>
-      </nav>
-    </div>
-  </div>
     <!-- Begin page content -->
-    <div class="container-fluid">
-      <!-- Tab panes -->
+    <div class="container-fluid" id="main">
       <% if notice || alert %>
       <p id="notice"><%= notice %></p>
       <p id="alert"><%= alert %></p>
       <% end %>
-      <%= yield %>
+      <div class="row row-offcanvas row-offcanvas-left">
+        <% if @has_menu %>
+          <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+            <%= yield :menu %>
+          </div>
+          <div class="col-md-9 col-lg-10 main">
+            <!-- Tab panes -->
+            <%= yield :tabs %>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="col-md-12 col-lg-12 main">
+            <!-- Tab panes -->
+            <%= yield :tabs %>
+            <%= yield %>
+          </div>
+        <% end %>
+      </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a dashboard layout for Bootstrap 4. This is an example of the Modal component which you can use to show content.
+                    Any content can be placed inside the modal and it can use the Bootstrap grid classes.</p>
+                    <p>
+                        <a href="https://www.codeply.com/go/KrUO8QpyXP" target="_ext">Grab the code at Codeply</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary-outline" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
   </body>
 </html>
