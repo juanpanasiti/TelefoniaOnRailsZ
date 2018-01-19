@@ -14,6 +14,7 @@ class CellphonesController < ApplicationController
 
   def models
     @le_titule = "Modelos de equipos"
+    @device_models = DeviceModel.all
   end
 
   def show_device

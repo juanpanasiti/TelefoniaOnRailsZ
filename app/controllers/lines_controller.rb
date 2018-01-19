@@ -67,7 +67,7 @@ class LinesController < ApplicationController
   def set_has_menu
     @has_menu = true
     case action_name
-    when "new", 'create', 'edit', 'update'
+    when "new", 'create', 'edit', 'update', 'control_csv'
       @has_menu = false
     else
       @has_menu = true

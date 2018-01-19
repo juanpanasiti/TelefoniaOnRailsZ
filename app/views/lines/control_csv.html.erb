@@ -8,29 +8,39 @@
             N°
           </th>
           <th> <%= @table[0][0] %> </th>
+          <th>Usuario</th>
           <th> <%= @table[0][3] %> </th>
+          <th>Tipo SIM</th>
           <th> <%= @table[0][4] %> </th>
           <th> <%= @table[0][6] %> </th>
           <th> <%= @table[0][5] %> </th>
           <th> <%= @table[0][7] %> </th>
+          <th>IMEI Sistema</th>
+          <th>Equipo Sistema</th>
           <th>Opc.</th>
         </tr>
       </thead>
       <tbody>
         <% n = 1 %>
         <% @table[1].each do |q| %>
+        <% line = Line.find_by_number(q[0].strip) %>
+        <% device = line.get_device %>
         <tr>
           <td class="center-text-v">
             <%= n %>
           </td>
-          <td class="center-text-v"> <%= q[0] %> </td>
+          <td class="center-text-v"> <%= q[0].strip %> </td>
+          <td class="center-text-v"> <%= line.get_user_full_name %> </td>
           <td class="center-text-v"> <%= '~'+q[3].last(10) %> </td>
+          <td class="center-text-v"> <%= line.type_sim %> </td>
           <td class=" center-text-v <%= raw get_class_to_registered_imei(q[4],q[5]) %>"
                 data-toggle="tooltip" data-placement="top" title="<%= q[6] %>"> <%= q[4] %> </td>
           <td class="center-text-v"> <%= q[6] %> </td>
           <td class=" center-text-v <%= raw ''%>"
                 data-toggle="tooltip" data-placement="top" title="<%= q[7] %>"> <%= q[5] %> </td>
           <td class="center-text-v"> <%= q[7] %> </td>
+          <td class="center-text-v"> <%= device.get_full_model_name %> sist </td>
+          <td class="center-text-v"> <%= device.imei %> </td>
           <td class="center-text-v">
             <!-- Button trigger modal -->
             <%= link_to fa_icon("eye"), "#info-#{n.to_s}", 'data-toggle' => 'modal', class: "btn btn-info" %>

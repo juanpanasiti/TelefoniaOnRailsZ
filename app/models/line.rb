@@ -9,6 +9,14 @@ class Line < ApplicationRecord
   ########## SCOPES
   scope :current_lines, -> { where.not(state: 'Baja (Titularidad)').where.not(state: 'Baja (Cambio núm.)')  }
   ########## METHODS
+  def get_device
+    # Devuevle e leuqiop registrado en sistema asociado a íal linea
+    device = Device.where(line_id: self.id).first
+    if device.blank?
+      device = Device.new
+    end
+    return device
+  end
   def get_user_full_name
     if self.person.present?
       name = self.person.get_full_name
@@ -112,5 +120,14 @@ class Line < ApplicationRecord
     # Devuelve la lista de opciones con los número de cuenta
     options = ['S/D','379408685','379741424','Línea Externa']
     return options
+  end
+
+  def self.find_by_number(number)
+    #Devuelve un objeto Line correspondiente al número de línea
+    line = Line.where(number: number).first
+    if line.blank?
+      line = Line.new
+    end
+    return line
   end
 end

@@ -26,6 +26,13 @@ class Device < ApplicationRecord
   def get_device_name
     return "#{self.device_model.get_full_model_name} ~#{self.imei.last(5)}"
   end
+  def get_full_model_name
+    name = ''
+    unless self.device_model.blank?
+      name = self.device_model.get_full_model_name
+    end
+    return name
+  end
   ########## CLASS METHODS
   def self.get_line_options
     lines = []
