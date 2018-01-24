@@ -12,11 +12,8 @@
           <th> <%= @table[0][3] %> </th>
           <th>Tipo SIM</th>
           <th> <%= @table[0][4] %> </th>
-          <th> <%= @table[0][6] %> </th>
           <th> <%= @table[0][5] %> </th>
-          <th> <%= @table[0][7] %> </th>
           <th>IMEI Sistema</th>
-          <th>Equipo Sistema</th>
           <th>Opc.</th>
         </tr>
       </thead>
@@ -25,7 +22,7 @@
         <% @table[1].each do |q| %>
         <% line = Line.find_by_number(q[0].strip) %>
         <% device = line.get_device %>
-        <tr>
+        <tr class='<%= raw line.get_row_table_class %>'>
           <td class="center-text-v">
             <%= n %>
           </td>
@@ -33,21 +30,19 @@
           <td class="center-text-v"> <%= line.get_user_full_name %> </td>
           <td class="center-text-v"> <%= '~'+q[3].last(10) %> </td>
           <td class="center-text-v"> <%= line.type_sim %> </td>
-          <td class=" center-text-v <%= raw get_class_to_registered_imei(q[4],q[5]) %>"
+          <td class="center-text-v <%= raw get_class_to_registered_imei(q[4],q[5],device.imei) %>"
                 data-toggle="tooltip" data-placement="top" title="<%= q[6] %>"> <%= q[4] %> </td>
-          <td class="center-text-v"> <%= q[6] %> </td>
-          <td class=" center-text-v <%= raw ''%>"
+          <td class="center-text-v <%= raw get_class_to_registered_imei(q[4],q[5],device.imei) %>"
                 data-toggle="tooltip" data-placement="top" title="<%= q[7] %>"> <%= q[5] %> </td>
-          <td class="center-text-v"> <%= q[7] %> </td>
-          <td class="center-text-v"> <%= device.get_full_model_name %> </td>
-          <td class="center-text-v"> <%= device.imei %> </td>
+          <td class="center-text-v  <%= raw get_class_to_registered_imei(q[4],q[5],device.imei) %>"
+                data-toggle="tooltip" data-placement="top" title="<%= device.get_full_model_name %>"> <%= device.imei %> </td>
           <td class="center-text-v">
             <!-- Button trigger modal -->
             <%= link_to fa_icon("eye"), "#info-#{n.to_s}", 'data-toggle' => 'modal', class: "btn btn-info" %>
           </td>
           <!-- Modal -->
           <div class="modal fade" id="<%= "info-" + n.to_s %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel"><%= q[0] %></h5>
@@ -57,8 +52,14 @@
                 </div>
                 <div class="modal-body">
                   <ul>
-                    <li>Nombre: <%= q[1] %> </li>
-                    <li>Estado: <%= q[2] %> </li>
+                    <li>N° línea: <%= line.number %> </li>
+                    <li>Nombre: <%= line.get_user_full_name %> </li>
+                    <li>Estado: <%= line.state %> </li>
+                    <li>N° SIM: <%= q[3] %> </li>
+                    <li>Tipo SIM: <%= line.type_sim %> </li>
+                    <li>Equipo registrado (Claro): <%= "#{q[4]} IMEI #{q[6]}" %> </li>
+                    <li>Equipo en uso (Claro): <%= "#{q[5]} IMEI #{q[7]}" %> </li>
+                    <li>Equipo sistema muni.: <%= "#{device.get_full_model_name} IMEI #{device.imei}" %> </li>
                   </ul>
                 </div>
                 <div class="modal-footer">
