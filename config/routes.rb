@@ -28,8 +28,6 @@ Rails.application.routes.draw do
   get 'settings', as: :settings, to: 'settings#index'
   scope '/settings' do
     resources :delegations
-    resources :devices
-    resources :device_models
     resources :bill_headers
     resources :bill_items do
       post 'charge_new_items_csv', on: :collection
