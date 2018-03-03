@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119005534) do
+ActiveRecord::Schema.define(version: 20180303192908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,19 +51,6 @@ ActiveRecord::Schema.define(version: 20180119005534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bill_header_id"], name: "index_bill_items_on_bill_header_id"
-  end
-
-  create_table "cells", id: :serial, force: :cascade do |t|
-    t.integer "internal_id"
-    t.integer "row_id"
-    t.string "primary_color"
-    t.string "secondary_color"
-    t.string "state"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["internal_id"], name: "index_cells_on_internal_id"
-    t.index ["row_id"], name: "index_cells_on_row_id"
   end
 
   create_table "delegations", id: :serial, force: :cascade do |t|
@@ -143,14 +130,6 @@ ActiveRecord::Schema.define(version: 20180119005534) do
     t.index ["person_id"], name: "index_mail_accounts_on_person_id"
   end
 
-  create_table "nodes", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "locations"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "offices", id: :serial, force: :cascade do |t|
     t.string "name"
     t.text "footnote"
@@ -175,28 +154,12 @@ ActiveRecord::Schema.define(version: 20180119005534) do
     t.index ["office_id"], name: "index_people_on_office_id"
   end
 
-  create_table "rows", id: :serial, force: :cascade do |t|
-    t.integer "position"
-    t.integer "sheet_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sheet_id"], name: "index_rows_on_sheet_id"
-  end
-
   create_table "selector_settings", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "id_name"
     t.string "selector"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "sheets", id: :serial, force: :cascade do |t|
-    t.integer "position"
-    t.integer "node_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["node_id"], name: "index_sheets_on_node_id"
   end
 
   create_table "tasks", id: :serial, force: :cascade do |t|
@@ -208,27 +171,7 @@ ActiveRecord::Schema.define(version: 20180119005534) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
-    t.integer "access_level", default: 0, null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
   add_foreign_key "bill_items", "bill_headers"
-  add_foreign_key "cells", "internals"
-  add_foreign_key "cells", "rows"
   add_foreign_key "devices", "device_models"
   add_foreign_key "devices", "lines"
   add_foreign_key "internals", "offices"
@@ -236,6 +179,4 @@ ActiveRecord::Schema.define(version: 20180119005534) do
   add_foreign_key "mail_accounts", "people"
   add_foreign_key "offices", "delegations"
   add_foreign_key "people", "offices"
-  add_foreign_key "rows", "sheets"
-  add_foreign_key "sheets", "nodes"
 end
