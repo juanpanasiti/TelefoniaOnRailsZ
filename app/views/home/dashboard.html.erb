@@ -2,146 +2,27 @@
   <%= render "menu" %>
 <% end %>
 
-<p>
-  Dashboard, fecha, tareas para el dia, proximas tareas, etc.
+<h2>
   <script type="text/javascript">
-var d=new Date();
-var dia=new Array(7);
-dia[0]="Domingo";
-dia[1]="Lunes";
-dia[2]="Martes";
-dia[3]="Miercoles";
-dia[4]="Jueves";
-dia[5]="Viernes";
-dia[6]="Sabado";
-document.write("Hoy es: " + dia[d.getDay()]);
+  var d=new Date();
+  var dia=new Array(7);
+  var mes=new Array(12);
+  dia[0]="Domingo"; dia[1]="Lunes"; dia[2]="Martes"; dia[3]="Miercoles"; dia[4]="Jueves"; dia[5]="Viernes"; dia[6]="Sabado";
+
+  mes[0]="Enero"; mes[1]="Febrero"; mes[2]="Marzo"; mes[3]="Abril"; mes[4]="Mayo"; mes[5]="Junio"; mes[6]="Julio"; mes[7]="Agosto"; mes[8]="Septiembre"; mes[9]="Octubre"; mes[10]="Noviembre";
+  mes[11]="Diciembre";
+  document.write(dia[d.getDay()] + ' ' + d.getDate() + ' de ' + mes[d.getMonth()] + ' del ' + d.getFullYear());
 </script>
-</p>
-<div class="row">
-  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
-    <div class="card" style="width: 100%;">
-      <div class="card-block">
-        <h4 class="card-title">Celulares</h4>
-        <p class="card-text">Línas celulares municipales.</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Activas:</li>
-        <li class="list-group-item">Generar reporte: <%= link_to "Reporte cuenta 85", cellphones_show_report_path(account: '379408685'), class: "btn btn-link" %></li>
-        <li class="list-group-item">En preparación o revisión:</li>
-        <li class="list-group-item">Revisar estado:</li>
-      </ul>
-      <div class="card-block">
-        <h6>Facturación:</h6>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-bill-modal">
-          <span class="glyphicon glyphicon-download" aria-hidden="true"></span> CSV Factura
-        </button>
-      </div>
-
-      <div class="card-block">
-        <h6>Control de equipos y líneas:</h6>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#upload-lines-list-modal">
-          <span class="glyphicon glyphicon-download" aria-hidden="true"></span> CSV Info Líneas
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
-    <div class="card" style="width: 100%;">
-      <div class="card-block">
-        <h4 class="card-title">Tel. Fija</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-      <div class="card-block">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
-    <div class="card" style="width: 100%;">
-      <div class="card-block">
-        <h4 class="card-title">Tareas</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
-      <div class="card-block">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-  </div>
-</div>
+</h2>
 
 <div class="row">
-  <section class="col-xs-12 col-sm-12 col-md-6 col-lg-4" id="billing-section">
-
-    <!-- Modal to check lines-devices-user status -->
-    <div class="modal fade" id="upload-bill-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Cargar detalle de facturación (Archivo CSV)</h4>
-          </div>
-          <div class="modal-body">
-
-            <%= form_tag({action: :process_bill_csv, controller: :billings}, multipart: true) do %>
-              <%= file_field_tag 'archivo', input_html: {class: "btn"} %> <br>
-              <%= submit_tag "Subir archivo", class: "btn btn-success" %>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal to check lines-devices-user status -->
-    <div class="modal fade" id="upload-lines-list-modal" tabindex="-1" role="dialog" aria-labelledby="ModalLineStatusLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="ModalLineStatusLabel">Cargar CSV exportado de <a href="https://empresas.claro.com.ar/web/guest">Claro Empresas</a></h4>
-          </div>
-          <div class="modal-body">
-            <%= form_tag({action: :control_csv, controller: :lines}, multipart: true) do %>
-              <%= file_field_tag 'archivo_csv', input_html: {class: "btn"} %> <br>
-              <%= submit_tag "Subir archivo", class: "btn btn-success" %>
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+    <%= render "home/cellphones_card" %>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+    <%= render "home/internals_card" %>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+    <%= render "home/tasks_card" %>
+  </div>
 </div>
-
-          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <ul class="list-group">
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-
-
-              <li class="list-group-item list-group-item-primary">This is a primary list group item</li>
-              <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
-              <li class="list-group-item list-group-item-success">This is a success list group item</li>
-              <li class="list-group-item list-group-item-danger">This is a danger list group item</li>
-              <li class="list-group-item list-group-item-warning">This is a warning list group item</li>
-              <li class="list-group-item list-group-item-info">This is a info list group item</li>
-              <li class="list-group-item list-group-item-light">This is a light list group item</li>
-              <li class="list-group-item list-group-item-dark">This is a dark list group item</li>
-            </ul>
-          </div>

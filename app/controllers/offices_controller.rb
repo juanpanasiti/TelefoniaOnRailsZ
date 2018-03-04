@@ -47,11 +47,12 @@ class OfficesController < ApplicationController
   end
 
   def office_params
-    params.require(:office).permit(:name, :footnote, :parent_id, :delegation_id)
+    params.require(:office).permit(:name, :footnote, :parent_id, :delegation_id, :category)
   end
 
   def options_for_select
     @office_parent_options = Office.get_parent_options
     @office_delegation_options = Office.get_delegation_options
+    @office_category_options = Office.get_category_options
   end
 end

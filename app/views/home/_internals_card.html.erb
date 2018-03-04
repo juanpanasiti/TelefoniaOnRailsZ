@@ -1,0 +1,18 @@
+<div class="card" style="width: 100%;">
+  <div class="card-header text-white bg-info">
+    <h4 class="card-title">Tel. Fija</h4>
+    <p class="card-text">Internos municipales.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-primary"><b>Total de internos:</b> <%= @internals.count %></li>
+    <li class="list-group-item list-group-item-info"><b>Internos en C.M.:</b> <%= @internals.count %></li>
+    <li class="list-group-item list-group-item-info"><b>Internos en SS.PP.:</b> <%= @internals.count %></li>
+    <li class="list-group-item list-group-item-info"><b>Internos en Hiperlibertad:</b> <%= @internals.count %></li>
+    <li class="list-group-item list-group-item-info"><b>Internos en CAU T:</b> <%= @internals.count %></li>
+    <li class="list-group-item list-group-item-warning"><b>Revisar:</b> <%= @internals.count %></li>
+  </ul>
+  <div class="card-block">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>

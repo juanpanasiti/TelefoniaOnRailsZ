@@ -1,6 +1,9 @@
 <%= simple_form_for @office do |l| %>
 
   <div class="row">
+    <div class="col-xs-12 col-sm-7 col-md-4 col-lg-2">
+      <%= l.input :category, label:'Categoría', collection: @office_category_options, include_blank: false %>
+    </div>
     <div class="col-xs-12 col-sm-7 col-md-4 col-lg-4">
       <%= l.input :name, label:'Nombre' %>
     </div>

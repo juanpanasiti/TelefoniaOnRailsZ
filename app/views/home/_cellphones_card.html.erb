@@ -1,0 +1,70 @@
+<div class="card" style="width: 100%;">
+  <div class="card-header text-white bg-info">
+    <h4 class="card-title">Celulares</h4>
+    <p class="card-text">Línas celulares municipales.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item list-group-item-primary"><b>En la flota:</b> <%= @lines.count %></li>
+    <li class="list-group-item list-group-item-success"><b>En uso (activas):</b> <%= @lines_in_use.count %></li>
+    <li class="list-group-item list-group-item-info"><b>Guardadas.:</b> <%= @lines_saved.count %></li>
+    <li class="list-group-item list-group-item-warning"><b>En préstamo:</b> <%= @lines_on_loan.count %></li>
+    <li class="list-group-item list-group-item-warning"><b>Para S.T.:</b> <%= @lines_for_service.count %></li>
+    <li class="list-group-item list-group-item-danger"><b>Revisar estado: <%= @lines_check_status.count %></b></li>
+    <li class="list-group-item list-group-item-secondary"><b>Generar reporte:</b> <%= link_to "Reporte cuenta 85", cellphones_show_report_path(account: '379408685'), class: "btn btn-link" %></li>
+    <li class="list-group-item list-group-item-dark">
+      <b>Facturación:</b>
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#upload-bill-modal">
+        <span class="glyphicon glyphicon-download" aria-hidden="true"></span> CSV Factura
+      </button>
+    </li>
+    <li class="list-group-item list-group-item-dark">
+      <b>Control de equipos y líneas: </b>
+      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#upload-lines-list-modal">
+        <span class="glyphicon glyphicon-download" aria-hidden="true"></span> CSV Info
+      </button>
+    </li>
+  </ul>
+</div>
+
+<!-- Modal to check lines-devices-user status -->
+<div class="modal fade" id="upload-bill-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cargar detalle de facturación (Archivo CSV)</h4>
+      </div>
+      <div class="modal-body">
+
+        <%= form_tag({action: :process_bill_csv, controller: :billings}, multipart: true) do %>
+          <%= file_field_tag 'archivo', input_html: {class: "btn"} %> <br>
+          <%= submit_tag "Subir archivo", class: "btn btn-success" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to check lines-devices-user status -->
+<div class="modal fade" id="upload-lines-list-modal" tabindex="-1" role="dialog" aria-labelledby="ModalLineStatusLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="ModalLineStatusLabel">Cargar CSV exportado de <a href="https://empresas.claro.com.ar/web/guest">Claro Empresas</a></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag({action: :control_csv, controller: :lines}, multipart: true) do %>
+          <%= file_field_tag 'archivo_csv', input_html: {class: "btn"} %> <br>
+          <%= submit_tag "Subir archivo", class: "btn btn-success" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,11 @@ class Line < ApplicationRecord
 
   ########## SCOPES
   scope :current_lines, -> { where.not(state: 'Baja (Titularidad)').where.not(state: 'Baja (Cambio núm.)')  }
+  scope :for_service, -> { where('state = ? OR state = ?', 'Preparación/revisión', 'Esperando SIM' )}
+  scope :check_status, -> { where(state: 'Revisar estado!')}
+  scope :in_use, -> { where(state: 'Activa')}
+  scope :saved, -> { where(state: 'Guardada')}
+  scope :on_loan, -> { where(state: 'Prestada')}
   ########## METHODS
   def get_device
     # Devuevle e leuqiop registrado en sistema asociado a íal linea

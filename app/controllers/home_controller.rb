@@ -2,29 +2,20 @@ class HomeController < ApplicationController
   layout "new_layout", :only => [:about]
   def index
     @has_menu = true
-    #sections: dashboard, lines, internals, users
-    #@lines = Line.all
-    #@users = Person.all
-    #@section = params[:section]
-    #@position = case @section
-    #  when 'dashboard'
-    #    0
-    #  when 'lines'
-    #    1
-    #  when 'internals'
-    #    2
-    #  when 'users'
-    #    3
-    #  else
-    #    0
-    #  end
-    #end
-    #titles = ['Inicio','Líneas','Internos','Usuarios']
-    #@le_titule = titles[@position.to_i]
   end
   def about
   end
   def dashboard
     @has_menu = true
+    # Líneas celulares municipales
+    @lines = Line.current_lines
+    @lines_for_service = Line.for_service
+    @lines_in_use = Line.in_use
+    @lines_saved = Line.saved
+    @lines_on_loan = Line.on_loan
+    @lines_check_status = Line.check_status
+
+    # Teléfonos fijos municipales
+    @internals = Internal.all
   end
 end

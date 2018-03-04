@@ -53,6 +53,13 @@ class Office < ApplicationRecord
     end
     return options.sort
   end
+
+  def self.get_category_options
+    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección","Subdirección","Departamento","División","Oficina","Otra categoría"]
+
+    return options
+  end #get_category_options
+
   def self.get_detailed_list
     offices = []
     self.all.each do |office|

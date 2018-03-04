@@ -36,13 +36,7 @@
                                                               label_html: { class: ""} %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <%= l.input :accounts, label:'Cuentas y contraseñas', wrapper_html: { class: ' fullwide'},
-      input_html: {class: "", rows:'3'},
-      label_html: { class: ""} %>
-    </div>
-  </div>
+  
 
   <%= l.button :submit, 'OK', class: "btn btn-success" %>
   <%= link_to fa_icon("back", text: "Cancelar"), people_path, class: "btn btn-warning" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303194758) do
+ActiveRecord::Schema.define(version: 20180303195247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20180303194758) do
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
     t.index ["delegation_id"], name: "index_offices_on_delegation_id"
     t.index ["parent_id"], name: "index_offices_on_parent_id"
   end
