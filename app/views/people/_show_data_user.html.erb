@@ -20,22 +20,6 @@
     <% end %>
   </li>
 </ul>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#<%= raw "user-notes-#{user.id}" %>" role="tab">Notas</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#<%= raw "user-accounts-#{user.id}" %>" role="tab">Profile</a>
-  </li>
-</ul>
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="<%= raw "user-notes-#{user.id}" %>" role="tabpanel">
-    <%= user.footnote %>
-  </div>
-  <div class="tab-pane" id="<%= raw "user-accounts-#{user.id}" %>" role="tabpanel">
-    <%= user.accounts.html_safe %>
-  </div>
-</div>
+
+<%= user.footnote %>
