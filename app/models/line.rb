@@ -35,15 +35,16 @@ class Line < ApplicationRecord
   end
   def get_row_table_class
     row_class = case self.state
-      when 'Activa' then 'bg-success'
-      when 'Guardada' then 'bg-info'
-      when 'Preparación/revisión' then 'bg-warning'
-      when 'Esperando SIM' then 'bg-warning'
-      when 'Prestada' then 'bg-default'
-      when 'Baja (Titularidad)' then 'bg-default'
-      when 'Baja (Cambio núm.)' then 'bg-default'
-      when 'Revisar estado!' then 'bg-danger'
-      else 'default'
+      when 'Activa' then 'table-success'
+      when 'Guardada' then 'table-primary'
+      when 'Preparación/revisión' then 'table-dark'
+      when 'Esperando SIM' then 'table-warning'
+      when 'Solicitar SIM' then 'bg-warning'
+      when 'Prestada' then 'table-secondary'
+      when 'Baja (Titularidad)' then 'bg-danger'
+      when 'Baja (Cambio núm.)' then 'bg-danger'
+      when 'Revisar estado!' then 'table-danger'
+      else 'table-light'
     end
     return row_class
 
@@ -58,12 +59,14 @@ class Line < ApplicationRecord
       'warning'
     when 'Esperando SIM'
       'warning'
+    when 'Solicitar SIM'
+      'warning'
     when 'Prestada'
       'default'
     when 'Baja (Titularidad)'
-      'default'
+      'danger'
     when 'Baja (Cambio núm.)'
-      'default'
+      'danger'
     when 'Revisar estado!'
       'danger'
     else
@@ -111,7 +114,7 @@ class Line < ApplicationRecord
 
   def self.get_state_options
     # Devuelve la lista de opciones para los estados que puede tomar una línea
-    options = ['S/D','Activa','Guardada','Preparación/revisión','Esperando SIM','Prestada','Baja (Titularidad)','Baja (Cambio núm.)','Revisar estado!']
+    options = ['S/D','Activa','Guardada','Preparación/revisión','Esperando SIM','Solicitar SIM','Prestada','Baja (Titularidad)','Baja (Cambio núm.)','Revisar estado!']
     return options
   end
 
