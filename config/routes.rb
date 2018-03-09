@@ -29,12 +29,15 @@ Rails.application.routes.draw do
   scope '/settings' do
     resources :delegations
     resources :bill_headers
+    resources :devices
+    resources :device_models
     resources :bill_items do
       post 'charge_new_items_csv', on: :collection
     end
   end
   ## Errors pages
   get "errors/access_denied"
+  ## Root Page
   root 'home#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
