@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  normal_price: 9.99
+  roaming: MyString
+  onnet_pack: 1
+  offnet_pack: 1
+  sms_pack: 1
+  inet_pack: MyString
+  credit: 9.99
+  kind: MyString
+  details: MyText
+
+two:
+  name: MyString
+  normal_price: 9.99
+  roaming: MyString
+  onnet_pack: 1
+  offnet_pack: 1
+  sms_pack: 1
+  inet_pack: MyString
+  credit: 9.99
+  kind: MyString
+  details: MyText
