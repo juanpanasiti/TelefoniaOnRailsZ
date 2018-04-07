@@ -8,7 +8,7 @@ class BillHeadersController < ApplicationController
     @header = BillHeader.new(bill_header_params)
     respond_to do |format|
       if @header.save
-        format.html { redirect_to settings_path(section:'billing'), notice: 'Nueva Columna de tabla agregada.' }
+        format.html { redirect_to billings_path, notice: 'Nueva Columna de tabla agregada.' }
       else
         format.html { render :new }
       end
@@ -20,7 +20,7 @@ class BillHeadersController < ApplicationController
   def update
     respond_to do |format|
       if @header.update(bill_header_params)
-        format.html { redirect_to settings_path(section:'billing'), notice: 'Datos de la Columna de tabla actualizados.' }
+        format.html { redirect_to billings_path, notice: 'Datos de la Columna de tabla actualizados.' }
       else
         format.html { render :edit }
       end

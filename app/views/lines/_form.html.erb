@@ -61,6 +61,13 @@
       label_html: { class: ""} %>
     </div>
 
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
+      <%= l.input :plan_id, label:'Plan', collection: @plan_options, include_blank: true,
+      wrapper_html: { class: ''},
+      input_html: {class: ""},
+      label_html: { class: ""} %>
+    </div>
+
     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-1">
       <%= l.input :limit_offnet, label:'Minutos', wrapper_html: { class: ''},
       input_html: {class: "", min:'-1', value:"#{@line.limit_offnet}"},

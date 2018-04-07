@@ -15,6 +15,8 @@ class HomeController < ApplicationController
     @lines_on_loan = Line.on_loan
     @lines_check_status = Line.check_status
 
+    #planes activos
+    @plans = Plan.all
     # Teléfonos fijos municipales
     @internals = Internal.all
   end

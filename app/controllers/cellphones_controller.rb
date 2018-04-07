@@ -7,6 +7,10 @@ class CellphonesController < ApplicationController
     @lines = Line.current_lines
   end
 
+  def plans
+    @plans = Plan.all
+  end
+
   def devices
     @le_titule = "Equipos"
     @devices = Device.all

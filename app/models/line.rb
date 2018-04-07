@@ -1,7 +1,10 @@
 class Line < ApplicationRecord
+  ########## RELATIONS
   belongs_to :person, optional: true
+  belongs_to :plan, optional: true
   has_one :device
-  validates_presence_of :number, :bill_account, :state, :type_sim
+  ########## VALIDATES
+  validates_presence_of :number, :bill_account, :state, :type_sim, :plan_id
   validates_uniqueness_of :number
   validates :number, length: { is: 10 }
 
@@ -14,6 +17,15 @@ class Line < ApplicationRecord
   scope :saved, -> { where(state: 'Guardada')}
   scope :on_loan, -> { where(state: 'Prestada')}
   ########## METHODS
+  def get_plan
+    plan_name = 'No definido'
+    if self.plan.present?
+      plan_name = self.plan.name
+    end
+
+    return plan_name
+  end
+
   def get_device
     # Devuevle e leuqiop registrado en sistema asociado a íal linea
     device = Device.where(line_id: self.id).first

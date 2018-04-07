@@ -1,0 +1,32 @@
+<%= content_for :menu do %>
+  <%= render "menu" %>
+<% end %>
+
+<h3>Planes de la flota</h3>
+<%= link_to fa_icon("plus", text: "Nuevo plan"), new_plan_path, class: "btn btn-primary" %>
+
+<div class="row">
+  <% @plans.each do |plan| %>
+  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+    <div class="card" style="width: 100%;">
+      <div class="card-header text-white bg-info">
+        <h4 class="card-title"><%= plan.name %></h4>
+        <p class="card-text"><%= plan.kind %> - <%= number_to_currency plan.normal_price %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-primary"><b>SMS:</b> <%= plan.sms_pack %></li>
+        <li class="list-group-item list-group-item-primary"><b>Minutos a Claro:</b> <%= plan.onnet_pack %></li>
+        <li class="list-group-item list-group-item-primary"><b>Minutos a otras comp.:</b> <%= plan.offnet_pack %></li>
+        <li class="list-group-item list-group-item-primary"><b>Pack datos inicial:</b> <%= plan.inet_pack %></li>
+        <li class="list-group-item list-group-item-primary"><b>Crédito para todo consumo:</b> <%= number_to_currency(plan.credit, precision: 2) %></li>
+        <li class="list-group-item list-group-item-primary"><b>Roaming:</b> <%= plan.roaming %></li>
+        <li class="list-group-item list-group-item-primary"><%= raw plan.details %></li>
+        <li class="list-group-item list-group-item-dark">
+          <%= link_to fa_icon("edit", text: "Editar"), edit_plan_path(plan), class: "btn btn-warning btn-block" %>
+          <%= link_to fa_icon("trash", text: "Eliminar"), plan_path(plan), method: :delete, data: {confirm: "Confirma eliminar?"}, class: "btn btn-danger btn-block" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+</div>

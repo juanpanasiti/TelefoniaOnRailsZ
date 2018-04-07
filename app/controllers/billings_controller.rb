@@ -18,9 +18,9 @@ class BillingsController < ApplicationController
     charged = Billing.charge_new_items(params[:uncharged_items], params[:no_items_count])
     respond_to do |format|
       if charged
-        format.html { redirect_to settings_path(section:'billing'), notice: 'Nuevos items agregados, debe terminar la configuración.' }
+        format.html { redirect_to billings_path, notice: 'Nuevos items agregados, debe terminar la configuración.' }
       else
-        format.html { redirect_to settings_path(section:'billing'), alert: 'Se produjeron errores en la carga de nuevos items.' }
+        format.html { redirect_to billings_path, alert: 'Se produjeron errores en la carga de nuevos items.' }
       end
     end
   end

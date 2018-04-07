@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
 
+  get 'plans/new'
+
   get 'cellphones/lines'
   get 'cellphones/devices'
   get 'cellphones/show_device'
   get 'cellphones/show_line'
   get 'cellphones/models'
+  get 'cellphones/plans'
   get 'cellphones/show_report'
 
   devise_for :admins
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :people
+  resources :plans, except: [:index, :show]
   resources :offices
   resources :internals
   resources :lines do

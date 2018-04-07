@@ -53,7 +53,7 @@ class LinesController < ApplicationController
   end
 
   def line_params
-    params.require(:line).permit(:number, :person_id, :has_inet, :state, :type_sim, :has_sms_pack, :check_date, :notes, :bill_account, :vpn_link, :limit_offnet, :clarification)
+    params.require(:line).permit(:number, :person_id, :has_inet, :state, :type_sim, :has_sms_pack, :check_date, :notes, :bill_account, :vpn_link, :limit_offnet, :clarification, :plan_id)
   end
 
   def options_for_select
@@ -62,6 +62,7 @@ class LinesController < ApplicationController
     @type_sim_options = Line.get_type_sim_options
     @bill_account_options = Line.get_bill_account_options
     @users_options = Person.get_users_options
+    @plan_options = Plan.get_plan_options
   end
 
   def set_has_menu
