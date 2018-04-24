@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
       unless (lvl_2_permitted.include? (controller_name.to_s + '/' + action_name))
         redirect_to errors_access_denied_path
       end
+    elsif current_admin.access_level == 3
+      if (['errors/access_denied'].include? (controller_name.to_s + '/' + action_name))
+        redirect_to root_path
+      end
     end
   end
 end
