@@ -12,7 +12,7 @@ class Office < ApplicationRecord
     name = self.name.titleize
     if self.parent.present?
       category = ''
-      unless self.category.blank?
+      unless self.category.blank? || (self.category.upcase == self.name.upcase)
         category = self.category + ' '
       end
       name = category + name + " (#{self.get_parent_name})"
@@ -42,13 +42,13 @@ class Office < ApplicationRecord
   def self.get_parent_options
     options = [['N/A',nil]]
     Office.all.each do |o|
-      options << [o.name, o.id]
+      options << [o.get_full_name, o.id]
     end
     return options.sort
   end
 
   def self.get_category_options
-    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección","Subdirección","Departamento","División","Oficina","Otra categoría"]
+    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección","Subdirección","Departamento","División","Oficina","N/A"]
 
     return options
   end #get_category_options

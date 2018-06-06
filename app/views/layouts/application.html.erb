@@ -46,6 +46,16 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <%= link_to fa_icon("external-link-square", text: "Links Externos"), "#", class: "nav-link dropdown-toggle", data: { toggle:'dropdown' }, id: "navbarDropdown" %>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" target="_blank" href="https://empresas.claro.com.ar/web/guest/inicio">Claro Empresas</a>
+              <a class="dropdown-item" target="_blank" href="https://contacts.google.com/u/0/preview/all">Contactos Google</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" target="_blank" href="https://mail.godoycruz.gov.ar/roundcube/">Mail MuniGC</a>
+              <a class="dropdown-item" target="_blank" href="http://redmine/my/page">RedMine</a>
+            </div>
+          </li>
           <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to fa_icon("user-times", text: "Cerrar Sesión"), destroy_admin_session_path, method: :delete, class: "nav-link" %>

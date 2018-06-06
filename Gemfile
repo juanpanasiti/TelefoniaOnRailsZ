@@ -56,8 +56,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Gems added by me
-gem 'bootstrap', '~> 4.0'
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
+gem 'bootstrap', '~> 4.1', '>= 4.1.1'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'wysiwyg-rails', '~> 2.4', '>= 2.4.2'
 gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering
