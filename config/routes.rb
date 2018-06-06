@@ -31,8 +31,7 @@ Rails.application.routes.draw do
   end
   get 'settings', as: :settings, to: 'settings#index'
   scope '/settings' do
-    resources :delegations
-    resources :bill_headers
+      resources :bill_headers
     resources :devices
     resources :device_models
     resources :bill_items do

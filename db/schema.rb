@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406213248) do
+ActiveRecord::Schema.define(version: 20180606121209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(version: 20180406213248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bill_header_id"], name: "index_bill_items_on_bill_header_id"
-  end
-
-  create_table "delegations", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.text "footnote"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "device_models", id: :serial, force: :cascade do |t|
@@ -134,13 +126,10 @@ ActiveRecord::Schema.define(version: 20180406213248) do
 
   create_table "offices", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.text "footnote"
-    t.integer "delegation_id"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
-    t.index ["delegation_id"], name: "index_offices_on_delegation_id"
     t.index ["parent_id"], name: "index_offices_on_parent_id"
   end
 
@@ -187,6 +176,5 @@ ActiveRecord::Schema.define(version: 20180406213248) do
   add_foreign_key "lines", "people"
   add_foreign_key "lines", "plans"
   add_foreign_key "mail_accounts", "people"
-  add_foreign_key "offices", "delegations"
   add_foreign_key "people", "offices"
 end
