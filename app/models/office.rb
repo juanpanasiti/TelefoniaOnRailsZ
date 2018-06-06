@@ -48,7 +48,7 @@ class Office < ApplicationRecord
   end
 
   def self.get_category_options
-    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección","Subdirección","Departamento","División","Oficina","N/A"]
+    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección","Subdirección","Departamento","División","Oficina","H.C.D.", "HCD Bloque","N/A"]
 
     return options
   end #get_category_options
