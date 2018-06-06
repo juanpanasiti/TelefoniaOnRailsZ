@@ -1,26 +1,26 @@
 class Office < ApplicationRecord
-  belongs_to :delegation, optional: true
   belongs_to :parent, class_name: 'Office', optional:true
   has_many :suboffices, class_name: 'Office', foreign_key: 'parent_id'
 
   ############### VALIDATIONS
   validates_presence_of :name
-  validates_uniqueness_of :name
+  validates :name, uniqueness: {scope: [:category, :parent_id]}
+  #validates_uniqueness_of :name, scope :category , -> { where(category: self.category) }
 
   ############### METHODS
   def get_full_name
     name = self.name.titleize
     if self.parent.present?
-      name = name + " (#{self.get_parent_name} - #{self.delegation.name})"
+      category = ''
+      unless self.category.blank?
+        category = self.category + ' '
+      end
+      name = category + name + " (#{self.get_parent_name})"
     end
     return name
   end
   def get_short_name
     return self.name.titleize
-  end
-  def get_delegation_name
-    name = self.delegation.present? ? self.delegation.get_name : 'S/D'
-    return name
   end
   def get_parent_name
     if self.parent.present?
@@ -42,13 +42,6 @@ class Office < ApplicationRecord
   def self.get_parent_options
     options = [['N/A',nil]]
     Office.all.each do |o|
-      options << [o.name, o.id]
-    end
-    return options.sort
-  end
-  def self.get_delegation_options
-    options = [['N/A',nil]]
-    Delegation.all.each do |o|
       options << [o.name, o.id]
     end
     return options.sort

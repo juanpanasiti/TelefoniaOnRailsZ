@@ -7,7 +7,7 @@
         <tr>
           <th class=""> Nombre </th>
           <th class=""> Dependencia </th>
-          <th class=""> Delegación </th>
+          <th class=""> Categoría </th>
           <th class=""> Opciones </th>
         </tr>
       </thead>
@@ -16,7 +16,7 @@
           <tr>
             <td class="center-text-v"> <%= o.name %> </td>
             <td class="center-text-v"> <%= o.get_parent_name %> </td>
-            <td class="center-text-v"> <%= o.get_delegation_name %> </td>
+            <td class="center-text-v"> <%= o.category %> </td>
 
             <td class="center-text-v">
               <div class="btn-group" role="group" aria-label="Basic example">
@@ -49,21 +49,5 @@
     <%= link_to fa_icon("plus"), new_office_path, class: "btn btn-info" %>
   </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-    <h3>Delegaciones</h3>
-    <ul id='list_delegations'>
-      <% @delegations.each do |delegation| %>
-        <li id="delegation_<%= delegation.id %>">
-          <%= delegation.name %>
-          <%= link_to "X", delegation_path(delegation), method: :delete %>
-          <%= link_to fa_icon("pencil"), edit_delegation_path(delegation) %>
-        </li>
-      <% end %>
-
-      <li><%= link_to fa_icon("plus", text: "Nueva"), new_delegation_path %></li>
-    </ul>
-
-
-
-  </div>
+  
 </div>
