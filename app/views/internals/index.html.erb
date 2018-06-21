@@ -1,8 +1,9 @@
 <h1>Internos Municipales</h1>
 <%= link_to fa_icon("plus"), new_internal_path, class: "btn btn-info" %>
 <table class="table table-sm table-striped table-hover display responsive no-wrap" id="table-internals">
-  <thead>
+  <thead class="thead-dark">
     <tr>
+      <th>#</th>
       <th>Nombre</th>
       <th>Número</th>
       <th>Tipo</th>
@@ -12,13 +13,15 @@
   </thead>
   <tbody>
     <% @internals.each do |i| %>
-    <tr>
+    <tr class='<%= raw i.get_row_table_class %>'>
+      <td class="center-text-v"><%= i.id %></td>
       <td class="center-text-v"><%= i.get_name %></td>
       <td class="center-text-v"><%= i.get_number %></td>
       <td class="center-text-v"><%= i.get_kind %></td>
       <td class="center-text-v"><%= i.get_office %></td>
       <td class="center-text-v">
-        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+        <div class="btn-group btn-group-sm" disabled role="group" aria-label="Basic example">
+          <!--
           <div class="btn-group btn-group-sm" role="group">
             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-bars" aria-hidden="true"></i>
@@ -28,6 +31,7 @@
               <a class="dropdown-item" href="#">Dropdown link</a>
             </div>
           </div>
+        -->
           <%= link_to fa_icon("eye"), internal_path(:id => i.id), remote: true, class: "btn btn-info" %>
           <%= link_to fa_icon("pencil"), edit_internal_path(i), class: "btn btn-warning" %>
           <%= link_to fa_icon("trash"), internal_path(i), method: :delete, class: "btn btn-danger" %>

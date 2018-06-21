@@ -33,6 +33,19 @@ class Internal < ApplicationRecord
     return office
   end #get_office
 
+  def get_row_table_class
+    row_class = ''
+    if self.service_required.present?
+      row_class = 'table-danger'
+    elsif self.kind == "Analógica"
+      row_class = 'table-success'
+    elsif self.kind == "Digital"
+      row_class = 'table-primary'
+    elsif self.kind == "IP"
+      row_class = 'table-info'
+    end
+  end
+
   ######### CLASS METHODS
   def self.get_kind_line_options
     return ["Analógica", "Digital", "IP"]
