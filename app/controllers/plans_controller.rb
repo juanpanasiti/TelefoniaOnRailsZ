@@ -5,6 +5,7 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+    @le_titule = "Nuevo plan"
   end
   def create
     @plan = Plan.new(plan_params)
@@ -20,6 +21,7 @@ class PlansController < ApplicationController
 
   def edit
     #code
+    @le_titule = "Editar plan #{@plan.name}"
   end
   def update
     respond_to do |format|

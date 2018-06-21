@@ -4,9 +4,11 @@ class PeopleController < ApplicationController
 
   def index
     @users = Person.all
+    @le_titule = "Usuarios"
   end
   def new
     @user = Person.new
+    @le_titule = "Nuevo usuario"
   end
   def create
     @user = Person.new(person_params)
@@ -20,6 +22,7 @@ class PeopleController < ApplicationController
     end
   end
   def update
+    @le_titule = "Editar #{@user.get_full_name}"
     respond_to do |format|
       if @user.update(person_params)
         format.html { redirect_to people_path, notice: 'Datos de usuario actualizados correctamente.' }

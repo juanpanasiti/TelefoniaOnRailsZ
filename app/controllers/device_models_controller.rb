@@ -7,9 +7,11 @@ class DeviceModelsController < ApplicationController
 
   def new
     @device_model = DeviceModel.new
+    @le_titule = "Nuevo modelo"
   end
 
   def edit
+    @le_titule = "Editar modelo"
   end
 
   def create

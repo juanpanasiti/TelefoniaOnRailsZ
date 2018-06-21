@@ -8,6 +8,7 @@ class LinesController < ApplicationController
 
   def new
     @line = Line.new
+    @le_titule = "Nueva línea"
   end
   def create
     @line = Line.new(line_params)
@@ -22,6 +23,7 @@ class LinesController < ApplicationController
   end
 
   def edit
+    @le_titule = "Editar #{@line.number}"
     #code
   end
   def update

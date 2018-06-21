@@ -2,7 +2,7 @@ class SettingsController < ApplicationController
   def index
     @has_menu = true
     @le_titule = "Ajustes"
-    
+
     @selector_settings = SelectorSetting.all
     @offices = Office.all
     @delegations = Delegation.all

@@ -8,6 +8,7 @@ class OfficesController < ApplicationController
   end
   def new
     @office = Office.new
+    @le_titule = "Nueva Oficina"
   end
   def create
     @office = Office.new(office_params)
@@ -21,6 +22,7 @@ class OfficesController < ApplicationController
   end
 
   def edit
+    @le_titule = "Editar"
     #code
   end
   def update

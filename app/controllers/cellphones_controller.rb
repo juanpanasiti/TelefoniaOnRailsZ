@@ -8,6 +8,7 @@ class CellphonesController < ApplicationController
   end
 
   def plans
+    @le_titule = "Planes"
     @plans = Plan.all
   end
 
@@ -23,10 +24,12 @@ class CellphonesController < ApplicationController
 
   def show_device
     @device = Device.find(params[:id])
+    @le_titule = "Ver equipo #{@device.get_device_name}"
   end
 
   def show_line
     @line = Line.find(params[:id])
+    @le_titule = "Ver línea #{@line.number}"
   end
 
   def show_report

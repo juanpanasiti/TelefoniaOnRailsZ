@@ -6,10 +6,12 @@ class DevicesController < ApplicationController
   end
 
   def new
+    @le_titule = "Nuevo equipo"
     @device = Device.new
   end
 
   def edit
+    @le_titule = "Editar equipo #{@device.get_device_name}"
   end
 
   def create

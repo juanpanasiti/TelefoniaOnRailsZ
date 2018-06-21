@@ -2,10 +2,13 @@ class HomeController < ApplicationController
   layout "new_layout", :only => [:about]
   def index
     @has_menu = true
+    @le_titule = "Home"
   end
   def about
+    @le_titule = "About"
   end
   def dashboard
+    @le_titule = "Dashboard"
     @has_menu = true
     # Líneas celulares municipales
     @lines = Line.current_lines

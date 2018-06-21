@@ -4,14 +4,17 @@ class InternalsController < ApplicationController
 
   def index
     @internals = Internal.all
+    @le_titule = "Tel. Internos"
   end #index
 
   def show
     #code
+    @le_titule = "Ver interno"
   end
 
   def new
     @internal = Internal.new
+    @le_titule = "Nuevo interno"
   end #new
   def create
     @internal = Internal.new(internal_params)
@@ -27,6 +30,7 @@ class InternalsController < ApplicationController
 
   def edit
     #code
+    @le_titule = "Editar #{@internal.get_number}"
   end
   def update
     respond_to do |format|

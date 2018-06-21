@@ -1,5 +1,6 @@
 class BillingsController < ApplicationController
   def index
+    @le_titule = "Facturación"
     @bill_items = BillItem.all
     @bill_headers = BillHeader.all
   end
