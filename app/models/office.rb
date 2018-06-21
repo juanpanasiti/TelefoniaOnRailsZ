@@ -1,6 +1,8 @@
 class Office < ApplicationRecord
   belongs_to :parent, class_name: 'Office', optional:true
   has_many :suboffices, class_name: 'Office', foreign_key: 'parent_id'
+  has_many :users, class_name: 'Person'
+  has_many :lines, through: :users #, source: :person
 
   ############### VALIDATIONS
   validates_presence_of :name
