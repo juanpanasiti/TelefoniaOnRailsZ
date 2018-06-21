@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180606121209) do
+ActiveRecord::Schema.define(version: 20180621143706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20180606121209) do
     t.text "footNote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "kind"
+    t.string "aclaration"
+    t.string "service_required"
     t.index ["office_id"], name: "index_internals_on_office_id"
   end
 

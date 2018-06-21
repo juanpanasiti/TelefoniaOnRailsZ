@@ -24,7 +24,7 @@ class Office < ApplicationRecord
   end
   def get_parent_name
     if self.parent.present?
-      name = self.parent.name
+      name = self.parent.get_short_name
     else
       name = 'N/A'
     end

@@ -1,0 +1,47 @@
+<div class="modal fade" id="internal-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= @internal.get_number %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-primary "> <strong>Datos del interno</strong></li>
+
+              <li class="list-group-item list-group-item-info"><strong>Nombre:</strong>
+                <span> <%= @internal.get_name %> </span>
+              </li>
+              <li class="list-group-item list-group-item-info"><strong>Oficina:</strong>
+                <span> <%= @internal.get_office %> </span>
+              </li>
+              <li class="list-group-item list-group-item-info"><strong>Tipo de línea:</strong>
+                <span> <%= @internal.get_kind %> </span>
+              </li>
+              <% if @internal.service_required.present? %>
+                <li class="list-group-item list-group-item-danger"><strong>Servicio requerido:</strong>
+                  <span> <%= @internal.service_required %> </span>
+                </li>
+              <% end %>
+              <% if @internal.footNote.present? %>
+                <li class="list-group-item list-group-item-warning"><strong>Notas:</strong>
+                  <span> <%= @internal.footNote %> </span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+
+
+        </div>
+      </div> <!-- END modal-body -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
