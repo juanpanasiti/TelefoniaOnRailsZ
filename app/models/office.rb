@@ -20,7 +20,7 @@ class Office < ApplicationRecord
     return name
   end
   def get_short_name
-    return self.name.titleize
+    return "#{self.category.titleize} #{self.name.titleize}"
   end
   def get_parent_name
     if self.parent.present?

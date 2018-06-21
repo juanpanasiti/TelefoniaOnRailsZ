@@ -10,7 +10,7 @@ class DeviceModel < ApplicationRecord
   end
   ########## CLASS METHODS
   def self.get_mark_options
-    marks = ['Motorola','Samsung','Nokia','LG','Positivo BGH','iPhone','Huawei','Alcatel','Sony','Microsoft','BlackBerry','DESCONOCIDA','Otra Marca']
+    marks = ['Motorola','Samsung','Philips','Nokia','LG','Positivo BGH','iPhone','Huawei','Alcatel','Sony','Microsoft','BlackBerry','DESCONOCIDA','Otra Marca']
     return marks
   end
   def self.get_band_options
