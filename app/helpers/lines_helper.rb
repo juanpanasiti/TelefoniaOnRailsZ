@@ -12,9 +12,9 @@ module LinesHelper
   def get_class_alert_imei(reg_imei, check_imei)
     css_class = ''
     if reg_imei == check_imei
-      css_class = 'alert-text'
-    else
       css_class = 'success-text'
+    else
+      css_class = 'alert-text'
     end
     return css_class
   end
