@@ -44,7 +44,16 @@ div.chosen-container {
   max-width: 500px;
   height: auto;
 }
-
+.alert-text {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}
+.success-text {
+  color: green;
+  font-style: italic;
+  font-weight: bold;
+}
 
 
 body, html {

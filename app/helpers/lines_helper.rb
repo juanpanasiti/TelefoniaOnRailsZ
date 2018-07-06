@@ -6,6 +6,16 @@ module LinesHelper
     else
       css_class = 'table-warning'
     end
+    return 'table-warning'
+  end #get_class_to_registered_imei
 
+  def get_class_alert_imei(reg_imei, check_imei)
+    css_class = ''
+    if reg_imei == check_imei
+      css_class = 'alert-text'
+    else
+      css_class = 'success-text'
+    end
+    return css_class
   end
 end

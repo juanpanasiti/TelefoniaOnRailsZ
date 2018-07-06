@@ -30,11 +30,11 @@
           <td class="center-text-v"> <%= line.get_user_full_name %> </td>
           <td class="center-text-v"> <%= q[3] %> </td>
           <td class="center-text-v"> <%= line.type_sim %> </td>
-          <td class="center-text-v <%= raw get_class_to_registered_imei(q[4],q[5],device.imei) %>"
+          <td class="center-text-v"
                 data-toggle="tooltip" data-placement="top" title="<%= q[6] %>"> <%= q[4] %> </td>
-          <td class="center-text-v <%= raw get_class_to_registered_imei(q[4],q[5],device.imei) %>"
+          <td class="center-text-v <%= raw get_class_alert_imei(q[4],q[5]) %>"
                 data-toggle="tooltip" data-placement="top" title="<%= q[7] %>"> <%= q[5] %> </td>
-          <td class="center-text-v  <%= raw get_class_to_registered_imei(q[4],q[5],device.imei) %>"
+          <td class="center-text-v  <%= raw get_class_alert_imei(q[4],device.imei) %>"
                 data-toggle="tooltip" data-placement="top" title="<%= device.get_full_model_name %>"> <%= device.imei %> </td>
           <td class="center-text-v">
             <div class="btn-group btn-group-sm" role="group" aria-label="Button group with nested dropdown">
