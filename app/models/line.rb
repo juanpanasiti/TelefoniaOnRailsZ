@@ -102,7 +102,7 @@ class Line < ApplicationRecord
     csv_table = []
     total = 0
     csv_text.each do |row|
-      row = row.split('|')
+      row = row.split(';')
       row.delete_at(2)
       csv_table << row
     end
