@@ -1,0 +1,84 @@
+<h1>Nueva entrega de equipo</h1>
+<%= simple_form_for @document do |f| %>
+<div class="card text-white bg-primary mb-3">
+  <div class="card-header">
+    <h5>Equipo entregado</h5>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <%= f.input :giving_number, label: false, placeholder:'N°', wrapper_html: {class:'col-xs-2 col-sm-2 col-md-1 col-lg-1 col-xl-1'} %>
+        <%= f.input :name, label: false, placeholder:'Nombre/s', wrapper_html: {class:'col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3'} %>
+        <%= f.input :lastname, label: false, placeholder:'Apellido', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2'} %>
+        <%= f.input :dni, label: false, placeholder:'DNI', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-2'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :office, label: false, placeholder:'Oficina', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-6'} %>
+        <%= f.input :aclaration, label: false, placeholder:'Aclaración', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :device_model, label: false, placeholder:'Modelo equipo nuevo', wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-5 col-xl-5'} %>
+        <%= f.input :device_imei, label: false, placeholder:'IMEI', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3'} %>
+        <%= f.input :device_state, label: false, placeholder:'Nuevo/Usado', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-2 col-lg-3 col-xl-2'} %>
+      </div>
+      <div class="row">
+        <%= f.input :accesories, label: false, placeholder:'Accesorios entregados', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-10'} %>
+      </div>
+      <div class="row">
+        <%= f.input :line, label: false, placeholder:'N° línea', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'} %>
+        <%= f.input :configured_by, label: false, placeholder:'Usuario/técnico de telefonía', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'} %>
+        <%= f.input :date, label: false, placeholder:'Fecha entrega', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'} %>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card text-white bg-success mb-3">
+  <div class="card-header">
+    <h5>Equipo Devuelto/Robado/Predido</h5>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <%= f.input :dr_condition, label: false, placeholder:'Equipo Devuelto/Robado/Perdido', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-4'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :dr_model, label: false, placeholder:'Modelo', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6'} %>
+        <%= f.input :dr_imei, label: false, placeholder:'IMEI', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-4'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :dr_state, label: false, placeholder:'Estado', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-2'} %>
+        <%= f.input :dr_aclaration, label: false, placeholder:'Aclaración o nota', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-12 col-xl-4'} %>
+        <%= f.input :dr_date, label: false, placeholder:'Fecha', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :dr_accesories_returned, label: false, placeholder:'Accesorios devueltos', wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-12 col-xl-12'} %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card text-white bg-info mb-3">
+  <div class="card-header">
+    <h5>Equipos anteriores</h5>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <h6>Historial de equipos</h6>
+      <%= f.input :previous_devices, label: false, as: :text, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'}, input_html: {rows: 10} %>
+    </div>
+  </div>
+</div>
+
+  <%= f.button :submit, 'Generar doc', class: "btn btn-success btn-lg" %>
+<% end %>

@@ -3,7 +3,7 @@ class CreateOffices < ActiveRecord::Migration[5.0]
     create_table :offices do |t|
       t.string :name
       t.text :footnote
-      t.references :delegation, foreign_key: true
+      #t.references :delegation, foreign_key: true
       t.integer :parent_id
 
       t.timestamps

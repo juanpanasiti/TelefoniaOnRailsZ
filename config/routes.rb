@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'plans/new'
 
+  resources :documents, only: [:new, :create]
+  get 'documents/show_data'
+
   get 'cellphones/lines'
   get 'cellphones/devices'
   get 'cellphones/show_device'
