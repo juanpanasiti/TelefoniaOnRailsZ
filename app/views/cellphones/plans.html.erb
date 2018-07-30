@@ -20,7 +20,7 @@
         <li class="list-group-item list-group-item-primary"><b>Pack datos inicial:</b> <%= plan.inet_pack %></li>
         <li class="list-group-item list-group-item-primary"><b>Crédito para todo consumo:</b> <%= number_to_currency(plan.credit, precision: 2) %></li>
         <li class="list-group-item list-group-item-primary"><b>Roaming:</b> <%= plan.roaming %></li>
-        <li class="list-group-item list-group-item-primary"><%= raw plan.details %></li>
+        <li class="list-group-item list-group-item-primary text-monospace"><%= raw plan.details %></li>
         <li class="list-group-item list-group-item-dark">
           <%= link_to fa_icon("edit", text: "Editar"), edit_plan_path(plan), class: "btn btn-warning btn-block" %>
           <%= link_to fa_icon("trash", text: "Eliminar"), plan_path(plan), method: :delete, data: {confirm: "Confirma eliminar?"}, class: "btn btn-danger btn-block" %>
