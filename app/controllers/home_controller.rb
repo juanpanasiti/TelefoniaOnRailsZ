@@ -22,5 +22,11 @@ class HomeController < ApplicationController
     @plans = Plan.all
     # Teléfonos fijos municipales
     @internals = Internal.all
+
+    # Tareas
+    @tasks = Task.all
+    @tasks_new = @tasks.fresh
+    @tasks_pending = @tasks.pending
+    @tasks_feedback = @tasks.in_feedback
   end
 end

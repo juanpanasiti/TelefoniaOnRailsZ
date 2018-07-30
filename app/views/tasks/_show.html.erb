@@ -1,0 +1,37 @@
+<div class="modal fade" id="<%= raw "task-info-#{task.id}" %>" tabindex="-1" role="dialog" aria-labelledby="task-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="line-modal-label">Tarea #<%= task.id %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <b>Nombre:</b>
+          <%= task.name %>
+        </p>
+        <p>
+          <b>Tipo:</b>
+          <%= task.type_task %>
+        </p>
+        <p>
+          <b>Estado:</b>
+          <%= task.state %>
+        </p>
+        <p>
+          <b>Fecha:</b>
+          <%= task.date_limit %>
+        </p>
+        <p>
+          <b>Detalle:</b>
+          <%= simple_format task.detail %>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

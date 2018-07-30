@@ -1,0 +1,41 @@
+<%= simple_form_for @task do |l| %>
+
+  <div class="row">
+    <%= l.input :name, label:'Nombre tarea', wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'},
+    input_html: {class: ""},
+    label_html: { class: ""} %>
+  </div>
+
+  <div class="row">
+    <%= l.input :state, label:'Estado', collection: @state_options, include_blank: true,
+    wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-2'},
+    input_html: {class: ""},
+    label_html: { class: ""} %>
+    <%= l.input :type_task, label:'Tipo de tarea', collection: @type_options, include_blank: true,
+    wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-2'},
+    input_html: {class: ""},
+    label_html: { class: ""} %>
+    <%= l.input :date_limit, label:'Fecha límite', as: :date_time_picker, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-2'}, input_html: { data:
+      {
+        date_format: "DD/MMMM/YYYY",
+        date_view_mode: 'days',
+        date_show_today_button: true
+      }
+      } %>
+  </div>
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <%= l.input :detail, label:'Detalle', wrapper_html: { class: ' fullwide'},
+                                                            input_html: {class: "", rows:'10'},
+                                                            label_html: { class: ""} %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= l.button :submit, 'Guardar', class:'btn btn-success btn-lg' %>
+  <%= link_to fa_icon("thumbs-down", text: "Cancelar"), tasks_path, class: "btn btn-danger btn-lg" %>
+</div>
+
+<% end %>

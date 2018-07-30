@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     post 'charge_items',     on: :collection
   end
 
+  resources :tasks
   resources :people
   resources :plans, except: [:index, :show]
   resources :offices

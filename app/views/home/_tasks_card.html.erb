@@ -4,7 +4,9 @@
     <p class="card-text">Pendientes y recordatorios.</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item list-group-item-warning"><b>Pendientes:</b></li>
+    <li class="list-group-item list-group-item-info"><b>Nuevas:</b> <%= @tasks_new.count %></li>
+    <li class="list-group-item list-group-item-danger"><b>Pendientes:</b> <%= @tasks_pending.count %></li>
+    <li class="list-group-item list-group-item-warning"><b>Feedback:</b> <%= @tasks_feedback.count %></li>
   </ul>
   <div class="card-block">
     <a href="#" class="card-link">Card link</a>
