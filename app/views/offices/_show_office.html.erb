@@ -1,21 +1,58 @@
-<div class="modal fade" id="<%= raw "office-info-#{office.id}" %>" tabindex="-1" role="dialog" aria-labelledby="office-modal-label" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-xl" id="<%= raw "office-info-#{office.id}" %>" tabindex="-1" role="dialog" aria-labelledby="office-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="office-modal-label"><%= office.name %></h5>
+        <h5 class="modal-title">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <strong>Categoría: </strong> <%= office.category %> <br>
-        <strong>Dependencia:</strong> <%= office.get_parent_name %> <br>
-        <strong>Líneas asignadas:</strong> <%= office.count_lines %> <br>
-
+        <strong>Dependencia:</strong> <%= office.get_trace %> <br>
+        <strong>Líneas asignadas:</strong> <%= n_lines = office.lines.count %> <br>
+        <% if n_lines > 0 %>
+        <table id="<%= raw "table-office-#{office.id}" %>">
+          <thead>
+            <th>línea</th>
+            <th>Usuario</th>
+            <th>Oficina</th>
+            <th>Estado</th>
+            <th>Plan</th>
+            <th>Último check</th>
+            <th>Opciones</th>
+          </thead>
+          <tbody>
+            <% office.get_lines.each do |line| %>
+            <tr>
+              <td class="center-text-v"><%= line.number %></td>
+              <td class="center-text-v"><%= line.get_user_full_name %></td>
+              <td class="center-text-v"><%= line.person.get_office_short_name %></td>
+              <td class="center-text-v"><%= line.state %></td>
+              <td class="center-text-v"><%= line.get_plan %></td>
+              <td class="center-text-v"><%= calculate_time_ago(line.check_date) %></td>
+              <td class="center-text-v">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <%= link_to fa_icon("user"), edit_person_path(line.person), class: "btn btn-warning", target: :_blank %>
+                  <%= link_to fa_icon("pencil"), edit_line_path(line), class: "btn btn-warning", target: :_blank %>
+                </div>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#<%= raw "table-office-#{office.id}" %>').DataTable( {
+    responsive: true
+  } );
+});
+</script>

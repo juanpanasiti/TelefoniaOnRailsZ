@@ -14,7 +14,7 @@
       <tbody>
         <% @offices.each do |o| %>
           <tr>
-            <td class="center-text-v"> <%= o.name %> </td>
+            <td class="center-text-v"> <%= o.get_name %> </td>
             <td class="center-text-v"> <%= o.get_parent_name %> </td>
             <td class="center-text-v"> <%= o.category %> </td>
 

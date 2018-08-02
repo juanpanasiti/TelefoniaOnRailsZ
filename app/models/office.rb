@@ -10,6 +10,40 @@ class Office < ApplicationRecord
   #validates_uniqueness_of :name, scope :category , -> { where(category: self.category) }
 
   ############### METHODS
+  def get_name
+    h_cat = Office.get_high_categories
+    name = ''
+    unless self.category.blank?
+      office = self
+      while not(h_cat.include?(office.category)) && office.parent.present? do
+        office = office.parent
+      end
+      name = office.category
+      unless (office.category.upcase == office.name.upcase)
+        name = name + ' ' + office.name.titleize
+      end #unless
+    else #category is blank
+      name = 'Actualizar nombre > ' + self.name
+    end #unless
+    return name
+  end #get_name
+
+  def get_trace
+    trace = ''
+    office = self
+    while office.parent.present? do
+      parent = office.parent
+      trace = trace + parent.get_short_name
+      if parent.parent.present?
+        trace = trace + ' >> '
+        office = parent
+      else #parent hasn't a parent
+        break
+      end #if
+    end #while
+    return trace
+  end #get_trace
+
   def get_full_name
     name = self.name.titleize
     if self.parent.present?
@@ -24,7 +58,11 @@ class Office < ApplicationRecord
   def get_short_name
     o_category = self.category.present? ? self.category : "N/A"
     o_name = self.name.present? ? self.name : "N/A"
-    return "#{o_category.titleize} #{o_name.titleize}"
+    if o_category.upcase == o_name.upcase
+      return o_name.titleize
+    else
+      return "#{o_category.titleize} #{o_name.titleize}"
+    end
   end
   def get_parent_name
     if self.parent.present?
@@ -34,14 +72,15 @@ class Office < ApplicationRecord
     end
     return name
   end
-  def count_lines
-    counter = 0
-    users = Person.where(office_id: self.id)
-    users.each do |user|
-      counter = counter + user.lines.count
+  def get_lines
+    lines = self.lines.current_lines
+    suboff = self.suboffices
+    suboff.each do |so|
+      lines = lines + so.get_lines
     end
-    return counter
+    return lines
   end
+
   ############### CLASS METHODS
   def self.get_parent_options
     options = [['N/A',nil]]
@@ -52,7 +91,7 @@ class Office < ApplicationRecord
   end
 
   def self.get_category_options
-    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección","Subdirección","Departamento","División","Oficina","H.C.D.", "HCD Bloque","N/A"]
+    options = self.get_high_categories + self.get_low_categories + ["NS/NA"]
 
     return options
   end #get_category_options
@@ -63,6 +102,17 @@ class Office < ApplicationRecord
       offices << [office.get_full_name,office.id]
     end
     return offices.sort
+  end
+
+  private
+  ############### HELPERS
+  def self.get_high_categories
+    options = ["Intendencia","Secretaría","Subsecretaría","Dirección General","Dirección"]
+    return options
+  end
+  def self.get_low_categories
+    options = ["Subdirección","Departamento","División","Oficina","H.C.D.", "HCD Bloque"]
+    return options
   end
 
 end

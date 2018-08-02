@@ -6,7 +6,8 @@
       <tr>
         <th class=""> Categoría </th>
         <th class=""> Nombre </th>
-        <th class=""> Dependencia </th>
+        <th class=""> Pertenece a </th>
+        <th class=""> Líneas </th>
         <th class=""> Opciones </th>
       </tr>
     </thead>
@@ -14,8 +15,9 @@
       <% @offices.each do |o| %>
       <tr>
         <td class="center-text-v"> <%= o.category %> </td>
-        <td class="center-text-v"> <%= o.name %> </td>
+        <td class="center-text-v"> <%= o.get_name %> </td>
         <td class="center-text-v"> <%= o.get_parent_name %> </td>
+        <td class="center-text-v"> <%= o.get_lines.count %> </td>
 
         <td class="center-text-v">
           <div class="btn-group" role="group" aria-label="Basic example">
@@ -32,9 +34,11 @@
             <%= link_to fa_icon("pencil"), edit_office_path(o), class: "btn btn-warning" %>
             <%= link_to fa_icon("trash"), office_path(o), method: :delete, class: "btn btn-danger" %>
           </div>
+          <%= render "offices/show_office", office: o %>
         </td>
       </tr>
-      <%= render "offices/show_office", office: o %>
+      <!--
+      -->
       <% end %>
     </tbody>
     <script type="text/javascript">
