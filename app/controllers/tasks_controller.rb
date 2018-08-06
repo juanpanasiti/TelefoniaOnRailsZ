@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   before_action :set_has_menu
   def index
     @tasks = Task.fresh + Task.pending + Task.in_feedback + Task.finished_ok + Task.finished_fail
+    @le_titule = "Tareas"
   end
 
   def new
