@@ -8,6 +8,20 @@ class Task < ApplicationRecord
   scope :in_feedback, -> { where(state: 'Feedback')  }
   scope :finished_ok, -> { where(state: 'Terminada OK')  }
   scope :finished_fail, -> { where(state: 'Terminada Fail')  }
+
+  ####### OBJECT METHODS
+  def get_row_table_class
+    state = self.state
+    row_class = case self.state
+      when 'Nueva' then 'bg-danger'
+      when 'Pendiente' then 'table-danger'
+      when 'Feedback' then 'table-warning'
+      when 'Terminada OK' then 'table-success'
+      when 'Terminada Fail' then 'table-secondary'
+      else 'table-light'
+    end
+    return row_class
+  end
   ####### CLASS METHODS
   def self.get_type_options
     options = ['Celular','Fijo','Administrativa','Otra']
