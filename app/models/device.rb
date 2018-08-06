@@ -49,6 +49,6 @@ class Device < ApplicationRecord
     return models.sort
   end
   def self.get_state_options
-    states = ['En uso','Para retirar (usuario)','Nuevo (Guardado)','Usado (Guardado)','Para revisión','En Service','Para repuesto']
+    states = ['En uso','Para retirar (usuario)','Nuevo (Guardado)','Usado (Guardado)','Para revisión','En Service','Para repuesto', 'Baja (robo o pérdida)']
   end
 end
