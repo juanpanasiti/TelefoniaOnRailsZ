@@ -35,10 +35,14 @@ class Line < ApplicationRecord
     return device
   end
   def get_user_full_name
-    if self.person.present?
-      name = self.person.get_full_name
+    if self.id.nil?
+      name = "No cargado en DB"
     else
-      name = 'Sin asignar'
+      if self.person.present?
+        name = self.person.get_full_name
+      else
+        name = 'Sin asignar'
+      end
     end
     unless self.clarification.blank?
       name = name + " (#{self.clarification})"
