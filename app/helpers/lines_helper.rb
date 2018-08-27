@@ -21,3 +21,14 @@ module LinesHelper
     return css_class
   end
 end
+
+def format_cell_number(number)
+  corrected = ''
+  unless number.nil?
+    corrected = number.gsub(' ','').gsub('-','').gsub('+549','')
+    if corrected.start_with?('549')
+      corrected = corrected.slice(3,corrected.length)
+    end
+  end
+  return corrected
+end

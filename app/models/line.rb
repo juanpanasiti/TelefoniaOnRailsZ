@@ -116,6 +116,44 @@ class Line < ApplicationRecord
     #return csv_text
   end
 
+  def self.compare_with_google(url_csv)
+    google_contacts = self.get_gcontacts_table(url_csv) #Arreglo de duplas [Nombre,Numero]
+    lines = self.get_array_line_number
+    lines.each_with_index do |line,index|
+      google_contacts.each_with_index do |gc, i|
+        if gc[1] == line[1]
+          line << gc[0] << gc[1]
+          google_contacts.delete_at(i)
+          break
+        end
+      end
+    end
+
+    return lines
+  end
+
+  def self.get_array_line_number
+    #[get_user_full_name,number,state]
+    csv_table = []
+    Line.all.each do |line|
+      csv_table << [line.get_user_full_name, line.number, line.state]
+    end
+    return csv_table
+  end
+
+  def self.get_gcontacts_table(url_csv)
+    csv_text = File.read(url_csv)
+    csv_text = csv_text.split("\n")
+    csv_table = []
+    csv_text.each do |row|
+      row = row.split(',')
+      csv_table << [row[0], format_cell_number(row[37])]
+    end
+    header_table = csv_table.shift #Original_Header
+    body_table = csv_table #Body
+		return body_table
+    #return csv_text
+  end
 
   def self.get_no_data_option
     #Opcion común a casi todos los selectores

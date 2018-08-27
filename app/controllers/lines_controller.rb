@@ -49,6 +49,13 @@ class LinesController < ApplicationController
     @table = full_csv
   end
 
+  def control_gcontacts
+    full_csv = Line.get_gcontacts_table(params[:archivo_csv].path)
+    @lines_to_check = Line.compare_with_google(params[:archivo_csv].path)
+    @has_menu = false
+    @tab_body = full_csv
+  end
+
   protected
   def set_line
     @line = Line.find(params[:id])

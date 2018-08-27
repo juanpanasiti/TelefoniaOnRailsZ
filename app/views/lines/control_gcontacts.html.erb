@@ -1,0 +1,27 @@
+<table class="table table-striped table-bordered" id="gcontacts-table">
+  <thead>
+    <th> Usuario Sist. </th>
+    <th> Número Sist Sist. </th>
+    <th> Nombre GCont. </th>
+    <th> Número Gcont. </th>
+    <th> Estado </th>
+  </thead>
+  <tbody>
+    <% @lines_to_check.each do |r| %>
+    <tr>
+      <td> <%= r[0] %> </td>
+      <td> <%= r[1] %> </td>
+      <td> <%= r[3] %> </td>
+      <td> <%= r[4] %> </td>
+      <td> <%= r[2] %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+  <script>
+  $(document).ready(function() {
+    $('#gcontacts-table').DataTable({
+      responsive: true
+    });
+  });
+  </script>
+</table>

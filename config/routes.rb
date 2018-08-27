@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   resources :offices
   resources :internals
   resources :lines do
+    get  :control_gcontacts, on: :collection
+    post  :control_gcontacts, on: :collection
     get  :control_csv, on: :collection
     post :control_csv, on: :collection
   end

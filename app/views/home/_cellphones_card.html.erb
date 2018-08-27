@@ -23,10 +23,37 @@
         <span class="glyphicon glyphicon-download" aria-hidden="true"></span> CSV Info
       </button>
     </li>
+    <li class="list-group-item list-group-item-dark">
+      <b>Control de Google Contacts: </b>
+      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#google-contacts-modal">
+        <span class="glyphicon glyphicon-download" aria-hidden="true"></span> CSV Gcontacts
+      </button>
+    </li>
   </ul>
 </div>
 
 <!-- Modal to check lines-devices-user status -->
+<div class="modal fade" id="google-contacts-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cargar detalle de Google Contacts (Archivo CSV)</h4>
+      </div>
+      <div class="modal-body">
+
+        <%= form_tag({action: :control_gcontacts, controller: :lines}, multipart: true) do %>
+          <%= file_field_tag 'archivo_csv', input_html: {class: "btn"} %> <br>
+          <%= submit_tag "Subir archivo", class: "btn btn-success" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal to check google contacts -->
 <div class="modal fade" id="upload-bill-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
