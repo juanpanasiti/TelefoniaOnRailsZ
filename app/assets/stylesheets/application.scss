@@ -14,68 +14,12 @@
  *= require_self
  */
  @import "bootstrap";
+ @import "font-awesome-sprockets";
  @import "font-awesome";
  @import 'datetime_picker_input';
  @import "dataTables/jquery.dataTables";
  @import "dataTables/extras/dataTables.responsive";
  @import "chosen";
- @font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('/assets/glyphicons-halflings-regular.eot');
-  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
-.text-size-sm{
-  font-size: small;
-}
-.be-red {
-  color: red;
-}
-.be-green {
-  color: green;
-}
-.final-table {
-  font-size: 0.65em;
-}
-div.chosen-container {
-  width: 100% !important;
-}
-
-.image-deni-access {
-  max-width: 500px;
-  height: auto;
-}
-.alert-text {
-  color: red;
-  font-style: italic;
-  font-weight: bold;
-}
-.success-text {
-  color: green;
-  font-style: italic;
-  font-weight: bold;
-}
-
-
-body, html {
-  height:100%;
-}
-
-body.blank-body {
-  padding-top: 10px !important;
-}
-body {
-    padding-top: 70px;
-}
-
-/* workaround modal-open padding issue */
-body.modal-open {
-    padding-right:0 !important;
-}
-
-
-#sidebar {
-   padding-left:0;
-}
 
 @media (min-width: 768px) {
   .modal-xl {
@@ -83,6 +27,23 @@ body.modal-open {
    max-width:1200px;
   }
 }
+// REFACTOR SET18
+nav a{
+  height: 70px;
+}
+.brand-title{
+  font-size: 1.50rem;
+  font-weight: bold;
+}
+body{
+  background-color: #8296AD;
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
 
 /*
  * Off Canvas at medium breakpoint

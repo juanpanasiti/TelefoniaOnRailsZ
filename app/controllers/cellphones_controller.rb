@@ -1,6 +1,6 @@
 class CellphonesController < ApplicationController
-  layout :resolve_layout
-  before_action :set_has_menu
+  #layout :resolve_layout
+  #before_action :set_has_menu
 
   def lines
     @le_titule = "Líneas"

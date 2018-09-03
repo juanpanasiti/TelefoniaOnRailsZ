@@ -7,13 +7,17 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2', '>= 5.2.1' #Updated 28-08-18
+#gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.1', '>= 1.1.1'  #Updated 28-08-18
+# gem 'pg', '~> 0.18'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
+#gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.7'
+#gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -24,7 +28,8 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.7'
+# gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -56,12 +61,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Gems added by me
-gem 'bootstrap', '~> 4.1', '>= 4.1.1'
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
-gem 'simple_form', '~> 3.5', '>= 3.5.1'
-gem 'wysiwyg-rails', '~> 2.4', '>= 2.4.2'
-gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering
-gem 'datetime_picker_input', '~> 4.17', '>= 4.17.47' # Datetime in Form
-gem 'chosen-rails', '~> 1.8', '>= 1.8.2' # For filter in selects
+gem 'bootstrap', '~> 4.1', '>= 4.1.3' #Updated 28/08/2018
+gem 'font-awesome-sass', '~> 5.2' #Updated 28/08/2018
+#gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
+gem 'simple_form', '~> 4.0', '>= 4.0.1' #Updated 28/08/2018
+gem 'wysiwyg-rails', '~> 2.8', '>= 2.8.4' #Updated 28/08/2018
+gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering #Updated 28/08/2018
+#gem 'datetime_picker_input', '~> 4.17', '>= 4.17.47' # Datetime in Form #Updated 28/08/2018
+#gem 'chosen-rails', '~> 1.8', '>= 1.8.7' # For filter in selects #Updated 28/08/2018
 gem 'bootstrap-chosen-rails'
-gem 'devise', '~> 4.3'
+gem 'devise', '~> 4.5' #Updated 28/08/*2018

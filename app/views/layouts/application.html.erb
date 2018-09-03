@@ -15,125 +15,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-muni-gc mb-3">
-      <div class="flex-row d-flex">
-        <%= link_to fa_icon("rebel", text: "TelefoníaOnRails 2.0"), root_path, class: "navbar-brand" %>
-        <button type="button" class="navbar-toggler" data-toggle="offcanvas" title="Toggle responsive left sidebar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+    <!-- Refactor 09-2018 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <%= link_to(root_path, class: "navbar-brand brand-title") do %>
+        <img src="/assets/Telephone.png" width="60" height="60" class="d-inline-block" alt="">
+        Telefonía On Rails
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse" id="collapsingNavbar">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <%= link_to(root_path, class: "nav-link btn") do %>
+              <%= icon('fas','tachometer-alt', class: "fa-2x") %>
+              <div class="">
+                Home
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(cellphones_lines_path, class: "nav-link btn") do %>
+              <%= icon('fas','mobile-alt', class: "fa-2x") %>
+              <div class="">
+                Celulares
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(root_path, class: "nav-link btn") do %>
+              <%= icon('fas','users', class: "fa-2x") %>
+              <div class="">
+                Usuarios
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(root_path, class: "nav-link btn") do %>
+              <%= icon('fas','phone', class: "fa-2x") %>
+              <div class="">
+                Internos
+              </div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(root_path, class: "nav-link btn") do %>
+              <%= icon('fas','clipboard-list', class: "fa-2x") %>
+              <div class="">
+                Equipos
+              </div>
+            <% end %>
+          </li>
+        </ul>
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <%= link_to fa_icon("home", text: "Home"), root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to fa_icon("mobile", text: "Celulares"), cellphones_lines_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to fa_icon("phone", text: "Telef. Fija"), internals_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to fa_icon("usd", text: "Facturación"), billings_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to fa_icon("users", text: "Usuarios"), people_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to fa_icon("building", text: "Oficinas"), offices_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to fa_icon("tasks", text: "Tareas"), tasks_path, class: "nav-link" %>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <%= link_to fa_icon("external-link-square", text: "Links Externos"), "#", class: "nav-link dropdown-toggle", data: { toggle:'dropdown' }, id: "navbarDropdown" %>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" target="_blank" href="https://empresas.claro.com.ar/web/guest/inicio">Claro Empresas</a>
-              <a class="dropdown-item" target="_blank" href="https://contacts.google.com/u/0/preview/all">Contactos Google</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" target="_blank" href="https://mail.godoycruz.gob.ar/roundcube/">Mail MuniGC</a>
-              <a class="dropdown-item" target="_blank" href="http://redmine/my/page">RedMine</a>
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to(edit_admin_registration_path, class: "nav-link btn") do %>
+            <%= icon('fas','user-cog', class: "fa-2x") %>
+            <div class="">
+              Editar
             </div>
+            <% end %>
           </li>
-          <% if admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to fa_icon("user-times", text: "Cerrar Sesión"), destroy_admin_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to(destroy_admin_session_path, method: :delete, class: "nav-link btn") do %>
+            <%= icon('fas','user-slash', class: "fa-2x") %>
+            <div class="">
+              Cerrar Sesión
+            </div>
+            <% end %>
           </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to(about_path, class: "nav-link btn") do %>
+          <%= icon('fas','question-circle', class: "fa-2x") %>
+          <div class="">
+            Acerca de
+          </div>
           <% end %>
-          <li class="nav-item">
-            <%= link_to fa_icon("question", text: "About"), about_path, class: "nav-link" %>
-          </li>
-        </ul>
+        </li>
+      </ul>
       </div>
     </nav>
-    <!-- Begin page content -->
-    <div class="container-fluid" id="main">
-      <% if notice %>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <p id="notice"><%= notice %></p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <% elsif alert %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <p id="alert"><%= alert %></p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <% end %>
-      <div class="row row-offcanvas row-offcanvas-left">
-        <% if @has_menu %>
-          <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
-            <%= yield :menu %>
-          </div>
-          <div class="col-md-9 col-lg-10 main">
-            <!-- Tab panes -->
-            <%= yield :tabs %>
-            <%= yield %>
-          </div>
-        <% else %>
-          <div class="col-md-12 col-lg-12 main">
-            <!-- Tab panes -->
-            <%= yield :tabs %>
-            <%= yield %>
-          </div>
-        <% end %>
-      </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Modal</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>This is a dashboard layout for Bootstrap 4. This is an example of the Modal component which you can use to show content.
-                    Any content can be placed inside the modal and it can use the Bootstrap grid classes.</p>
-                    <p>
-                        <a href="https://www.codeply.com/go/KrUO8QpyXP" target="_ext">Grab the code at Codeply</a>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary-outline" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid">
+      <%= yield %>
     </div>
-
 
   </body>
 </html>

@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     post  :control_gcontacts, on: :collection
     get  :control_csv, on: :collection
     post :control_csv, on: :collection
+    post :check_today, on: :member
+    get :check_today, on: :member
   end
   get 'settings', as: :settings, to: 'settings#index'
   scope '/settings' do

@@ -1,22 +1,24 @@
 class HomeController < ApplicationController
-  layout "new_layout", :only => [:about]
-  def index
-    @has_menu = true
-    @le_titule = "Home"
-  end
+  #layout "new_layout", :only => [:about]
+  #def index
+  # REFACTOR 09-2018
+  #  @has_menu = false
+  #  @le_titule = "Dashboard"
+  #end
   def about
+    # REFACTOR 09-2018
     @le_titule = "About"
   end
   def dashboard
+    # REFACTOR 09-2018
     @le_titule = "Dashboard"
-    @has_menu = true
     # Líneas celulares municipales
     @lines = Line.current_lines
-    @lines_for_service = Line.for_service
-    @lines_in_use = Line.in_use
-    @lines_saved = Line.saved
-    @lines_on_loan = Line.on_loan
-    @lines_check_status = Line.check_status
+    @lines_for_service = @lines.for_service
+    @lines_in_use = @lines.in_use
+    @lines_saved = @lines.saved
+    @lines_on_loan = @lines.on_loan
+    @lines_check_status = @lines.check_status
 
     #planes activos
     @plans = Plan.all

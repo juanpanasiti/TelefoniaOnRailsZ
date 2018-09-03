@@ -1,10 +1,7 @@
-<%= content_for :menu do %>
-  <%= render "menu" %>
-<% end %>
 
 <h3>Líneas Celulares</h3>
 <%= link_to new_line_path, class: "btn btn-primary" do %>
-  <%= fa_icon('plus', class: "material-icons") %>
+  <%= icon('plus', class: "material-icons") %>
 <% end %>
 <table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-lines">
   <thead class="thead-dark">
@@ -29,7 +26,7 @@
         <td class="center-text-v"> <%= line.person.present? ? line.person.get_office_short_name : "Sin asignar" %> </td>
         <td class="center-text-v"> <%= line.state %> </td>
         <td class="center-text-v"> <%= line.get_plan %> </td>
-        <td class="center-text-v"> <%= calculate_time_ago(line.check_date) %> </td>
+        <td class="center-text-v" id="timeAgo<%= raw line.id %>"> <%= calculate_time_ago(line.check_date) %> </td>
         <td class="center-text-v"> <%= '~' + line.bill_account.last(3) %> </td>
         <td class="center-text-v">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -39,12 +36,13 @@
               </button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <% if line.person.present? %>
-                  <%= link_to fa_icon("user", text: "Editar Usuario"), edit_person_path(line.person), class: "dropdown-item" %>
+                  <%= link_to icon('fas',"user", "Editar Usuario"), edit_person_path(line.person), class: "dropdown-item" %>
+                  <%= link_to icon('fas','check','Check línea'), check_today_line_url(line), class: "dropdown-item", remote: true %>
                 <% end %>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), cellphones_show_line_path(:id => line.id), remote: true, class: "btn btn-info" %>
-            <%= link_to fa_icon("pencil"), edit_line_path(line), class: "btn btn-warning" %>
+            <%= link_to icon('fas',"eye"), cellphones_show_line_path(:id => line.id), remote: true, class: "btn btn-info" %>
+            <%= link_to icon('fas',"pen"), edit_line_path(line), class: "btn btn-warning" %>
           </div>
         </td>
       </tr>
@@ -60,5 +58,5 @@
 </table>
 
 <%= link_to new_line_path, class: "btn btn-primary" do %>
-  <%= fa_icon('plus', class: "material-icons") %>
+  <%= icon('plus', class: "material-icons") %>
 <% end %>

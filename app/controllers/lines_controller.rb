@@ -1,5 +1,5 @@
 class LinesController < ApplicationController
-  before_action :set_line, only: [:edit, :update, :destroy]
+  before_action :set_line, only: [:edit, :update, :destroy, :check_today]
   before_action :options_for_select, only: [:new, :create, :edit, :update]
   before_action :set_has_menu
   def index
@@ -56,6 +56,10 @@ class LinesController < ApplicationController
     @tab_body = full_csv
   end
 
+  def check_today
+    @line.check_today
+  end
+
   protected
   def set_line
     @line = Line.find(params[:id])
@@ -66,12 +70,15 @@ class LinesController < ApplicationController
   end
 
   def options_for_select
+    #Line form
     @has_inet_options = Line.get_has_inet_options
     @state_options = Line.get_state_options
     @type_sim_options = Line.get_type_sim_options
     @bill_account_options = Line.get_bill_account_options
     @users_options = Person.get_users_options
     @plan_options = Plan.get_plan_options
+    #user form2
+    @user_office_options = Office.get_detailed_list
   end
 
   def set_has_menu

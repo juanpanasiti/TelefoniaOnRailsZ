@@ -22,12 +22,17 @@ class Line < ApplicationRecord
     if self.plan.present?
       plan_name = self.plan.name
     end
-
     return plan_name
   end
 
+  def check_today
+    #Refactor 09-2018
+    self.check_date = Date.today
+    self.save
+  end
+
   def get_device
-    # Devuevle e leuqiop registrado en sistema asociado a íal linea
+    # Devuevle el equipo registrado en sistema asociado a la linea
     device = Device.where(line_id: self.id).first
     if device.blank?
       device = Device.new
