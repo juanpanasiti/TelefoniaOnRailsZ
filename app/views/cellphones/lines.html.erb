@@ -1,18 +1,19 @@
 
 <h3>Líneas Celulares</h3>
 <%= link_to new_line_path, class: "btn btn-primary" do %>
-  <%= icon('plus', class: "material-icons") %>
+  <%= icon('fas','plus') %>
 <% end %>
 <table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-lines">
   <thead class="thead-dark">
     <tr>
-      <th>#</th>
+      <th class=""> # </th>
       <th class=""> Número </th>
       <th class=""> Usuario </th>
+      <th class=""> Equipo </th>
       <th class=""> Oficina </th>
       <th class=""> Estado </th>
       <th class=""> Plan </th>
-      <th class=""> Últ. Check </th>
+      <th class="d-lg-block"> Últ. Check </th>
       <th class=""> Cuenta </th>
       <th class=""> Opciones </th>
     </tr>
@@ -23,7 +24,8 @@
         <td class="center-text-v"> <%= line.id %> </td>
         <td class="center-text-v"> <%= line.number %> </td>
         <td class="center-text-v"> <%= line.get_user_full_name %> </td>
-        <td class="center-text-v"> <%= line.person.present? ? line.person.get_office_short_name : "Sin asignar" %> </td>
+        <td class="center-text-v"> <%= "Equipo" %> </td>
+        <td class="center-text-v"> <%= "Dirección/Secretaría" %> </td>
         <td class="center-text-v"> <%= line.state %> </td>
         <td class="center-text-v"> <%= line.get_plan %> </td>
         <td class="center-text-v" id="timeAgo<%= raw line.id %>"> <%= calculate_time_ago(line.check_date) %> </td>

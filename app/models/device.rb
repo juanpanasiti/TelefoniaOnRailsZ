@@ -6,15 +6,17 @@ class Device < ApplicationRecord
   validates_uniqueness_of :imei
   validates :imei, length: { is: 15, message: "Deben ser 15 números." }
   ############## CALLBACKS
-  before_save :clean_lines_asociated, unless: 'line_id.nil?'
+  before_save :clean_lines_asociated#, if: 'line_id.nil?'
   ############## CALLBACKS METHODS
   def clean_lines_asociated
-    line = self.line_id
-    devs = Device.where(line_id: line)
-    devs.each do |dev|
-      unless dev.id == self.id
-        dev.line_id = nil
-        dev.save
+    if self.line.present?
+      line = self.line_id
+      devs = Device.where(line_id: line)
+      devs.each do |dev|
+        unless dev.id == self.id
+          dev.line_id = nil
+          dev.save
+        end
       end
     end
   end
