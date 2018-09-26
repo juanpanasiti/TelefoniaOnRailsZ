@@ -1,8 +1,9 @@
 class DeviceModel < ApplicationRecord
+  has_many :devices
   ########## VALIDATES
   validates_presence_of :mark, :device_name, :type_sim, :category
-  validates_uniqueness_of :device_code, if: 'device_code.present?'
-  validates :device_code, presence: true, if: 'device_code.present?'
+  validates_uniqueness_of :device_code, if: :device_code.present?
+  validates :device_code, presence: true, if: :device_code.present?
   ########## METHODS
   def get_full_model_name
     #Devuelve el nombre completo del modelo
@@ -10,7 +11,7 @@ class DeviceModel < ApplicationRecord
   end
   ########## CLASS METHODS
   def self.get_mark_options
-    marks = ['Motorola','Samsung','Philips','Nokia','LG','Positivo BGH','iPhone','Huawei','Alcatel','Sony','Microsoft','BlackBerry','DESCONOCIDA','Otra Marca']
+    marks = ['Motorola','Samsung','Philips','Nokia','LG','Positivo BGH','Apple','Huawei','Alcatel','Sony','Microsoft','BlackBerry','DESCONOCIDA','Otra Marca']
     return marks
   end
   def self.get_band_options

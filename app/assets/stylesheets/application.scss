@@ -16,9 +16,13 @@
  @import "bootstrap";
  @import "font-awesome-sprockets";
  @import "font-awesome";
- @import "dataTables/jquery.dataTables";
- @import "dataTables/extras/dataTables.responsive";
- 
+ //@import 'datatables';
+ //@import 'datatables/dataTables.bootstrap4';
+//@import 'datatables/extensions/Responsive/responsive.bootstrap4';
+//@import 'datatables/extensions/Buttons/buttons.bootstrap4';
+ //@import "dataTables/jquery.dataTables";
+ //@import "dataTables/extras/dataTables.responsive";
+
 @media (min-width: 768px) {
   .modal-xl {
     width: 90%;
@@ -121,3 +125,5 @@ body{
 .lalalala {
   color: red !important;
 }
+
+//@import "datatables";

@@ -66,7 +66,8 @@ gem 'font-awesome-sass', '~> 5.2' #Updated 28/08/2018
 #gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'simple_form', '~> 4.0', '>= 4.0.1' #Updated 28/08/2018
 gem 'wysiwyg-rails', '~> 2.8', '>= 2.8.4' #Updated 28/08/2018
-gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering #Updated 28/08/2018
+#gem 'jquery-datatables-rails', '~> 3.4' # For sorting and filtering #Updated 28/08/2018
+##gem 'jquery-datatables', '~> 1.10', '>= 1.10.19'
 #gem 'datetime_picker_input', '~> 4.17', '>= 4.17.47' # Datetime in Form #Updated 28/08/2018
 #gem 'chosen-rails', '~> 1.8', '>= 1.8.7' # For filter in selects #Updated 28/08/2018
 gem 'bootstrap-chosen-rails'

@@ -37,7 +37,10 @@
         <% if @line.device.present? %>
           <%= render "device/form2", button: 'Guardar', device: @line.device %>
         <% else %>
-          No tiene equipo asociado
+          <p>
+            No tiene equipo asociado
+          </p>
+          <%= link_to icon('fas','mobile','Equipos'), cellphones_devices_path, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

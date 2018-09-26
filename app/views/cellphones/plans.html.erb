@@ -1,9 +1,5 @@
-<%= content_for :menu do %>
-  <%= render "menu" %>
-<% end %>
-
-<h3>Planes de la flota</h3>
-<%= link_to fa_icon("plus", text: "Nuevo plan"), new_plan_path, class: "btn btn-primary" %>
+<h1>Planes de la flota <small><%= link_to "ir a líneas", cellphones_lines_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
+<%= link_to icon('fas',"plus", text: "Nuevo plan"), new_plan_path, class: "btn btn-primary" %>
 
 <div class="row">
   <% @plans.each do |plan| %>
@@ -22,8 +18,8 @@
         <li class="list-group-item list-group-item-primary"><b>Roaming:</b> <%= plan.roaming %></li>
         <li class="list-group-item list-group-item-primary text-monospace"><%= raw plan.details %></li>
         <li class="list-group-item list-group-item-dark">
-          <%= link_to fa_icon("edit", text: "Editar"), edit_plan_path(plan), class: "btn btn-warning btn-block" %>
-          <%= link_to fa_icon("trash", text: "Eliminar"), plan_path(plan), method: :delete, data: {confirm: "Confirma eliminar?"}, class: "btn btn-danger btn-block" %>
+          <%= link_to icon('fas',"edit", text: "Editar"), edit_plan_path(plan), class: "btn btn-warning btn-block" %>
+          <%= link_to icon('fas',"trash", text: "Eliminar"), plan_path(plan), method: :delete, data: {confirm: "Confirma eliminar?"}, class: "btn btn-danger btn-block" %>
         </li>
       </ul>
     </div>

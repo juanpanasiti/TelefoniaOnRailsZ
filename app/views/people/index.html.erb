@@ -1,6 +1,6 @@
-<h3>Usuarios</h3>
-<%= link_to fa_icon("plus"), new_person_path, class: "btn btn-info" %>
-<table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-people">
+<h1>Usuarios <small><%= link_to "ir a oficinas", offices_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
+<%= link_to icon('fas',"plus"), new_person_path, class: "btn btn-info" %>
+<table class="table table-sm table-striped table-hover display responsive no-wrap" id="table-people">
   <thead class="thead-dark">
     <tr>
       <th class=""> Nombre </th>
@@ -18,18 +18,18 @@
         <td class="center-text-v">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
             <div class="btn-group btn-group-sm" role="group">
-              <%= link_to fa_icon("bars"),'#', {id: "otherOptions", class: "btn btn-secondary dropdown-toggle", 'data-toggle' => 'dropdown'} %>
+              <%= link_to icon('fas',"bars"),'#', {id: "otherOptions", class: "btn btn-secondary dropdown-toggle", 'data-toggle' => 'dropdown'} %>
               <div class="dropdown-menu" aria-labelledby="otherOptions">
                 <% if user.lines.count > 0 %>
                   <% user.lines.each do |line| %>
-                  <%= link_to fa_icon("phone", text: "#{line.number} #{line.clarification}"), edit_line_path(line), class: "dropdown-item" %>
+                  <%= link_to icon('fas',"phone", text: "#{line.number} #{line.clarification}"), edit_line_path(line), class: "dropdown-item" %>
                   <% end %>
                 <% end %>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
-            <%= link_to fa_icon("pencil"), edit_person_path(user), class: "btn btn-warning" %>
-            <%= link_to fa_icon("trash"), '#', class: "btn btn-danger" %>
+            <%= link_to icon('fas',"eye"), "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to icon('fas',"edit"), edit_person_path(user), class: "btn btn-warning" %>
+            <%= link_to icon('fas',"trash"), '#', class: "btn btn-danger" %>
           </div>
 
         </td>
@@ -45,4 +45,4 @@
   });
   </script>
 </table>
-<%= link_to fa_icon("plus"), new_person_path, class: "btn btn-info" %>
+<%= link_to icon('fas',"plus"), new_person_path, class: "btn btn-info" %>

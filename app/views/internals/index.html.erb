@@ -1,5 +1,5 @@
 <h1>Internos Municipales</h1>
-<%= link_to fa_icon("plus"), new_internal_path, class: "btn btn-info" %>
+<%= link_to icon('fas',"plus"), new_internal_path, class: "btn btn-info" %>
 <table class="table table-sm table-striped table-hover display responsive no-wrap" id="table-internals">
   <thead class="thead-dark">
     <tr>
@@ -32,9 +32,9 @@
             </div>
           </div>
         -->
-          <%= link_to fa_icon("eye"), internal_path(:id => i.id), remote: true, class: "btn btn-info" %>
-          <%= link_to fa_icon("pencil"), edit_internal_path(i), class: "btn btn-warning" %>
-          <%= link_to fa_icon("trash"), internal_path(i), method: :delete, class: "btn btn-danger" %>
+          <%= link_to icon('fas',"eye"), internal_path(:id => i.id), remote: true, class: "btn btn-info" %>
+          <%= link_to icon('fas',"pencil"), edit_internal_path(i), class: "btn btn-warning" %>
+          <%= link_to icon('fas',"trash"), internal_path(i), method: :delete, class: "btn btn-danger" %>
         </div>
       </td>
     </tr>

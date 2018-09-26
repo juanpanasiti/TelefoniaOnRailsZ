@@ -1,53 +1,51 @@
-<div class="">
-  <h3>Oficinas (<%= @offices.count %>)</h3>
-  <%= link_to fa_icon("plus"), new_office_path, class: "btn btn-info" %>
-  <table class="table table-striped table-hover table-sm" id="table-offices">
-    <thead class="thead-inverse">
-      <tr>
-        <th class=""> Categoría </th>
-        <th class=""> Nombre </th>
-        <th class=""> Pertenece a </th>
-        <th class=""> Líneas </th>
-        <th class=""> Opciones </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @offices.each do |o| %>
-      <tr>
-        <td class="center-text-v"> <%= o.category %> </td>
-        <td class="center-text-v"> <%= o.get_name %> </td>
-        <td class="center-text-v"> <%= o.get_parent_name %> </td>
-        <td class="center-text-v"> <%= o.get_lines.count %> </td>
+<h1>Oficinas <small><%= link_to "ir a usuarios", people_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
+<%= link_to icon('fas',"plus"), new_office_path, class: "btn btn-info" %>
+<table class="table table-striped table-hover table-sm display responsive no-wrap" id="table-offices">
+  <thead class="thead-inverse">
+    <tr>
+      <th class=""> Categoría </th>
+      <th class=""> Nombre </th>
+      <th class=""> Pertenece a </th>
+      <th class=""> Líneas </th>
+      <th class=""> Opciones </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offices.each do |o| %>
+    <tr>
+      <td class="center-text-v"> <%= o.category %> </td>
+      <td class="center-text-v"> <%= o.get_name %> </td>
+      <td class="center-text-v"> <%= o.get_parent_name %> </td>
+      <td class="center-text-v"> <%= o.get_lines.count %> </td>
 
-        <td class="center-text-v">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Dropdown link</a>
-                <a class="dropdown-item" href="#">Dropdown link</a>
-              </div>
+      <td class="center-text-v">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Dropdown link</a>
+              <a class="dropdown-item" href="#">Dropdown link</a>
             </div>
-            <%= link_to fa_icon("eye"), "#office-info-#{o.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
-            <%= link_to fa_icon("pencil"), edit_office_path(o), class: "btn btn-warning" %>
-            <%= link_to fa_icon("trash"), office_path(o), method: :delete, class: "btn btn-danger" %>
           </div>
-          <%= render "offices/show_office", office: o %>
-        </td>
-      </tr>
-      <!--
-      -->
-      <% end %>
-    </tbody>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('#table-offices').DataTable( {
-        responsive: true
-      } );
-    });
-    </script>
-  </table>
-  <%= link_to fa_icon("plus"), new_office_path, class: "btn btn-info" %>
-</div>
+          <%= link_to icon('fas',"eye"), "#office-info-#{o.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+          <%= link_to icon('fas',"edit"), edit_office_path(o), class: "btn btn-warning" %>
+          <%= link_to icon('fas',"trash"), office_path(o), method: :delete, class: "btn btn-danger" %>
+        </div>
+        <%= render "offices/show_office", office: o %>
+      </td>
+    </tr>
+    <!--
+    -->
+    <% end %>
+  </tbody>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#table-offices').DataTable( {
+      responsive: true
+    } );
+  });
+  </script>
+</table>
+<%= link_to icon('fas',"plus"), new_office_path, class: "btn btn-info" %>

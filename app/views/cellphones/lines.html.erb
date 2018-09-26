@@ -1,8 +1,21 @@
-
-<h3>Líneas Celulares</h3>
+<h1>Líneas Celulares <small><%= link_to "ir a planes", cellphones_plans_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
 <%= link_to new_line_path, class: "btn btn-primary" do %>
   <%= icon('fas','plus') %>
 <% end %>
+<p>
+  <p class="filter-table">Filter: <input type="search" placeholder="search this table" name=""></p>
+  <a href="#" class="fill-filter">search term</a>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#table-lines").dataTable();
+  });
+</script>
+</p>
+<script type="text/javascript">
+$('table').filterTable({
+  filterExpression: 'filterTableFindAll'
+});
+</script>
 <table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-lines">
   <thead class="thead-dark">
     <tr>

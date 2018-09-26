@@ -1,7 +1,5 @@
-<%= content_for :menu do %>
-  <%= render "menu" %>
-<% end %>
-<%= link_to fa_icon("plus"), new_device_model_path, class:'btn btn-info' %>
+<h1>Modelos celulares <small><%= link_to "ir a equipos", cellphones_devices_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
+<%= link_to icon('fas',"plus"), new_device_model_path, class:'btn btn-info' %>
 
 <table class="table table-striped table-hover display responsive no-wrap" id="table-models" >
   <thead class="thead-inverse">
@@ -14,6 +12,7 @@
       <th>Categoría</th>
       <th>Banda</th>
       <th>OS</th>
+      <th>Cant.</th>
       <th>Opciones</th>
     </tr>
   </thead>
@@ -29,6 +28,7 @@
         <td class="center-text-v"><%= device_model.category %></td>
         <td class="center-text-v"><%= device_model.band %></td>
         <td class="center-text-v"><%= device_model.os %></td>
+        <td class="center-text-v"><%= device_model.devices.count %></td>
         <td class="center-text-v">
           <div class="btn-group" role="group" aria-label="Basic example">
             <div class="btn-group" role="group">
@@ -40,8 +40,8 @@
                 <a class="dropdown-item" href="#">Dropdown link</a>
               </div>
             </div>
-            <%= link_to fa_icon("eye"), "#device_model-info-#{device_model.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
-            <%= link_to fa_icon("pencil"), edit_device_model_path(device_model), class: "btn btn-warning" %>
+            <%= link_to icon('fas',"eye"), "#device_model-info-#{device_model.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
+            <%= link_to icon('fas',"pencil"), edit_device_model_path(device_model), class: "btn btn-warning" %>
           </div>
         </td>
       </tr>
@@ -58,4 +58,4 @@
 
 <br>
 
-<%= link_to fa_icon("plus"), new_device_model_path, class:'btn btn-info' %>
+<%= link_to icon('fas',"plus"), new_device_model_path, class:'btn btn-info' %>

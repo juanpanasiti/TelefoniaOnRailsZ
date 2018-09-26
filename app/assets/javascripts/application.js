@@ -16,10 +16,10 @@
 //= require froala_editor.min.js
 //= require popper
 //= require bootstrap-sprockets
-//= require dataTables/jquery.dataTables
-//= require dataTables/extras/dataTables.responsive
-// require settings
+// require dataTables/jquery.dataTables
+// require dataTables/extras/dataTables.responsive
 // require turbolinks
+// require datatables
 //= require_tree .
 
 

@@ -24,6 +24,7 @@ class LinesController < ApplicationController
 
   def edit
     @le_titule = "Editar #{@line.number}"
+    @devices = Device.all
     #code
   end
   def update
