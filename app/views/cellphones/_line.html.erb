@@ -1,5 +1,5 @@
 <div class="modal fade" id="line-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><%= @line.number %> - <%= @line.get_user_full_name %></h5>
@@ -9,33 +9,80 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+          <!-- DATOS DE LA LINEA -->
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
             <ul class="list-group">
-              <li class="list-group-item list-group-item-primaryrbenv "> Datos de línea</li>
-              <li class="list-group-item"><strong>Estado:</strong>
+              <li class="list-group-item text-white bg-success "> Datos de línea</li>
+              <li class="list-group-item list-group-item-info"><strong>Estado:</strong>
                 <span class="badge badge-pill badge-<%= raw @line.get_badge_class_to_state%>"> <%= @line.state %> </span>
               </li>
-              <li class="list-group-item"><strong>Tipo de SIM:</strong>
+              <li class="list-group-item list-group-item-success"><strong>Aclaración:</strong>
+                <span> <%= @line.clarification %> </span>
+              </li>
+              <li class="list-group-item list-group-item-success"><strong>Plan:</strong>
+                <span> <%= @line.get_plan %> </span>
+              </li>
+              <li class="list-group-item list-group-item-success"><strong>Tipo de SIM:</strong>
                 <span> <%= @line.type_sim %> </span>
               </li>
-              <li class="list-group-item"><strong>Servicios:</strong>
-                <span> <%= @line.has_inet %> </span>
-              </li>
-              <li class="list-group-item"> <strong>Lím. Offnet:</strong>
-                <span class="badge badge-pill badge-secondary"><%= @line.limit_offnet %></span> minutos
-              </li>
-              <li class="list-group-item"><strong>Check:</strong>
+
+              <li class="list-group-item list-group-item-success"><strong>Check:</strong>
                 <span> <%= (formated_date @line.check_date) + " (#{calculate_time_ago(@line.check_date)})" %> </span>
               </li>
-              <li class="list-group-item"><strong>Cuenta:</strong>
+              <li class="list-group-item list-group-item-success"><strong>Cuenta:</strong>
                 <span> <%= @line.bill_account %> </span>
               </li>
-              <li class="list-group-item">
-              </li>
+
             </ul>
           </div>
 
-        
+          <!-- DATOS DEL USUARIO -->
+          <% if @user %>
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <ul class="list-group">
+              <li class="list-group-item text-white bg-info "> Datos de Usuario</li>
+              <li class="list-group-item list-group-item-info"><strong>DNI:</strong>
+                <span class=""> <%= @user.get_dni_formated %> </span>
+              </li>
+              <li class="list-group-item list-group-item-info"><strong>Oficina:</strong>
+                <span> <%= @user.get_office_full_name %> </span>
+              </li>
+            </ul>
+          </div>
+          <% end %>
+
+          <!-- DATOS DEL EQUIPO -->
+          <% if @device %>
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+            <ul class="list-group">
+              <li class="list-group-item text-white bg-primary"> Datos del Equipo </li>
+              <% if @device.is_personal %>
+              <li class="list-group-item list-group-item-danger"><strong>EQUIPO PROPIO DEL USUARIO</strong></li>
+              <% end %>
+              <li class="list-group-item list-group-item-info"><strong>Modelo:</strong>
+                <span> <%= @device.get_full_model_name %> </span>
+              </li>
+              <li class="list-group-item list-group-item-info"><strong>IMEI:</strong>
+                <span> <%= @device.get_imei %> </span>
+              </li>
+              <li class="list-group-item list-group-item-info"><strong>Estado:</strong>
+                <span> <%= @device.state %> </span>
+              </li>
+              <% unless @device.failure.blank? %>
+                <li class="list-group-item list-group-item-warning"><strong>Falla:</strong>
+                  <span> <%= @device.failure %> </span>
+                </li>
+              <% end %>
+              <li class="list-group-item list-group-item-info"><strong>Últ. Check:</strong>
+                <span> <%= formated_date @device.check_date %> (<%= calculate_time_ago @device.check_date %>) </span>
+              </li>
+
+            </ul>
+          </div>
+          <% end %>
+
+
         </div>
       </div> <!-- END modal-body -->
 

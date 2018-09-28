@@ -1,24 +1,18 @@
 <%= simple_form_for @line do |l| %>
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
       <%= l.input :number, label:'N° Línea', wrapper_html: { class: ''},
                           input_html: {class: "", pattern: '-?[0-9]*(\.[0-9]+)?'},
                           label_html: { class: ""} %>
 
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
       <%= l.input :state, label:'Estado', collection: @state_options, include_blank: false,
       wrapper_html: { class: ''},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
-      <%= l.input :type_sim, label:'Tipo SIM', collection: @type_sim_options, include_blank: false,
-      wrapper_html: { class: ''},
-      input_html: {class: ""},
-      label_html: { class: ""} %>
-    </div>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
       <%= l.input :bill_account, label:'Cuenta', collection: @bill_account_options, include_blank: false,
       wrapper_html: { class: ''},
       input_html: {class: ""},
@@ -37,38 +31,24 @@
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-      <%= l.input :vpn_link, label:'Link de la VPN', wrapper_html: { class: ' fullwide'},
-      input_html: {class: ""},
-      label_html: { class: ""} %>
-    </div>
   </div>
 
   <div class="row">
-      <%= l.input :check_date, label:'Check', as: :date, html5: true, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>
 
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
-      <%= l.input :has_inet, label:'Pack Inet', collection: @has_inet_options, include_blank: false,
-      wrapper_html: { class: ''},
-      input_html: {class: ""},
-      label_html: { class: ""} %>
-    </div>
+    <%= l.input :check_date, label:'Check', as: :date, html5: true, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>
 
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-2 col-xl-2">
       <%= l.input :plan_id, label:'Plan', collection: @plan_options, include_blank: true,
       wrapper_html: { class: ''},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
 
-    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-1">
-      <%= l.input :limit_offnet, label:'Minutos', wrapper_html: { class: ''},
-      input_html: {class: "", min:'-1', value:"#{@line.limit_offnet}"},
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-2">
+      <%= l.input :type_sim, label:'Tipo SIM', collection: @type_sim_options, include_blank: false,
+      wrapper_html: { class: ''},
+      input_html: {class: ""},
       label_html: { class: ""} %>
-    </div>
-
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3">
-      <%= l.input :has_sms_pack, label:'Pack SMS' %>
     </div>
   </div>
 <div class="row">

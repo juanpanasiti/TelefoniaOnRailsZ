@@ -15,13 +15,7 @@
     wrapper_html: { class: 'col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-2'},
     input_html: {class: ""},
     label_html: { class: ""} %>
-    <%= l.input :date_limit, label:'Fecha límite', as: :date_time_picker, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-2'}, input_html: { data:
-      {
-        date_format: "DD/MMMM/YYYY",
-        date_view_mode: 'days',
-        date_show_today_button: true
-      }
-      } %>
+    <%= l.input :date_limit, label:'Fecha límite', as: :date, wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-2'} %>
   </div>
 
 
@@ -35,7 +29,7 @@
 
 <div class="form-actions">
   <%= l.button :submit, 'Guardar', class:'btn btn-success btn-lg' %>
-  <%= link_to fa_icon("thumbs-down", text: "Cancelar"), tasks_path, class: "btn btn-danger btn-lg" %>
+  <%= link_to icon('fas',"thumbs-down", text: "Cancelar"), tasks_path, class: "btn btn-danger btn-lg" %>
 </div>
 
 <% end %>

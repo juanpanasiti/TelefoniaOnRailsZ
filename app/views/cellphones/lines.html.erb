@@ -2,21 +2,8 @@
 <%= link_to new_line_path, class: "btn btn-primary" do %>
   <%= icon('fas','plus') %>
 <% end %>
-<p>
-  <p class="filter-table">Filter: <input type="search" placeholder="search this table" name=""></p>
-  <a href="#" class="fill-filter">search term</a>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#table-lines").dataTable();
-  });
-</script>
-</p>
-<script type="text/javascript">
-$('table').filterTable({
-  filterExpression: 'filterTableFindAll'
-});
-</script>
-<table class="table table-sm table-striped table-responsive table-hover display responsive no-wrap" id="table-lines">
+
+<table class="table table-sm table-striped table-hover display responsive no-wrap" id="table-lines">
   <thead class="thead-dark">
     <tr>
       <th class=""> # </th>

@@ -11,13 +11,7 @@
       <%= f.input :is_personal, label:'Equipo personal' %>
     </div>
     <div class="row">
-      <%= f.input :check_date, label:'Check', as: :date_time_picker, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'}, input_html: { data:
-            {
-              date_format: "DD/MMMM/YYYY",
-              date_view_mode: 'days',
-              date_show_today_button: true
-            }
-            } %>
+      <%= f.input :check_date, label:'Check', as: :date, html5: true, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>
       <%= f.input :state, label:'Estado', collection: @state_options, wrapper_html: {class:'col-xs-12 col-sm-6 col-md-6 col-lg-2'} %>
       <%= f.input :failure, label:'Falla', wrapper_html: {class:'col-xs-12 col-sm-12 col-md-6 col-lg-6'} %>
     </div>
@@ -29,6 +23,6 @@
 
   <div class="form-actions">
     <%= f.button :submit, button, class:'btn btn-success btn-lg' %>
-    <%= link_to fa_icon("thumbs-down", text: "Cancelar"), cellphones_devices_path, class: "btn btn-danger btn-lg" %>
+    <%= link_to icon('fas',"thumbs-down", "Cancelar"), cellphones_devices_path, class: "btn btn-danger btn-lg" %>
   </div>
 <% end %>

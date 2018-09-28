@@ -29,6 +29,8 @@ class CellphonesController < ApplicationController
 
   def show_line
     @line = Line.find(params[:id])
+    @user = @line.person.present? ? @line.person : nil
+    @device = @line.device.present? ? @line.device : nil
     @le_titule = "Ver línea #{@line.number}"
   end
 

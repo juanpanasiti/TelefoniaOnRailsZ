@@ -21,6 +21,10 @@ class Device < ApplicationRecord
     end
   end
   ########## METHODS
+  def get_imei
+    #Devuelve el IMEI con formato ######-##-######-#
+    return self.imei.insert(14,'-').insert(8,'-').insert(6  ,'-')
+  end
   def get_line
     #Devuelve el número de línea en caso de estar asociado a una
     return self.line.present? ? self.line.number : ''

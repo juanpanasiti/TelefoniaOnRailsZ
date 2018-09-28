@@ -33,7 +33,7 @@
           </div>
         -->
           <%= link_to icon('fas',"eye"), internal_path(:id => i.id), remote: true, class: "btn btn-info" %>
-          <%= link_to icon('fas',"pencil"), edit_internal_path(i), class: "btn btn-warning" %>
+          <%= link_to icon('fas',"edit"), edit_internal_path(i), class: "btn btn-warning" %>
           <%= link_to icon('fas',"trash"), internal_path(i), method: :delete, class: "btn btn-danger" %>
         </div>
       </td>
