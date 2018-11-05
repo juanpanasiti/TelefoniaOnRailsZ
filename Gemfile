@@ -72,3 +72,4 @@ gem 'wysiwyg-rails', '~> 2.8', '>= 2.8.4' #Updated 28/08/2018
 #gem 'chosen-rails', '~> 1.8', '>= 1.8.7' # For filter in selects #Updated 28/08/2018
 gem 'bootstrap-chosen-rails'
 gem 'devise', '~> 4.5' #Updated 28/08/*2018
+gem 'cocoon', '~> 1.2', '>= 1.2.12' #Added 05/11/2018

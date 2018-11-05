@@ -12,12 +12,14 @@ class Internal < ApplicationRecord
     name = "#{i_name} (#{i_aclaration})"
     return name
   end
-
+  def get_short_number
+    return (self.number.present? ? self.number : "N/A")
+  end
   def get_number
     number = ''
     i_prefix = self.prefix.present? ? self.prefix : "N/A"
     i_number = self.number.present? ? self.number : "N/A"
-    number = i_prefix + i_number
+    number = "(#{i_prefix}) #{i_number}"
     return number
   end
 

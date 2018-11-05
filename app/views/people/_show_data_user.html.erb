@@ -1,25 +1,32 @@
-<ul>
-  <li>
-    <strong>Apellido:</strong>
-    <%= user.lastname %>
-  </li>
-  <li>
-    <strong>Nombre:</strong>
-    <%= user.name %>
-  </li>
-  <li>
-    <strong>DNI:</strong>
-    <%= user.get_dni_formated %>
-  </li>
-  <li>
-    <strong>Oficina:</strong>
-    <% if user.office.present? %>
-      <%= user.office.get_full_name %>
-    <% else %>
-      No hay datos de la oficina.
+<h3>Oficina</h3>
+<p>
+  <% if user.office.present? %>
+    <%= user.office.get_full_name %>
+  <% else %>
+    No hay datos de la oficina.
+  <% end %>
+</p>
+<h3>Datos de contacto</h3>
+<% if user.get_emails.count > 0 %>
+<h5>Cuentas de correo</h5>
+  <% user.get_emails.each do |account| %>
+    <p title="<%= raw account.pass %>"> <%= account.email %> </p>
+  <% end %>
+<% end %>
+<% if user.get_lines.count > 0 || (user.office.present? && (user.office.get_internals.count > 0))%>
+<h5>Números de contacto</h5>
+  <% user.lines.each do |line| %>
+    <p> <%= line.get_formated_number %> — <%= line.get_plan %> — <%= line.get_device_name %> — Check: <%= line.check_date_formatted %> </p>
+  <% end %>
+  <% if user.office.present? && user.office.get_internals.count > 0 %>
+    <% user.office.get_internals.each do |internal| %>
+      <p> <%= internal.get_number %> — <%= internal.get_kind %></p>
     <% end %>
-  </li>
-</ul>
-
-
-<%= user.footnote %>
+  <% end %>
+<% end %>
+<% unless user.footnote.blank? %>
+<p>
+  <h3>Aclaraciones</h3>
+  <%= user.footnote %>
+</p>
+<% end %>

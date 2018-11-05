@@ -1,5 +1,8 @@
 class Person < ApplicationRecord
   has_many :lines
+  has_many :devices, through: :lines
+  has_many :mail_accounts, inverse_of: :person
+  accepts_nested_attributes_for :mail_accounts, reject_if: :all_blank, allow_destroy: true
   belongs_to :office, optional: true
 
   ########## VALIDATIONS
@@ -32,6 +35,15 @@ class Person < ApplicationRecord
     else
       return 'S/D'
     end
+  end
+  def get_lines_devices_count
+    return "#{self.lines.count}/#{self.devices.count}"
+  end
+  def get_emails
+    return self.mail_accounts
+  end
+  def get_lines
+    return self.lines
   end
   ########## CLASS METHODS
   def self.get_users_options

@@ -5,6 +5,7 @@
     <tr>
       <th class=""> Nombre </th>
       <th class=""> DNI </th>
+      <th class=""> Lin./Eq. </th>
       <th class=""> Oficina </th>
       <th class=""> Opciones </th>
     </tr>
@@ -14,6 +15,7 @@
       <tr>
         <td class=""> <%= user.get_full_name %> </td>
         <td class=""> <%= user.get_dni_formated %> </td>
+        <td class=""> <%= user.get_lines_devices_count %> </td>
         <td class=""> <%= abreviate_names user.get_office_full_name %> </td>
         <td class="center-text-v">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -22,7 +24,7 @@
               <div class="dropdown-menu" aria-labelledby="otherOptions">
                 <% if user.lines.count > 0 %>
                   <% user.lines.each do |line| %>
-                  <%= link_to icon('fas',"phone", text: "#{line.number} #{line.clarification}"), edit_line_path(line), class: "dropdown-item" %>
+                  <%= link_to icon('fas',"phone", "#{line.number} #{line.clarification}"), edit_line_path(line), class: "dropdown-item" %>
                   <% end %>
                 <% end %>
               </div>

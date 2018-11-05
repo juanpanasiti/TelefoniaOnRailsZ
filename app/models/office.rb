@@ -3,6 +3,7 @@ class Office < ApplicationRecord
   has_many :suboffices, class_name: 'Office', foreign_key: 'parent_id'
   has_many :users, class_name: 'Person'
   has_many :lines, through: :users #, source: :person
+  has_many :internals
 
   ############### VALIDATIONS
   validates_presence_of :name
@@ -81,6 +82,10 @@ class Office < ApplicationRecord
     return lines
   end
 
+  def get_internals
+    return self.internals
+  end
+  
   ############### CLASS METHODS
   def self.get_parent_options
     options = [['N/A',nil]]

@@ -1,29 +1,29 @@
-<%= simple_form_for @user do |l| %>
+<%= simple_form_for @user do |f| %>
 
   <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-3 col-lg-2">
-      <%= l.input :lastname, label:'Apellido', wrapper_html: { class: ' fullwide'},
+      <%= f.input :lastname, label:'Apellido', wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
     <div class="col-xs-12 col-sm-7 col-md-4 col-lg-3">
-      <%= l.input :name, label:'Nombre', wrapper_html: { class: ' fullwide'},
+      <%= f.input :name, label:'Nombre', wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-      <%= l.input :dni, label:'N° DNI', wrapper_html: { class: ' fullwide'},
+      <%= f.input :dni, label:'N° DNI', wrapper_html: { class: ' fullwide'},
       input_html: {class: ""},
       label_html: { class: ""} %>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
-      <%= l.input :alert, label:'Resaltar', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
+      <%= f.input :alert, label:'Resaltar', wrapper_html: { class: 'col-xs-12 col-sm-6 col-md-4 col-lg-2' } %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <%= l.input :office_id, label:'Oficina', collection: @office_options, wrapper_html: { class: ' fullwide'},
+      <%= f.input :office_id, label:'Oficina', collection: @office_options, wrapper_html: { class: ' fullwide'},
       input_html: {class: "chosen-select"},
       label_html: { class: ""} %>
     </div>
@@ -31,13 +31,20 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <%= l.input :footnote, label:'Notas', wrapper_html: { class: ' fullwide'},
+        <%= f.input :footnote, label:'Notas', wrapper_html: { class: ' fullwide'},
                                                               input_html: {class: "text-monospace", rows:'6'},
                                                               label_html: { class: ""} %>
     </div>
   </div>
-
-
-  <%= l.button :submit, 'OK', class: "btn btn-success" %>
+    <h3>Cuentas de E-mail</h3>
+    <div id="mail_accounts" >
+      <%= f.simple_fields_for :mail_accounts do |ma| %>
+        <%= render 'mail_account_fields', :f => ma %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association icon('fas','at','+'), f, :mail_accounts, class:'btn btn-primary' %>
+      </div>
+    </div>
+  <%= f.button :submit, 'OK', class: "btn btn-success" %>
   <%= link_to icon('fas',"back","Cancelar"), people_path, class: "btn btn-warning" %>
 <% end %>

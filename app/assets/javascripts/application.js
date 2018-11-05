@@ -19,6 +19,7 @@
 // require dataTables/jquery.dataTables
 // require dataTables/extras/dataTables.responsive
 // require turbolinks
+//= require cocoon
 // require datatables
 //= require_tree .
 

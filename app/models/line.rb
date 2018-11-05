@@ -17,6 +17,10 @@ class Line < ApplicationRecord
   scope :saved, -> { where(state: 'Guardada')}
   scope :on_loan, -> { where(state: 'Prestada')}
   ########## METHODS
+  def get_formated_number
+    number = self.number.insert(6,'-').insert(3,')').insert(0,'(')
+    return number
+  end
   def get_plan
     plan_name = 'No definido'
     if self.plan.present?
@@ -103,6 +107,15 @@ class Line < ApplicationRecord
       date = self.check_date.strftime("%d-%m-%y")
     end
     return date
+  end
+
+  def get_device_name
+    device = self.get_device
+    unless device.nil? || device.device_model.nil?
+      return device.get_device_name
+    else
+      return "Sin Equipo asociado"
+    end
   end
   ########## CLASS METHODS
   def self.get_full_table(url_csv)
