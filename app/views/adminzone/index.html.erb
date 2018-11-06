@@ -1,0 +1,44 @@
+<h1>Adminzone</h1>
+<div class="row">
+
+<% @admins.each do |admin| %>
+<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+  <ul class="list-group">
+    <li class="list-group-item text-white bg-success "><strong> <%= admin.email %></strong></li>
+    <li class="list-group-item list-group-item-success"><strong>Nivel de Acceso:</strong>
+      <span> <%= admin.access_level %> </span>
+    </li>
+    <li class="list-group-item list-group-item-success"><strong>Inicios de sesión:</strong>
+      <span> <%= admin.sign_in_count %> </span>
+    </li>
+    <li class="list-group-item list-group-item-success"><strong>Sesión actual:</strong>
+      <span> <%= admin.current_sign_in_at %> </span> <br>
+      <span> <%= admin.current_sign_in_ip %> </span>
+    </li>
+    <li class="list-group-item list-group-item-success"><strong>Ultimo inicio de sesión:</strong>
+      <span> <%= admin.last_sign_in_at %> </span> <br>
+      <span> <%= admin.last_sign_in_ip %> </span>
+    </li>
+    <li class="list-group-item list-group-item-success"><strong>Usuario desde:</strong>
+      <span> <%= admin.created_at %> </span>
+    </li>
+    <li class="list-group-item list-group-item-success">
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <%= raw (admin.access_level == 3 && @superadmins.count < 2) ? 'disabled' : '' %> >
+          Cambiar acceso
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <%= link_to "Nivel 0", adminzone_change_access_path(id: admin.id, new_lvl: 0), method: :post, class: "dropdown-item lvl0" %>
+          <%= link_to "Nivel 1", adminzone_change_access_path(id: admin.id, new_lvl: 1), method: :post, class: "dropdown-item lvl1" %>
+          <%= link_to "Nivel 2", adminzone_change_access_path(id: admin.id, new_lvl: 2), method: :post, class: "dropdown-item lvl2" %>
+          <%= link_to "Nivel 3", adminzone_change_access_path(id: admin.id, new_lvl: 3), method: :post, class: "dropdown-item lvl3" %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item list-group-item-success">
+      <%= link_to "Resetear Contraseña", adminzone_reset_pass_path(id: admin.id), method: :post, class: "btn btn-danger" %>
+    </li>
+  </ul>
+</div>
+<% end %>

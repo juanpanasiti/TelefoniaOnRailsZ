@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'adminzone/index'
+  post 'adminzone/change_access'
+  post 'adminzone/reset_pass'
+
   get 'plans/new'
 
   get 'cellphones/lines'

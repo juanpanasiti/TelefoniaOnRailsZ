@@ -30,6 +30,22 @@
   }
 }
 // REFACTOR SET18
+.dropdown-menu > a.lvl0:hover {
+    background-color: #d70e17;
+    background-image: none;
+}
+.dropdown-menu > a.lvl1:hover {
+    background-color: #d7f217;
+    background-image: none;
+}
+.dropdown-menu > a.lvl2:hover {
+    background-color: #339933;
+    background-image: none;
+}
+.dropdown-menu > a.lvl3:hover {
+    background-color: #0099cc;
+    background-image: none;
+}
 nav a{
   height: 70px;
 }

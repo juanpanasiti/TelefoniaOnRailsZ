@@ -84,6 +84,10 @@
               <li class="list-group-item list-group-item-primary"><strong>Estado:</strong>
                 <span> <%= @device.state %> </span>
               </li>
+              <li class="list-group-item list-group-item-primary"><strong>Fecha entrega:</strong>
+                <span> <%= @device.state %> </span>
+                <span> <%= (formated_date @device.check_date) + " (#{calculate_time_ago(@device.check_date)})" %> </span>
+              </li>
               <% unless @device.failure.blank? %>
                 <li class="list-group-item list-group-item-warning"><strong>Falla:</strong>
                   <span> <%= @device.failure %> </span>

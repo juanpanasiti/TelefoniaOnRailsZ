@@ -93,6 +93,16 @@
             </div>
             <% end %>
           </li>
+          <% unless current_admin.access_level < 3 %>
+          <li class="nav-item">
+            <%= link_to(adminzone_index_path, class: "nav-link btn") do %>
+            <%= icon('fas','user-tie', class: "fa-2x") %>
+            <div class="">
+              AdminZone
+            </div>
+            <% end %>
+          </li>
+          <% end %>
         <% end %>
         <li class="nav-item">
           <%= link_to(about_path, class: "nav-link btn") do %>
@@ -107,6 +117,22 @@
     </nav>
 
     <div class="container-fluid">
+      <% if notice %>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>INFO: </strong> <%= notice %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <% end %>
+      <% if alert %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>ALERT: </strong> <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <% end %>
       <%= yield %>
     </div>
 

@@ -37,10 +37,10 @@
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <% if line.person.present? %>
                   <%= link_to icon('fas',"user", "Editar Usuario"), edit_person_path(line.person), class: "dropdown-item" %>
-                  <%= link_to icon('fas','check','Check línea'), check_today_line_url(line), class: "dropdown-item", remote: true %>
                 <% end %>
               </div>
             </div>
+            <%= link_to icon('fas','check'), check_today_line_url(line), class: "btn btn-success", remote: true %>
             <%= link_to icon('fas',"eye"), cellphones_show_line_path(:id => line.id), remote: true, class: "btn btn-info" %>
             <%= link_to icon('fas',"pen"), edit_line_path(line), class: "btn btn-warning" %>
           </div>
