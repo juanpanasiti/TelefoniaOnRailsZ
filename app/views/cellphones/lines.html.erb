@@ -9,7 +9,6 @@
       <th class=""> # </th>
       <th class=""> Número </th>
       <th class=""> Usuario </th>
-      <th class=""> Equipo </th>
       <th class=""> Oficina </th>
       <th class=""> Estado </th>
       <th class=""> Plan </th>
@@ -24,8 +23,7 @@
         <td class="center-text-v"> <%= line.id %> </td>
         <td class="center-text-v"> <%= line.number %> </td>
         <td class="center-text-v"> <%= line.get_user_full_name %> </td>
-        <td class="center-text-v"> <%= "Equipo" %> </td>
-        <td class="center-text-v"> <%= "Dirección/Secretaría" %> </td>
+        <td class="center-text-v"> <%= line.get_principal_office_name %> </td>
         <td class="center-text-v"> <%= line.state %> </td>
         <td class="center-text-v"> <%= line.get_plan %> </td>
         <td class="center-text-v" id="timeAgo<%= raw line.id %>"> <%= calculate_time_ago(line.check_date) %> </td>

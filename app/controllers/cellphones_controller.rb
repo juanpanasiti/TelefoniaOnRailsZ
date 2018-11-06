@@ -4,7 +4,7 @@ class CellphonesController < ApplicationController
 
   def lines
     @le_titule = "Líneas"
-    @lines = Line.current_lines
+    @lines = Line.current_lines.order('number ASC')
   end
 
   def plans

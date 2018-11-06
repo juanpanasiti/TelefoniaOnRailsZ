@@ -13,7 +13,7 @@
           <!-- DATOS DE LA LINEA -->
           <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
             <ul class="list-group">
-              <li class="list-group-item text-white bg-success "> Datos de línea</li>
+              <li class="list-group-item text-white bg-success "><strong> Datos de línea</strong></li>
               <li class="list-group-item list-group-item-info"><strong>Estado:</strong>
                 <span class="badge badge-pill badge-<%= raw @line.get_badge_class_to_state%>"> <%= @line.state %> </span>
               </li>
@@ -41,12 +41,27 @@
           <% if @user %>
           <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
             <ul class="list-group">
-              <li class="list-group-item text-white bg-info "> Datos de Usuario</li>
+              <li class="list-group-item text-white bg-info "><strong> Datos de Usuario</strong></li>
               <li class="list-group-item list-group-item-info"><strong>DNI:</strong>
                 <span class=""> <%= @user.get_dni_formated %> </span>
               </li>
               <li class="list-group-item list-group-item-info"><strong>Oficina:</strong>
                 <span> <%= @user.get_office_full_name %> </span>
+              </li>
+              <% if @user.get_emails.count > 0 %>
+              <li class="list-group-item list-group-item-info"><strong>Cuentas de correo:</strong>
+                <% @user.get_emails.each do |account| %>
+                <p title="<%= raw account.pass %>"> <%= account.email %> </p>
+                <% end %>
+              </li>
+              <% end %>
+              <li class="list-group-item list-group-item-info">
+                <strong>Otros tel. de contacto:</strong>
+                <% if @user.office.present? && @user.office.get_internals.count > 0 %>
+                  <% @user.office.get_internals.each do |internal| %>
+                    <p> <%= internal.get_number %> — <%= internal.get_kind %></p>
+                  <% end %>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -56,17 +71,17 @@
           <% if @device %>
           <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
             <ul class="list-group">
-              <li class="list-group-item text-white bg-primary"> Datos del Equipo </li>
+              <li class="list-group-item text-white bg-primary"> <strong>Datos del Equipo </strong></li>
               <% if @device.is_personal %>
               <li class="list-group-item list-group-item-danger"><strong>EQUIPO PROPIO DEL USUARIO</strong></li>
               <% end %>
-              <li class="list-group-item list-group-item-info"><strong>Modelo:</strong>
+              <li class="list-group-item list-group-item-primary"><strong>Modelo:</strong>
                 <span> <%= @device.get_full_model_name %> </span>
               </li>
-              <li class="list-group-item list-group-item-info"><strong>IMEI:</strong>
+              <li class="list-group-item list-group-item-primary"><strong>IMEI:</strong>
                 <span> <%= @device.get_imei %> </span>
               </li>
-              <li class="list-group-item list-group-item-info"><strong>Estado:</strong>
+              <li class="list-group-item list-group-item-primary"><strong>Estado:</strong>
                 <span> <%= @device.state %> </span>
               </li>
               <% unless @device.failure.blank? %>
@@ -74,9 +89,6 @@
                   <span> <%= @device.failure %> </span>
                 </li>
               <% end %>
-              <li class="list-group-item list-group-item-info"><strong>Últ. Check:</strong>
-                <span> <%= formated_date @device.check_date %> (<%= calculate_time_ago @device.check_date %>) </span>
-              </li>
 
             </ul>
           </div>

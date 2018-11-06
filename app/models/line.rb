@@ -117,6 +117,19 @@ class Line < ApplicationRecord
       return "Sin Equipo asociado"
     end
   end
+
+  def get_principal_office_name
+    oficina = ''
+    if self.person.present?
+      if self.person.office.present?
+        self.person.office.get_name
+      else
+        "S/D"
+      end
+    else
+      "S/D"
+    end
+  end
   ########## CLASS METHODS
   def self.get_full_table(url_csv)
     csv_text = File.read(url_csv, :encoding => 'ISO8859-1').gsub(/\r/, '').gsub('"','') #quitar caracteres
