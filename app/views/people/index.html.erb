@@ -1,50 +1,170 @@
 <h1>Usuarios <small><%= link_to "ir a oficinas", offices_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
 <%= link_to icon('fas',"plus"), new_person_path, class: "btn btn-info" %>
-<table class="table table-sm table-striped table-hover display responsive no-wrap" id="table-people">
-  <thead class="thead-dark">
-    <tr>
-      <th class=""> Nombre </th>
-      <th class=""> DNI </th>
-      <th class=""> Lin./Eq. </th>
-      <th class=""> Oficina </th>
-      <th class=""> Opciones </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td class=""> <%= user.get_full_name %> </td>
-        <td class=""> <%= user.get_dni_formated %> </td>
-        <td class=""> <%= user.get_lines_devices_count %> </td>
-        <td class=""> <%= abreviate_names user.get_office_full_name %> </td>
-        <td class="center-text-v">
-          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-            <div class="btn-group btn-group-sm" role="group">
-              <%= link_to icon('fas',"bars"),'#', {id: "otherOptions", class: "btn btn-secondary dropdown-toggle", 'data-toggle' => 'dropdown'} %>
-              <div class="dropdown-menu" aria-labelledby="otherOptions">
-                <% if user.lines.count > 0 %>
-                  <% user.lines.each do |line| %>
-                  <%= link_to icon('fas',"phone", "#{line.number} #{line.clarification}"), edit_line_path(line), class: "dropdown-item" %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-            <%= link_to icon('fas',"eye"), "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "btn btn-info" %>
-            <%= link_to icon('fas',"edit"), edit_person_path(user), class: "btn btn-warning" %>
-            <%= link_to icon('fas',"trash"), '#', class: "btn btn-danger" %>
-          </div>
 
-        </td>
-      </tr>
-      <%= render "people/show", user: user %>
-    <% end %>
-  </tbody>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $('#table-people').DataTable( {
-      responsive: true
-    } );
-  });
-  </script>
-</table>
-<%= link_to icon('fas',"plus"), new_person_path, class: "btn btn-info" %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="A-tab" data-toggle="tab" href="#A" role="tab" aria-controls="A" aria-selected="true">A</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="B-tab" data-toggle="tab" href="#B" role="tab" aria-controls="B" aria-selected="false">B</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="C-tab" data-toggle="tab" href="#C" role="tab" aria-controls="C" aria-selected="false">C</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="D-tab" data-toggle="tab" href="#D" role="tab" aria-controls="D" aria-selected="false">D</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="E-tab" data-toggle="tab" href="#E" role="tab" aria-controls="E" aria-selected="false">E</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="F-tab" data-toggle="tab" href="#F" role="tab" aria-controls="F" aria-selected="false">F</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="G-tab" data-toggle="tab" href="#G" role="tab" aria-controls="G" aria-selected="false">G</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="H-tab" data-toggle="tab" href="#H" role="tab" aria-controls="H" aria-selected="false">H</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="I-tab" data-toggle="tab" href="#I" role="tab" aria-controls="I" aria-selected="false">I</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="J-tab" data-toggle="tab" href="#J" role="tab" aria-controls="J" aria-selected="false">J</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="K-tab" data-toggle="tab" href="#K" role="tab" aria-controls="K" aria-selected="false">K</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="L-tab" data-toggle="tab" href="#L" role="tab" aria-controls="L" aria-selected="false">L</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="M-tab" data-toggle="tab" href="#M" role="tab" aria-controls="M" aria-selected="false">M</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="N-tab" data-toggle="tab" href="#N" role="tab" aria-controls="N" aria-selected="false">N</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="Ñ-tab" data-toggle="tab" href="#Ñ" role="tab" aria-controls="Ñ" aria-selected="false">Ñ</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="O-tab" data-toggle="tab" href="#O" role="tab" aria-controls="O" aria-selected="false">O</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="P-tab" data-toggle="tab" href="#P" role="tab" aria-controls="P" aria-selected="false">P</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="Q-tab" data-toggle="tab" href="#Q" role="tab" aria-controls="Q" aria-selected="false">Q</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="R-tab" data-toggle="tab" href="#R" role="tab" aria-controls="R" aria-selected="false">R</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="S-tab" data-toggle="tab" href="#S" role="tab" aria-controls="S" aria-selected="false">S</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="T-tab" data-toggle="tab" href="#T" role="tab" aria-controls="T" aria-selected="false">T</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="U-tab" data-toggle="tab" href="#U" role="tab" aria-controls="U" aria-selected="false">U</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="V-tab" data-toggle="tab" href="#V" role="tab" aria-controls="V" aria-selected="false">V</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="W-tab" data-toggle="tab" href="#W" role="tab" aria-controls="W" aria-selected="false">W</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="X-tab" data-toggle="tab" href="#X" role="tab" aria-controls="X" aria-selected="false">X</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="Y-tab" data-toggle="tab" href="#Y" role="tab" aria-controls="Y" aria-selected="false">Y</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="Z-tab" data-toggle="tab" href="#Z" role="tab" aria-controls="Z" aria-selected="false">Z</a>
+  </li>
+
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="A" role="tabpanel" aria-labelledby="A-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("A") %>
+  </div>
+  <div class="tab-pane fade" id="B" role="tabpanel" aria-labelledby="B-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("B") %>
+  </div>
+  <div class="tab-pane fade" id="C" role="tabpanel" aria-labelledby="C-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("C") %>
+  </div>
+  <div class="tab-pane fade" id="D" role="tabpanel" aria-labelledby="D-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("D") %>
+  </div>
+  <div class="tab-pane fade" id="E" role="tabpanel" aria-labelledby="E-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("E") %>
+  </div>
+  <div class="tab-pane fade" id="F" role="tabpanel" aria-labelledby="F-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("F") %>
+  </div>
+  <div class="tab-pane fade" id="G" role="tabpanel" aria-labelledby="G-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("G") %>
+  </div>
+  <div class="tab-pane fade" id="H" role="tabpanel" aria-labelledby="H-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("H") %>
+  </div>
+  <div class="tab-pane fade" id="I" role="tabpanel" aria-labelledby="I-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("I") %>
+  </div>
+  <div class="tab-pane fade" id="J" role="tabpanel" aria-labelledby="J-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("J") %>
+  </div>
+  <div class="tab-pane fade" id="K" role="tabpanel" aria-labelledby="K-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("K") %>
+  </div>
+  <div class="tab-pane fade" id="L" role="tabpanel" aria-labelledby="L-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("L") %>
+  </div>
+  <div class="tab-pane fade" id="M" role="tabpanel" aria-labelledby="M-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("M") %>
+  </div>
+  <div class="tab-pane fade" id="N" role="tabpanel" aria-labelledby="N-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("N") %>
+  </div>
+  <div class="tab-pane fade" id="Ñ" role="tabpanel" aria-labelledby="Ñ-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("Ñ") %>
+  </div>
+  <div class="tab-pane fade" id="O" role="tabpanel" aria-labelledby="O-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("O") %>
+  </div>
+  <div class="tab-pane fade" id="P" role="tabpanel" aria-labelledby="P-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("P") %>
+  </div>
+  <div class="tab-pane fade" id="Q" role="tabpanel" aria-labelledby="Q-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("Q") %>
+  </div>
+  <div class="tab-pane fade" id="R" role="tabpanel" aria-labelledby="R-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("R") %>
+  </div>
+  <div class="tab-pane fade" id="S" role="tabpanel" aria-labelledby="S-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("S") %>
+  </div>
+  <div class="tab-pane fade" id="T" role="tabpanel" aria-labelledby="T-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("T") %>
+  </div>
+  <div class="tab-pane fade" id="U" role="tabpanel" aria-labelledby="U-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("U") %>
+  </div>
+  <div class="tab-pane fade" id="V" role="tabpanel" aria-labelledby="V-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("V") %>
+  </div>
+  <div class="tab-pane fade" id="W" role="tabpanel" aria-labelledby="W-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("W") %>
+  </div>
+  <div class="tab-pane fade" id="X" role="tabpanel" aria-labelledby="X-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("X") %>
+  </div>
+  <div class="tab-pane fade" id="Y" role="tabpanel" aria-labelledby="Y-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("Y") %>
+  </div>
+  <div class="tab-pane fade" id="Z" role="tabpanel" aria-labelledby="Z-tab">
+    <%= render "tablePeople", users: @users.get_lastname_start_with("Z") %>
+  </div>
+</div>

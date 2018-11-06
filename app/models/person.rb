@@ -53,4 +53,9 @@ class Person < ApplicationRecord
     end
     return users.sort
   end
+
+  def self.get_lastname_start_with(letter)
+    users = self.where("lastname LIKE ?", "#{letter}%")
+    return users
+  end
 end

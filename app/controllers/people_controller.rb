@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
   before_action :set_form_options, only: [:new, :create, :edit, :update]
 
   def index
-    @users = Person.all
+    @users = Person.all.order('lastname ASC')
     @le_titule = "Usuarios"
   end
   def new
