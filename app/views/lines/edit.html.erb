@@ -36,7 +36,7 @@
       </div>
       <div class="card-body">
         <% if @line.device.present? %>
-          <%= render "device/form2", button: 'Guardar', device: @line.device %>
+          <%= render "devices/form2", button: 'Guardar', device: @line.device %>
         <% else %>
           <p>
             No tiene equipo asociado
