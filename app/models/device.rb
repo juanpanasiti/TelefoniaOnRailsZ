@@ -61,7 +61,7 @@ class Device < ApplicationRecord
       return 'S/D'
     else
       return self.check_date.strftime("%d/%m/%Y")
-    else
+    end
   end
 
 
