@@ -8,13 +8,13 @@
     <th>Opciones</th>
   </thead>
   <tbody>
-    <% @devices.by_imei.by_mark(mark).each do |dev| %>
+    <% @devices.by_imei .by_mark(mark).each do |dev| %>
     <tr>
       <td class="align-middle"> <%= dev.get_device_name %> </td>
       <td class="align-middle"> <%= dev.get_imei %> </td>
       <td class="align-middle"> <%= dev.get_line %> </td>
       <td class="align-middle"> <%= dev.state %> </td>
-      <td class="align-middle"> <%= dev.check_date.strftime("%d/%m/%Y") %> </td>
+      <td class="align-middle"> <%= dev.get_date %> </td>
       <td class="align-middle">
         <div class="btn-group" role="group" aria-label="Basic example">
           <div class="btn-group" role="group">

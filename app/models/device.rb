@@ -55,6 +55,16 @@ class Device < ApplicationRecord
     end
     return name
   end
+
+  def get_date
+    if self.check_date.nil?
+      return 'S/D'
+    else
+      return self.check_date.strftime("%d/%m/%Y")
+    else
+  end
+
+
   ########## CLASS METHODS
   def self.get_line_options
     lines = []
