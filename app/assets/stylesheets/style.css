@@ -18,3 +18,8 @@
 .fixed-abs {
   position: absolute !important;
 }
+
+.link-no-style{
+  color: black;
+  font-weight: bold;
+}

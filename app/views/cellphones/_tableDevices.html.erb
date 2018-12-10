@@ -1,0 +1,36 @@
+<table class="table table-sm table-striped table-hover display responsive no-wrap">
+  <thead>
+    <th>Modelo</th>
+    <th>IMEI</th>
+    <th>Lín. Asoc.</th>
+    <th>Estado</th>
+    <th>Fecha Entrega</th>
+    <th>Opciones</th>
+  </thead>
+  <tbody>
+    <% @devices.by_imei.by_mark(mark).each do |dev| %>
+    <tr>
+      <td class="align-middle"> <%= dev.get_device_name %> </td>
+      <td class="align-middle"> <%= dev.get_imei %> </td>
+      <td class="align-middle"> <%= dev.get_line %> </td>
+      <td class="align-middle"> <%= dev.state %> </td>
+      <td class="align-middle"> <%= dev.check_date.strftime("%d/%m/%Y") %> </td>
+      <td class="align-middle">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Ver usuario</a>
+              <a class="dropdown-item" href="#">Check</a>
+            </div>
+          </div>
+          <%= link_to icon('fas',"eye"), cellphones_show_device_path(:id => dev.id), remote: true, class: "btn btn-info" %>
+          <%= link_to icon('fas',"edit"), edit_device_path(dev), class: "btn btn-warning" %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

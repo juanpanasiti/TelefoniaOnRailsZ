@@ -1,52 +1,26 @@
 <h1>Equipos celulares <small><%= link_to "ir a modelos", cellphones_models_path, class: "btn btn-sm btn-outline-dark" %></small> </h1>
 
 <%= link_to icon('fas',"plus"), new_device_path, class:'btn btn-info' %>
-<table class="table table-sm table-striped table-hover display responsive no-wrap" id="table-devices">
-  <thead class="thead-inverse">
-    <tr>
-      <th>Modelo</th>
-      <th>IMEI</th>
-      <th>Linea Asoc.</th>
-      <th>Estado</th>
-      <th>Ult. Check</th>
-      <th>Opciones</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @devices.each do |device| %>
-      <tr>
-        <td class="center-text-v"><%= "#{device.device_model.mark.upcase} #{device.device_model.device_name}" %></td>
-        <td class="center-text-v"><%= device.imei %></td>
-        <td class="center-text-v"><%= device.get_line %></td>
-        <td class="center-text-v"><%= device.state %></td>
-        <td class="center-text-v"><%= calculate_time_ago device.check_date %></td>
-        <td class="center-text-v">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Ver usuario</a>
-                <a class="dropdown-item" href="#">Check</a>
-              </div>
-            </div>
-            <%= link_to icon('fas',"eye"), cellphones_show_device_path(:id => device.id), remote: true, class: "btn btn-info" %>
-            <%= link_to icon('fas',"edit"), edit_device_path(device), class: "btn btn-warning" %>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $('#table-devices').DataTable( {
-      responsive: true
-    } );
-  });
-  </script>
-</table>
 
-<br>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">Todos</a>
+  </li>
+  <% @marks.each do |mark| %>
+  <li class="nav-item">
+    <a class="nav-link" id="<%= raw "#{mark.sub(' ','-')}-tab"%>" data-toggle="tab" href="#<%= raw "#{mark.sub(' ','-')}"%>" role="tab" aria-controls="" aria-selected="true"><%= mark %></a>
+  </li>
+  <% end %>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+    <%= render "tableDevices", mark: 'all'  %>
+  </div>
+  <% @marks.each do |mark| %>
+  <div class="tab-pane fade" id="<%= raw "#{mark.sub(' ','-')}"%>" role="tabpanel" aria-labelledby="<%= raw "#{mark.sub(' ','-')}-tab"%>">
+    <%= render "tableDevices", mark: mark  %>
+  </div>
+  <% end %>
+</div>
 <%= link_to icon('fas',"plus"), new_device_path, class:'btn btn-info' %>

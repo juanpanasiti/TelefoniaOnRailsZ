@@ -12,7 +12,7 @@
   <tbody>
     <% users.each do |user| %>
     <tr>
-      <td class=""> <%= user.get_full_name %> </td>
+      <td class=""> <%= link_to user.get_full_name, "#user-info-#{user.id}", 'data-toggle' => 'modal', class: "link-no-style" %> </td>
       <td class=""> <%= user.get_dni_formated %> </td>
       <td class=""> <%= user.get_lines_devices_count %> </td>
       <td class=""> <%= abreviate_names user.get_office_full_name %> </td>

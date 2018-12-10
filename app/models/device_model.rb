@@ -4,6 +4,9 @@ class DeviceModel < ApplicationRecord
   validates_presence_of :mark, :device_name, :type_sim, :category
   validates_uniqueness_of :device_code, if: :device_code.present?
   validates :device_code, presence: true, if: :device_code.present?
+  ########## SCOPES
+  scope :by_mark, -> { order('mark ASC') }
+  scope :by_model, -> { order('device_name ASC') }
   ########## METHODS
   def get_full_model_name
     #Devuelve el nombre completo del modelo

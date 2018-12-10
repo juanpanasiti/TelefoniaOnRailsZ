@@ -15,6 +15,7 @@ class CellphonesController < ApplicationController
   def devices
     @le_titule = "Equipos"
     @devices = Device.all
+    @marks = DeviceModel.get_mark_options
   end
 
   def models

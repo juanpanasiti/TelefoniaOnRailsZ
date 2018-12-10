@@ -20,6 +20,22 @@ class Device < ApplicationRecord
       end
     end
   end
+  ########## SCOPES
+  def self.by_mark(mark)
+    if mark == 'all'
+      return Device.all
+    else
+      devModels = DeviceModel.where(mark: mark).by_mark.by_model
+      devices = []
+      devModels.each do |model|
+        Device.where(device_model: model).each do |dev|
+          devices << dev
+        end
+      end
+      return devices
+    end
+  end
+  scope :by_imei, -> { order('imei ASC') }
   ########## METHODS
   def get_imei
     #Devuelve el IMEI con formato ######-##-######-#
